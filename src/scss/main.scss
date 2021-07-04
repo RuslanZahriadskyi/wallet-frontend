@@ -35,3 +35,32 @@
     /* Safari, Android, iOS */
       url('../fonts/Poppins/poppins-v15-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
 }
+
+$colors: (
+  'button-color-income': #24cca7,
+  'button-color-consumption': #ff6596,
+  'main-background-color': #fff,
+  'dark-ellipse': #c5baff,
+  'light-ellipse': #ffd8d0,
+  'main-consumption': #fed057,
+  'products': #ffd8d0,
+  'car': #fd9498,
+  'care-your-salfe': #c5baff,
+  'care-kids': #6e78e8,
+  'for-house': #4a56e2,
+  'education': #81e1ff,
+  'leisure': #24cca7,
+  'others-consumption': #24cca7,
+  'main-text-color': #000000,
+  'secondary-text-color': #bdbdbd,
+  'third-text-color': #ffffff,
+  'fourth-text-color': #4a56e2,
+  'income-text-color': #24cca7,
+  'consumption-text-color': #ff6596,
+  'modal-background': rgba(0, 0, 0, 0.25),
+  'background': rgba(255, 255, 255, 0.4),
+);
+
+@function getColor($key) {
+  @return map-get($colors, $key);
+}
