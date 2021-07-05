@@ -21,17 +21,17 @@ function App() {
           </div>
         }
       >
-        <Switch>
-          <Route>
-            <LoginPage />
-          </Route>
-          <Route>
-            <DashboardPage />
-          </Route>
-          <Route>
-            <RegistrationPage />
-          </Route>
-        </Switch>
+        {/* <Switch> */}
+        <Route>
+          <LoginPage />
+        </Route>
+        <Route path="/dashboard" exact>
+          <DashboardPage />
+        </Route>
+        <Route>
+          <RegistrationPage />
+        </Route>
+        {/* </Switch> */}
       </Suspense>
     </>
   );

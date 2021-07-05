@@ -13,6 +13,7 @@ const DashboardPage = () => {
       <Statistics />
       <Currency />
       <Ballance />
+      <h1>Hello DashboardPage</h1>
     </div>
   );
 };
