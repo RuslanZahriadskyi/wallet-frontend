@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 const DashboardPage = lazy(() =>
-  import('./views/DashboardPage' /* webpackChunkName: "contacts-page" */),
+  import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
 );
 const RegistrationPage = lazy(() =>
   import('./views/RegistrationPage' /* webpackChunkName: "register-page" */),
