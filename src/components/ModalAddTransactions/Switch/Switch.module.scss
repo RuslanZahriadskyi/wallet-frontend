@@ -1,0 +1,42 @@
+@import '../../../scss/main.scss';
+
+.container {
+  display: flex;
+}
+
+.switch {
+  display: flex;
+  border: solid 1px #e0e0e0;
+  border-radius: 40px;
+}
+
+.buttonModalIncome {
+  color: getColor('button-color-income');
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+}
+
+.buttonModalOutlay {
+  color: getColor('button-color-consumption');
+  cursor: pointer;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+}
+
+.incomeActive {
+  color: getColor('button-color-income');
+}
+
+.outlayActive {
+  color: getColor('button-color-consumption');
+}
+
+.outlayNoActive,
+.incomeNoActive {
+  color: #e0e0e0;
+}

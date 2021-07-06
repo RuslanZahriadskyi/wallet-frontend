@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 400;
   src: url('../fonts/Poppins/poppins-v15-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
+  src: local('Poppins'),
     url('../fonts/Poppins/poppins-v15-latin-regular.eot?#iefix')
       format('embedded-opentype'),
     /* IE6-IE8 */ url('../fonts/Poppins/poppins-v15-latin-regular.woff2')
@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: 700;
   src: url('../fonts/Poppins/poppins-v15-latin-700.eot'); /* IE9 Compat Modes */
-  src: local(''),
+  src: local('Poppins'),
     url('../fonts/Poppins/poppins-v15-latin-700.eot?#iefix')
       format('embedded-opentype'),
     /* IE6-IE8 */ url('../fonts/Poppins/poppins-v15-latin-700.woff2')
@@ -39,6 +39,7 @@
 $colors: (
   'button-color-income': #24cca7,
   'button-color-consumption': #ff6596,
+  'noActive-text-color': '#E0E0E0',
   'main-background-color': #fff,
   'dark-ellipse': #c5baff,
   'light-ellipse': #ffd8d0,

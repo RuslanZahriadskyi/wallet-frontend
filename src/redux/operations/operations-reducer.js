@@ -9,6 +9,4 @@ const modalReducer = createReducer(false, {
   [closeModal]: setFalse,
 });
 
-const reducers = { modalReducer };
-
-export default reducers;
+export { modalReducer };

@@ -1,0 +1,17 @@
+@import '../../scss/main.scss';
+
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+.buttonIcon {
+  color: getColor('button-color-income');
+  cursor: pointer;
+}
+
+.buttonIcon:hover,
+.buttonIcon:focus {
+  transform: scale(1.2);
+}
