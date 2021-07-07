@@ -1,11 +1,13 @@
+@import '../../scss/main.scss';
+
 .user_name_text {
-  color: #bdbdbd;
+  color: getColor('secondary-text-color');
 }
 
 .btnLogout {
-  color: #bdbdbd;
+  color: getColor('secondary-text-color');
   border: none;
-  background-color: white;
+  background-color: getColor('main-background-color');
 }
 
 .header_container {
