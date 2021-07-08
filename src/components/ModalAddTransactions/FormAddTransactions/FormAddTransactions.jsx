@@ -49,27 +49,28 @@ const FormAddTransactions = () => {
       date: Date.parse(values.date),
       comments: values.comments,
     };
+
     console.log(newOperation);
-    //  dispatch(authOperations.registerNewUser(newUser));
+    //  dispatch(newOperation.addOperation(newOperation));
     resetForm();
-  }
-
-  function getSwitchStatus(event, checked) {
-    formik.setFieldValue('checked', checked);
-  }
-
-  function getDate(event) {
-    console.log(event);
-    console.log(formik.values.date);
-    formik.setFieldValue('date', event);
   }
 
   return (
     <div>
       <form className={s.form} onSubmit={formik.handleSubmit}>
         <h2 className={s.formTitle}>Добавить транзакцию</h2>
-        <SwitchButton getStatus={getSwitchStatus} />
-        {formik.values.checked && <SelectCategory />}
+        <SwitchButton
+          name="checked"
+          value={formik.values.checked}
+          changeSwitch={formik.setFieldValue}
+        />
+        {formik.values.checked && (
+          <SelectCategory
+            name="category"
+            value={formik.values.checked}
+            changeCategory={formik.setFieldValue}
+          />
+        )}
         <div className={s.inputContainer}>
           <input
             type="number"
@@ -78,7 +79,11 @@ const FormAddTransactions = () => {
             id="amount"
             onChange={formik.handleChange}
           />
-          {/* <DataPicker value={formik.values.date} onChange={getDate} /> */}
+          <DataPicker
+            name="date"
+            value={formik.values.date}
+            changeDate={formik.setFieldValue}
+          />
         </div>
 
         <input
@@ -97,62 +102,3 @@ const FormAddTransactions = () => {
 };
 
 export default FormAddTransactions;
-
-//  <Formik
-//    initialValues={{
-//   type: '',
-//   category: '',
-//   amount: '',
-//   date: new Date(),
-//   comments: '',
-//   checked: true,
-// }}
-//    onSubmit={(values, { resetForm }) => {
-// onFormSubmit(values, resetForm);
-// }}
-//  >
-//       {props => {
-//         const {
-//           values,
-//           touched,
-//           errors,
-//           dirty,
-//           isSubmitting,
-//           handleChange,
-//           handleBlur,
-//           handleSubmit,
-//           handleReset,
-//           setFieldValue
-//         } = props;
-//  return (
-// <div>
-//   <form className={s.form} onSubmit={formik.handleSubmit}>
-//     <h2 className={s.formTitle}>Добавить транзакцию</h2>
-//     <SwitchButton getStatus={getSwitchStatus} />
-//     {formik.values.checked && <SelectCategory />}
-//     <div className={s.inputContainer}>
-//       <input
-//         type="number"
-//         placeholder="0.00"
-//         className={s.inputAmount}
-//         id="amount"
-//         onChange={formik.handleChange}
-//       />
-//       <DatePicker name="date" />
-//     </div>
-
-//     <input
-//       type="text"
-//       placeholder="Коментарий"
-//       className={s.comentary}
-//       id="comments"
-//       onChange={formik.handleChange}
-//       value={formik.values.comments}
-//     />
-
-//     <FormButtons firtsButtonText="ДОБАВИТЬ" secondButtonText="ОТМЕНА" />
-//   </form>
-// </div>;
-//  );
-// }}
-// </Formik>

@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-
 import Select from 'react-select';
 import s from './SelectCategory.module.scss';
 
@@ -44,18 +42,12 @@ const customStyles = {
   },
 };
 
-export default function SelectCategory() {
-  const [categoryValue, setCategoryValue] = useState('');
-
-  function handleChange(newValue) {
-    setCategoryValue(newValue);
-  }
-
+export default function SelectCategory({ value, changeCategory }) {
   return (
     <Select
       isClearable
-      defaultInputValue={categoryValue}
-      onChange={handleChange}
+      defaultInputValue=""
+      onChange={category => changeCategory('category', category.value)}
       className={s.category}
       options={category}
       styles={customStyles}
