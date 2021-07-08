@@ -1,14 +1,53 @@
-@import '../../../scss/main.scss';
+@import '../../../scss/index.scss';
 
 .form {
-  width: 410px;
-  height: 440px;
+  width: auto;
+  height: auto;
   padding: 40px 65px 60px;
-}
 
-.formTitle {
-  font-size: 30px;
-  font-family: Poppins;
+  .formTitle {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .inputContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .inputAmount,
+  .comentary {
+    border: none;
+    height: 34px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: getColor('secondary-text-color');
+    }
+  }
+
+  .comentary {
+    width: 100%;
+
+    padding: 0 0 10px 20px;
+
+    font-family: Poppins;
+    font-size: 18px;
+    text-align: start;
+    letter-spacing: 0.05em;
+  }
 }
 
 .buttonsContainer {
@@ -16,25 +55,28 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
 
-.buttonIcon {
-  color: getColor('button-color-income');
-  cursor: pointer;
-}
+  .buttons {
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 20px;
 
-.buttons {
-  width: 300px;
-  height: 50px;
-  cursor: pointer;
-  border-radius: 20px;
-}
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
 
-.buttonAddTransaction {
-  border: none;
-  margin-bottom: 20px;
-  background-color: getColor('button-color-income');
-}
+  .buttonAddTransaction {
+    border: none;
+    margin: 51px 0 20px 0;
+    background-color: getColor('button-color-income');
+    color: getColor('third-text-color');
+  }
 
-.buttonCancel {
+  .buttonCancel {
+    border-color: getColor('fourth-text-color');
+    color: getColor('fourth-text-color');
+    background-color: getColor('main-background-color');
+  }
 }

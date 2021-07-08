@@ -2,12 +2,16 @@
 
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 42px 0 40px 0;
 }
 
 .switch {
   display: flex;
   border: solid 1px #e0e0e0;
   border-radius: 40px;
+  margin: 0 20px;
 }
 
 .buttonModalIncome {
@@ -39,4 +43,15 @@
 .outlayNoActive,
 .incomeNoActive {
   color: #e0e0e0;
+}
+
+.outlayNoActive,
+.incomeNoActive,
+.outlayActive,
+.incomeActive {
+  font-size: 16px;
+}
+
+.category {
+  margin-bottom: 40px;
 }
