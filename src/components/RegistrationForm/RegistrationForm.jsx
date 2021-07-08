@@ -17,29 +17,32 @@ export default function RegistrationForm() {
     },
 
     validation: yup.object({
-      username: yup.string().required('Please Enter a username'),
-      email: yup.string().email().required('Please Enter your Email'),
+      username: yup.string().required('Пожалуйста, введите имя пользователя'),
+      email: yup
+        .string()
+        .email()
+        .required('Пожалуйста, введите свой адрес электронной почты'),
       confirmEmail: yup
-        .string('Enter your email')
-        .email('Enter a valid email')
-        .required('Email is required')
-        .oneOf([yup.ref('email'), null], 'Emails must match'),
+        .string('Пожалуйста, введите свой адрес электронной почты')
+        .email('Пожалуйста,ведите действующий адрес электронной почты')
+        .required('Требуется электронная почта')
+        .oneOf([yup.ref('email'), null], 'Электронные письма должны совпадать'),
       password: yup
-        .string('Enter your password')
-        .min(6, 'Password must be at least 6 characters')
-        .max(12, 'Password must be up to 12 characters')
-        .required('Please enter your password'),
+        .string('Пожалуйста, введите пароль')
+        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
+        .max(12, 'Пароль должен содержать до 12 символов')
+        .required('Требуется пароль'),
 
       confirmPassword: yup
-        .string('Enter your password')
-        .required('Please enter your password')
-        .oneOf([yup.ref('password'), null], 'Passwords must match'),
+        .string('Пожалуйста, повторите пароль')
+        .required('Требуется пароль')
+        .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
 
       name: yup
-        .string('Enter your name')
-        .min(3, 'Password must be at least 3 characters')
-        .max(12, 'Password must be up to 12 characters')
-        .required('Please Enter your name'),
+        .string('Пожалуйста введите свое имя')
+        .min(3, 'Пароль должен состоять не менее чем из 3 символов')
+        .max(12, 'Пароль должен содержать до 12 символов')
+        .required('Требуется имя'),
     }),
 
     onSubmit: ({ email, password, name }) => {
