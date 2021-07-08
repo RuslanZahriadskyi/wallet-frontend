@@ -1,19 +1,32 @@
 import React from 'react';
-// import Header from '../components/Header/Header';
+import { useSelector } from 'react-redux';
+import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
 // import Statistics from '../components/Statisctics/Statistics';
 import Currency from '../components/Currency/Currency';
-// import Ballance from '../components/Ballance/Ballance';
+import Ballance from '../components/Ballance/Ballance';
+import AddButton from '../components/ButtonAddTransaction';
+import FormAddTransactions from '../components/ModalAddTransactions/FormAddTransactions';
+import { operationsSelectors } from '../redux/operations';
+import Modal from '../components/ModalAddTransactions';
 
 const DashboardPage = () => {
+  const modal = useSelector(operationsSelectors.getModalValue);
+
   return (
     <div>
-      {/* <Header /> */}
+      <h1>Hello DashboardPage</h1>
+      <Header />
       <Main />
       {/* <Statistics /> */}
       <Currency />
-      {/* <Ballance /> */}
-      {/* <h1>Hello DashboardPage</h1> */}
+      <Ballance />
+      <AddButton />
+      {modal && (
+        <Modal modalValue={modal}>
+          <FormAddTransactions />
+        </Modal>
+      )}
     </div>
   );
 };
