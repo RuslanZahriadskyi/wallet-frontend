@@ -1,0 +1,26 @@
+@import '../../scss/main.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoPng {
+  width: 30px;
+  height: 30px;
+  padding-right: 10px;
+}
+
+.logoText {
+  color: getColor('main-text-color');
+  font: 20px Poppins;
+  font-weight: 700;
+}
