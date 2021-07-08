@@ -15,26 +15,38 @@ function Currency() {
 
   useEffect(() => {
     fetchRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const fetchRates = () => {
+  const fetchRates = async () => {
     //   сотояние загрузки, меняем значение
     setIsLoading(true);
 
-    // Отправляем get-запрос
-    currencyApi
-      .fetchRates()
-      .then(response => {
-        console.log(response);
+    try {
+      const data = await currencyApi.fetchRates();
 
-        if (!response) {
-          throw new Error('Something get wrong. Please, waiting!'); //notification????
-        }
-        response.length = 3;
-        setRates([...rates, ...response]);
-      })
-      .catch(error => setError(error))
-      .finally(() => setIsLoading(false)); //оставливаем спиннер
+      data.length = 3; //переделать
+      setRates([...rates, ...data]);
+    } catch (error) {
+      throw new Error('Something get wrong. Please, waiting!'); //notification????
+    }
+
+    setIsLoading(false);
+
+    // // Отправляем get-запрос
+    // currencyApi
+    //   .fetchRates()
+    //   .then(response => {
+    //     console.log(response);
+
+    //     if (!response) {
+    //       throw new Error('Something get wrong. Please, waiting!'); //notification????
+    //     }
+    //     response.length = 3;
+    //     setRates([...rates, ...response]);
+    //   })
+    //   .catch(error => setError(error))
+    //   .finally(() => setIsLoading(false)); //оставливаем спиннер
   };
 
   return (
@@ -64,6 +76,10 @@ function Currency() {
           </table>
         </div>
       </div>
+
+      {isLoading && <p>Здесь подключить Loader</p>}
+
+      {error && <p>Здесь будет notification об ошибке</p>}
     </>
   );
 }
