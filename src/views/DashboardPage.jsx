@@ -1,19 +1,19 @@
 import React from 'react';
-import Header from '../components/Header/Header';
+// import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
-import Statistics from '../components/Statisctics/Statistics';
+// import Statistics from '../components/Statisctics/Statistics';
 import Currency from '../components/Currency/Currency';
-import Ballance from '../components/Ballance/Ballance';
+// import Ballance from '../components/Ballance/Ballance';
 
 const DashboardPage = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Main />
-      <Statistics />
+      {/* <Statistics /> */}
       <Currency />
-      <Ballance />
-      <h1>Hello DashboardPage</h1>
+      {/* <Ballance /> */}
+      {/* <h1>Hello DashboardPage</h1> */}
     </div>
   );
 };

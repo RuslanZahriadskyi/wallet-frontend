@@ -1,0 +1,37 @@
+@import '../../scss/main.scss';
+.dashboard-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ballance-div {
+  padding: 10px;
+  border-radius: 30px;
+  background-color: getColor('third-text-color');
+}
+
+.ballance-title {
+  margin: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #a6a6a6;
+}
+.ballance {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.29;
+}
+.hryvnia-sign {
+  margin-right: 5px;
+  font-weight: 400;
+}
+
+.transaction-div {
+  background-color: getColor('third-text-color');
+}
+.transaction-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
