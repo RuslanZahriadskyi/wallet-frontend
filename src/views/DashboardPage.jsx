@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header/Header';
-import Main from '../components/Main/Main';
+import Main from '../components/MainContainer/MainContainer';
 import Statistics from '../components/Statisctics/Statistics';
 import Currency from '../components/Currency/Currency';
 import Ballance from '../components/Ballance/Ballance';
