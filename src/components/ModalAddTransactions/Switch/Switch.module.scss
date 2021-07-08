@@ -1,0 +1,57 @@
+@import '../../../scss/main.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 42px 0 40px 0;
+}
+
+.switch {
+  display: flex;
+  border: solid 1px #e0e0e0;
+  border-radius: 40px;
+  margin: 0 20px;
+}
+
+.buttonModalIncome {
+  color: getColor('button-color-income');
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+}
+
+.buttonModalOutlay {
+  color: getColor('button-color-consumption');
+  cursor: pointer;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+}
+
+.incomeActive {
+  color: getColor('button-color-income');
+}
+
+.outlayActive {
+  color: getColor('button-color-consumption');
+}
+
+.outlayNoActive,
+.incomeNoActive {
+  color: #e0e0e0;
+}
+
+.outlayNoActive,
+.incomeNoActive,
+.outlayActive,
+.incomeActive {
+  font-size: 16px;
+}
+
+.category {
+  margin-bottom: 40px;
+}
