@@ -4,23 +4,16 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import s from './Switch.module.scss';
 
-export default function Switcher({ getStatus }) {
-  const [checked, setState] = useState(true);
-
-  const handleChange = e => {
-    getStatus(e, !checked);
-    setState(!checked);
-  };
-
+export default function Switcher({ value, changeSwitch }) {
   return (
     <div className={s.container}>
-      <h3 className={!checked ? s.incomeActive : s.incomeNoActive}>Доход</h3>
+      <h3 className={!value ? s.incomeActive : s.incomeNoActive}>Доход</h3>
       <label className={s.switchContainer}>
         <Switch
           type="checkbox"
           className={s.switch}
-          onChange={handleChange}
-          checked={checked}
+          onChange={status => changeSwitch('checked', status)}
+          checked={value}
           uncheckedHandleIcon={
             <AddCircleIcon
               style={{ width: 56, height: 56 }}
@@ -43,7 +36,7 @@ export default function Switcher({ getStatus }) {
           onColor="#fff"
         />
       </label>
-      <h3 className={checked ? s.outlayActive : s.outlayNoActive}>Расход</h3>
+      <h3 className={value ? s.outlayActive : s.outlayNoActive}>Расход</h3>
     </div>
   );
 }
