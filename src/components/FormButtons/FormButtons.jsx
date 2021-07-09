@@ -1,3 +1,4 @@
+import { isValid } from 'date-fns';
 import React from 'react';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
@@ -30,6 +31,7 @@ const FormButtons = ({
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
             onClick={closeModal}
+            // disabled={!isValid()}
           >
             {secondButtonText}
           </button>

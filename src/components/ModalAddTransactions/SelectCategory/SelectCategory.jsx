@@ -42,22 +42,29 @@ const customStyles = {
   },
 };
 
-export default function SelectCategory({ value, changeCategory }) {
+export default function SelectCategory({ value, changeCategory, error }) {
   return (
-    <Select
-      isClearable
-      defaultInputValue=""
-      onChange={category => changeCategory('category', category.value)}
-      className={s.category}
-      options={category}
-      styles={customStyles}
-      placeholder={
-        <div
-          className={['select-placeholder-text', s.categoryChoice].join(' ')}
-        >
-          Выбирете категорию
-        </div>
-      }
-    />
+    <>
+      <Select
+        isClearable
+        defaultInputValue={value}
+        onChange={category => {
+          if (category === null) {
+            return changeCategory('category', '');
+          }
+          changeCategory('category', category.value);
+        }}
+        className={s.category}
+        options={category}
+        styles={customStyles}
+        placeholder={
+          <div
+            className={['select-placeholder-text', s.categoryChoice].join(' ')}
+          >
+            Выбирете категорию
+          </div>
+        }
+      />
+    </>
   );
 }
