@@ -5,6 +5,8 @@ import { authOperations } from '../../redux/auth';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
+import s from './RegistrationForm.module.scss';
+
 export default function RegistrationForm() {
   const dispatch = useDispatch();
 
@@ -45,15 +47,21 @@ export default function RegistrationForm() {
         .required('Требуется имя'),
     }),
 
-    onSubmit: ({ email, password, name }) => {
-      dispatch(authOperations.register({ name, email, password }));
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ name, email, password }));
+    //   },
+    // });
+    onSubmit: values => {
+      const { email, password, name } = values;
+      dispatch(authOperations.register({ email, password, name }));
     },
   });
 
   return (
-    <div>
+    <div className={s.container}>
       {/* <Title text='Wallet' /> */}
-      <form onSubmit={formik.handleSubmit}>
+      <form className={s.form} onSubmit={formik.handleSubmit}>
+        <h1 className={s.title}>Wallet</h1>
         <label>
           <input
             type="email"
