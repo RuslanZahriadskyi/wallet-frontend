@@ -5,6 +5,8 @@ import { authOperations } from '../../redux/auth';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
+import s from './RegistrationForm.module.scss';
+
 export default function RegistrationForm() {
   const dispatch = useDispatch();
 
@@ -29,8 +31,8 @@ export default function RegistrationForm() {
         .oneOf([yup.ref('email'), null], 'Электронные письма должны совпадать'),
       password: yup
         .string('Пожалуйста, введите пароль')
-        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
-        .max(12, 'Пароль должен содержать до 12 символов')
+        .min(7, 'Пароль должен состоять не менее чем из 7 символов')
+        .max(26, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
 
       confirmPassword: yup
@@ -45,32 +47,41 @@ export default function RegistrationForm() {
         .required('Требуется имя'),
     }),
 
-    onSubmit: ({ email, password, name }) => {
-      dispatch(authOperations.register({ name, email, password }));
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ name, email, password }));
+    //   },
+    // });
+    onSubmit: (values, { resetForm }) => {
+      const { email, password, name } = values;
+      dispatch(authOperations.register({ email, password, name }));
+      resetForm({});
     },
   });
 
   return (
-    <div>
+    <div className={s.container}>
       {/* <Title text='Wallet' /> */}
-      <form onSubmit={formik.handleSubmit}>
+      <form className={s.form} onSubmit={formik.handleSubmit}>
+        <h1 className={s.title}>Wallet</h1>
         <label>
           <input
             type="email"
             name="email"
-            onChange={formik.handleChange}
-            value={formik.email}
             placeholder="E-mail"
+            value={formik.email}
             required
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
           />
         </label>
         <label>
           <input
             type="password"
             name="password"
-            onChange={formik.handleChange}
-            value={formik.password}
             placeholder="Пароль"
+            value={formik.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
             required
           />
         </label>
@@ -78,9 +89,13 @@ export default function RegistrationForm() {
           <input
             type="password"
             name="confirmPassword"
-            onChange={formik.handleChange}
-            value={formik.confirmPassword}
             placeholder="Подтвердите пароль"
+            value={formik.confirmPassword}
+            onChange={formik.handleChange}
+            error={
+              formik.touched.confirmPassword &&
+              Boolean(formik.errors.confirmPassword)
+            }
             required
           />
         </label>
@@ -88,9 +103,10 @@ export default function RegistrationForm() {
           <input
             type="name"
             name="name"
-            onChange={formik.handleChange}
-            value={formik.name}
             placeholder="Ваше имя"
+            value={formik.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
             required
           />
         </label>
