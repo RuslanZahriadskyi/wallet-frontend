@@ -18,7 +18,7 @@
   border-radius: 33px;
 
   align-items: center;
-  background-color: white;
+  background-color: getColor('main-background-color');
 
   font-family: Circe, sans-serif;
   font-weight: 700;
@@ -46,8 +46,7 @@ tbody td {
 
 tbody tr {
   border: none;
-  border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-bottom: 0.1px solid getColor('table-border-color');
 }
 
 .tableData {

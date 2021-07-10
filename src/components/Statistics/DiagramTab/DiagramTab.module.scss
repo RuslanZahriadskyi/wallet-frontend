@@ -1,10 +1,12 @@
+@import '../../../scss/main.scss';
+
 .section {
   margin-right: auto;
   margin-left: auto;
   padding: 30px 20px 40px 20px;
 
   //фон удалить!
-  background-color: #e7eaf2;
+  background-color: getColor('background');
 
   @media (min-width: 768px) {
     display: block;
@@ -92,7 +94,7 @@
   padding: 12px 20px;
   min-width: 280px;
   max-height: 50px;
-  border: 1px solid black;
+  border: 1px solid getColor('button-border-color');
   border-radius: 25px;
 
   align-items: center;
