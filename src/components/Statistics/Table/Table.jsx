@@ -1,17 +1,6 @@
 import React from 'react';
+import { v4 as id } from 'uuid';
 import s from './Table.module.scss';
-
-const expColors = [
-  '#fed057',
-  '#ffd8d0',
-  '#fd9498',
-  '#c5baff',
-  '#6e78e8',
-  '#4a56e2',
-  '#81e1ff',
-  '#24cca7',
-  '#24cca7',
-];
 
 const Table = ({ data }) => {
   return (
@@ -23,96 +12,19 @@ const Table = ({ data }) => {
 
       <table className={s.table}>
         <tbody className={s.tableBody}>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[0] }}
-              ></span>
-              Основные расходы
-            </td>
-            <td className={s.tableData}>8700.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[1] }}
-              ></span>
-              Продукты
-            </td>
-            <td className={s.tableData}>300.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[2] }}
-              ></span>
-              Машина
-            </td>
-            <td className={s.tableData}>5000.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[3] }}
-              ></span>
-              Забота о себе
-            </td>
-            <td className={s.tableData}>8700.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[4] }}
-              ></span>
-              Забота о детях
-            </td>
-            <td className={s.tableData}>300.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[5] }}
-              ></span>
-              Товары для дома
-            </td>
-            <td className={s.tableData}>5000.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[6] }}
-              ></span>
-              Образование
-            </td>
-            <td className={s.tableData}>8700.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[7] }}
-              ></span>
-              Досуг
-            </td>
-            <td className={s.tableData}>300.0</td>
-          </tr>
-          <tr>
-            <td className={s.tableData}>
-              <span
-                className={s.mark}
-                style={{ backgroundColor: expColors[8] }}
-              ></span>
-              Другие расходы
-            </td>
-            <td className={s.tableData}>5000.0</td>
-          </tr>
+          {data.map(({ color, category, amount }) => (
+            <tr key={id()}>
+              <td className={s.tableData}>
+                <span
+                  className={s.mark}
+                  style={{ backgroundColor: color }}
+                ></span>
+
+                {category}
+              </td>
+              <td className={s.tableData}>{amount.toFixed(1)}</td>
+            </tr>
+          ))}
         </tbody>
 
         <tfoot className={s.tableFoot}>
