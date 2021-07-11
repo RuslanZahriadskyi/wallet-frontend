@@ -23,8 +23,8 @@ export default function LoginForm() {
 
       password: yup
         .string('Пожалуйста, введите пароль')
-        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
-        .max(12, 'Пароль должен содержать до 12 символов')
+        .min(7, 'Пароль должен состоять не менее чем из 6 символов')
+        .max(26, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
     }),
 
@@ -32,9 +32,10 @@ export default function LoginForm() {
     //     dispatch(authOperations.register({ name, email, password }));
     //   },
     // });
-    onSubmit: values => {
-      const { email, password } = values;
-      dispatch(authOperations.login({ email, password }));
+    onSubmit: (values, { resetForm }) => {
+      const { email, password, name } = values;
+      dispatch(authOperations.register({ email, password, name }));
+      resetForm({});
     },
   });
 
@@ -46,19 +47,21 @@ export default function LoginForm() {
           <input
             type="email"
             name="email"
-            onChange={formik.handleChange}
-            value={formik.email}
             placeholder="E-mail"
+            value={formik.email}
             required
+            onChange={formik.handleChange}
+            // error={formik.touched.email && Boolean(formik.errors.email)}
           />
         </label>
         <label>
           <input
             type="password"
             name="password"
-            onChange={formik.handleChange}
-            value={formik.password}
             placeholder="Пароль"
+            value={formik.password}
+            onChange={formik.handleChange}
+            // error={formik.touched.password && Boolean(formik.errors.password)}
             required
           />
         </label>
