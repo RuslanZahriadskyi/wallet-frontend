@@ -17,12 +17,16 @@ const operationSchema = Yup.object({
   comments: Yup.string('Enter your comments for operation')
     .min(5, 'Your comments to short')
     .max(30, 'Your comments to long'),
-  category: Yup.string('Choise your category outlay')
-    .default()
-    .required('Category is required'),
+  checked: Yup.bool(),
+  category: Yup.string('Choise your category outlay').when('checked', {
+    is: true,
+    then: Yup.string().required('Category is required'),
+  }),
 });
 
 const FormAddTransactions = () => {
+  let checked;
+
   const formik = useFormik({
     initialValues: {
       type: '',
@@ -33,14 +37,14 @@ const FormAddTransactions = () => {
       checked: true,
       selectError: '',
     },
-    // validationSchema: operationSchema,
+    validationSchema: operationSchema,
 
     onSubmit: (values, { resetForm }) => {
       onFormSubmit(values, resetForm);
     },
   });
 
-  const validate = values => {};
+  checked = formik.values.checked;
 
   function onFormSubmit(values, resetForm) {
     let type = '';
@@ -71,6 +75,7 @@ const FormAddTransactions = () => {
 
     console.log(newOperation);
     //  dispatch(newOperation.addOperation(newOperation));
+    resetForm();
   }
 
   return (
