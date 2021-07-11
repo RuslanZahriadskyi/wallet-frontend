@@ -1,0 +1,12 @@
+@import '../../scss/main.scss';
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper {
+  background-color: getColor('main-background-color');
+  border-radius: 20px;
+}
