@@ -6,7 +6,7 @@ import { useFormik, Formik } from 'formik';
 import s from './formAddTransactions.module.scss';
 import SwitchButton from '../Switch';
 import DataPicker from '../DataPicker';
-import FormButtons from '../../FormButtons/FormButtons';
+import FormButtons from '../../FormButtons';
 import SelectCategory from '../SelectCategory';
 
 const validationSchema = yup.object({

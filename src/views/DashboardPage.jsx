@@ -15,7 +15,6 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <h1>Hello DashboardPage</h1>
       <Header />
       <Main />
       <Statistics />
