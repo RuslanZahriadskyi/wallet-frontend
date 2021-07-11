@@ -48,6 +48,7 @@ const FormButtons = ({
           <button
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
+            onClick={closeModal}
           >
             {secondButtonText}
           </button>

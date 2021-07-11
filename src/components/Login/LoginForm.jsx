@@ -43,7 +43,6 @@ export default function LoginForm() {
     <div>
       {/* <Title text='Wallet' /> */}
       <form onSubmit={formik.handleSubmit}>
-        <h1>Wallet</h1>
         <label>
           <input
             type="email"

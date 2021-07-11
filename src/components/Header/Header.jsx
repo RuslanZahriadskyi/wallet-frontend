@@ -1,17 +1,27 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import ModalLogout from '../ModalLogout';
+import UserMenu from './UserMenu';
 import './Header.scss';
-import logo from './logo.png';
+import Logo from './Logo';
+import Modal from '../ModalAddTransactions/ModalAddTransactions';
+import ModalLogout from './ModalLogout';
+import { operationsSelectors } from '../../redux/operations';
 
 const Header = () => {
+  const modal = useSelector(operationsSelectors.getModalValue);
+
   return (
     <header className="header">
       <NavLink exact to="/dashboard" className="homeLink">
-        <img src={logo} alt="Logo" className="logoPng" />
-        <span className="logoText">Wallet</span>
+        <Logo />
       </NavLink>
-      <ModalLogout />
+      <UserMenu />
+      {modal && (
+        <Modal modalValue={modal}>
+          <ModalLogout />
+        </Modal>
+      )}
     </header>
   );
 };
