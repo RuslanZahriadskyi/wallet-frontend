@@ -7,38 +7,20 @@ import s from './formAddTransactions.module.scss';
 import SwitchButton from '../Switch';
 import DataPicker from '../DataPicker';
 import FormButtons from '../../FormButtons/FormButtons';
-import SelectCategory from '../SelectCategory';
+import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 const operationSchema = Yup.object({
-  category: Yup.string('Choise your category outlay').required(
-    'Category is required',
-  ),
   amount: Yup.number('Enter your amount').required('Amount is required'),
-  date: Yup.number('Enter your date operation').required('Date is required'),
   comments: Yup.string('Enter your comments for operation')
     .min(5, 'Your comments to short')
     .max(30, 'Your comments to long'),
+  category: Yup.string('Choise your category outlay')
+    .default()
+    .required('Category is required'),
 });
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  uderline: {
-    '&&&:before': {
-      borderBottom: 'none',
-    },
-    '&&:after': {
-      borderBottom: 'none',
-    },
-  },
-  input: {
-    textAlign: 'center',
-  },
-}));
-
 const FormAddTransactions = () => {
-  const classes = useStyles();
   const formik = useFormik({
     initialValues: {
       type: '',
@@ -47,12 +29,16 @@ const FormAddTransactions = () => {
       date: new Date(),
       comments: '',
       checked: true,
+      selectError: '',
     },
-    validationSchema: operationSchema,
+    // validationSchema: operationSchema,
+
     onSubmit: (values, { resetForm }) => {
       onFormSubmit(values, resetForm);
     },
   });
+
+  const validate = values => {};
 
   function onFormSubmit(values, resetForm) {
     let type = '';
@@ -61,24 +47,33 @@ const FormAddTransactions = () => {
     } else {
       type = 'income';
     }
+
+    if (values.category) {
+      const newOperation = {
+        type,
+        category: values.category,
+        amount: values.amount,
+        date: Date.parse(values.date),
+        comments: values.comments,
+      };
+      console.log(newOperation);
+      resetForm();
+    }
+
     const newOperation = {
       type,
-      category: values.category,
       amount: values.amount,
       date: Date.parse(values.date),
       comments: values.comments,
     };
+
     console.log(newOperation);
     //  dispatch(newOperation.addOperation(newOperation));
-    resetForm();
   }
 
   return (
     <div>
-      <form
-        className={[s.form, classes.root].join(' ')}
-        onSubmit={formik.handleSubmit}
-      >
+      <form className={s.form} onSubmit={formik.handleSubmit}>
         <h2 className={s.formTitle}>Добавить транзакцию</h2>
         <SwitchButton
           name="checked"
@@ -86,15 +81,12 @@ const FormAddTransactions = () => {
           changeSwitch={formik.setFieldValue}
         />
         {formik.values.checked && (
-          <SelectCategory
+          <Category
             name="category"
             value={formik.values.category}
-            changeCategory={formik.setFieldValue}
-            error={formik.touched.category && Boolean(formik.errors.category)}
-            touched={formik.touched.category && formik.errors.category}
-            onBlur={function () {
-              formik.setFieldTouched(formik.values.category);
-            }}
+            onChange={formik.setFieldValue}
+            error={formik.touched.category && formik.errors.category}
+            errorText={formik.touched.category && formik.errors.category}
           />
         )}
         <div className={s.inputContainer}>
@@ -127,7 +119,7 @@ const FormAddTransactions = () => {
           className={s.comentary}
           onChange={formik.handleChange}
           value={formik.values.comments}
-          InputProps={{ disableUnderline: true, textalign: 'center' }}
+          InputProps={{ disableUnderline: true }}
           error={formik.touched.comments && Boolean(formik.errors.comments)}
           helperText={formik.touched.comments && formik.errors.comments}
         />
