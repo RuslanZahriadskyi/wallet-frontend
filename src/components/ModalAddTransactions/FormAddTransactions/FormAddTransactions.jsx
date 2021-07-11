@@ -6,9 +6,11 @@ import { useFormik } from 'formik';
 import s from './formAddTransactions.module.scss';
 import SwitchButton from '../Switch';
 import DataPicker from '../DataPicker';
+
 import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
+
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),

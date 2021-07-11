@@ -1,0 +1,11 @@
+canvas.chart {
+  margin: 0;
+  padding: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
+}

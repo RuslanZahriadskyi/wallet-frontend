@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header/Header';
 import Main from '../components/MainContainer/MainContainer';
-import Statistics from '../components/Statisctics/Statistics';
+import Statistics from '../components/Statistics';
 import Currency from '../components/Currency/Currency';
 import Ballance from '../components/Ballance/Ballance';
 import AddButton from '../components/ButtonAddTransaction';
@@ -15,7 +15,6 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <h1>Hello DashboardPage</h1>
       <Header />
       <Main />
       <Statistics />
