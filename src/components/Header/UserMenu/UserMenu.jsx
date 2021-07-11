@@ -1,10 +1,11 @@
 import React from 'react';
 import Media from 'react-media';
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { operationsAction } from '../../../redux/operations';
+import { authSelectors } from '../../../redux/auth';
 import './UserMenu.scss';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { operationsAction } from '../../../redux/operations';
 
 const ModalLogout = ({ name }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const ModalLogout = ({ name }) => {
     () => dispatch(operationsAction.openModal()),
     [dispatch],
   );
+
+  // const name = useSelector(authSelectors.getUserName);
 
   return (
     <div className="header_container">
