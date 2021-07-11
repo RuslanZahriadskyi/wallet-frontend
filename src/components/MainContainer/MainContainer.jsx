@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainContainer = () => {
-  return <div></div>;
+  return <></>;
 };
 
 export default MainContainer;
