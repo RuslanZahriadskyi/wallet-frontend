@@ -1,0 +1,30 @@
+// @import '../../../scss/index.scss';
+
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 40px 10px;
+  border-radius: 20px;
+  // background-color: ;
+
+  padding: 40px 65px 60px;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 30px;
+  margin-left: 16px;
+  margin-left: 20px;
+}
+
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  border: none;
+  padding-bottom: 10px;
+}
