@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Spinner from './components/Spinner';
 
 const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
@@ -14,13 +15,7 @@ const LoginPage = lazy(() =>
 function App() {
   return (
     <>
-      <Suspense
-        fallback={
-          <div>
-            <h1>Loading....</h1>
-          </div>
-        }
-      >
+      <Suspense fallback={<Spinner />}>
         {/* <Switch> */}
         <Route>
           <LoginPage />
