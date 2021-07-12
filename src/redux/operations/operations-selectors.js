@@ -1,3 +1,5 @@
 const getModalValue = state => state.modal;
 
-export { getModalValue };
+const logoutModalAction = state => state.logoutModalAction;
+
+export { getModalValue, logoutModalAction };
