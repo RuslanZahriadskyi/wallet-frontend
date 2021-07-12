@@ -11,9 +11,7 @@ import { operationsSelectors, operationsAction } from '../../redux/operations';
 const Header = () => {
   const dispatch = useDispatch();
 
-  const modalLogout = useSelector(state =>
-    operationsSelectors.logoutModalAction(state),
-  );
+  const modalLogout = useSelector(operationsSelectors.logoutModalAction);
 
   const closeModalLogout = () => dispatch(operationsAction.logoutModalAction());
 
