@@ -11,7 +11,6 @@ import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
 
-
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
   comments: Yup.string('Enter your comments for operation')

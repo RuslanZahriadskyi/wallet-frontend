@@ -5,7 +5,6 @@ import './RegistrationPage';
 
 const RegistrationPage = () => {
   return (
-
     <div className="registrationPage">
       <div>
         <img src={images} alt="RegPage" className="images" />

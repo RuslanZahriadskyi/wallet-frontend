@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { openModal, closeModal } from './operations-action';
+import { openModal, closeModal, logoutModalAction } from './operations-action';
 
 const setTrue = () => true;
 const setFalse = () => false;
@@ -9,4 +9,8 @@ const modalReducer = createReducer(false, {
   [closeModal]: setFalse,
 });
 
-export { modalReducer };
+const modalLogout = createReducer(false, {
+  [logoutModalAction]: (state, _) => !state,
+});
+
+export { modalReducer, modalLogout };

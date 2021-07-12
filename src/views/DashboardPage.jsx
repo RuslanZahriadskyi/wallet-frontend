@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import Header from '../components/Header/Header';
 import Main from '../components/MainContainer/MainContainer';
 import Statistics from '../components/Statistics';
@@ -10,8 +12,15 @@ import FormAddTransactions from '../components/ModalAddTransactions/FormAddTrans
 import { operationsSelectors } from '../redux/operations';
 import Modal from '../components/ModalAddTransactions';
 
+import { operationsAction } from '../redux/operations';
+
 const DashboardPage = () => {
   const modal = useSelector(operationsSelectors.getModalValue);
+  const dispatch = useDispatch();
+  const closeModal = useCallback(
+    () => dispatch(operationsAction.closeModal()),
+    [dispatch],
+  );
 
   return (
     <div>
@@ -22,7 +31,7 @@ const DashboardPage = () => {
       <Ballance />
       <AddButton />
       {modal && (
-        <Modal modalValue={modal}>
+        <Modal modalValue={modal} modalAction={() => closeModal()}>
           <FormAddTransactions />
         </Modal>
       )}
