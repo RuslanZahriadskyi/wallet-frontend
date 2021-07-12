@@ -1,11 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import FormButtons from '../FormButtons/FormButtons';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 import s from './RegistrationForm.module.scss';
+import logo from '../../images/logo.png';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import EmailIcon from '@material-ui/icons/Email';
+import LockIcon from '@material-ui/icons/Lock';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -51,6 +58,7 @@ export default function RegistrationForm() {
     //     dispatch(authOperations.register({ name, email, password }));
     //   },
     // });
+
     onSubmit: (values, { resetForm }) => {
       const { email, password, name } = values;
       dispatch(authOperations.register({ email, password, name }));
@@ -60,59 +68,167 @@ export default function RegistrationForm() {
 
   return (
     <div className={s.container}>
-      {/* <Title text='Wallet' /> */}
-      <form className={s.form} onSubmit={formik.handleSubmit}>
-        <h1 className={s.title}>Wallet</h1>
-        <label>
-          <input
-            type="email"
-            name="email"
-            placeholder="E-mail"
-            value={formik.email}
-            required
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            value={formik.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Подтвердите пароль"
-            value={formik.confirmPassword}
-            onChange={formik.handleChange}
-            error={
-              formik.touched.confirmPassword &&
-              Boolean(formik.errors.confirmPassword)
-            }
-            required
-          />
-        </label>
-        <label>
-          <input
-            type="name"
-            name="name"
-            placeholder="Ваше имя"
-            value={formik.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            required
-          />
-        </label>
-        <button type="submit">РЕГИСТРАЦИЯ</button>
-        <NavLink to="/login">ВХОД</NavLink>
+      <form
+        className={s.form}
+        onSubmit={formik.handleSubmit}
+        noValidate
+        autoComplete="off"
+      >
+        <div className={s.logo}>
+          <img src={logo} alt="LogoImg" className={s.logoImg} />
+          <h1 className={s.title}>Wallet</h1>
+        </div>
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="E-mail"
+          type="email"
+          name="email"
+          value={formik.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <LockIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="Пароль"
+          type="password"
+          name="password"
+          value={formik.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <LockIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="Подтвердите пароль"
+          type="confirmPassword"
+          name="confirmPassword"
+          value={formik.confirmPassword}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
+          helperText={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+        />
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <AccountBoxIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="Ваше имя"
+          type="name"
+          name="name"
+          value={formik.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+        {/* <button type="submit">РЕГИСТРАЦИЯ</button>
+        <NavLink to="/login">ВХОД</NavLink> */}
+        <FormButtons
+          firtsButtonText="РЕГИСТРАЦИЯ"
+          type="submit"
+          // firstLinkButton="/login"?????
+          secondButtonText="ВХОД"
+          secondLinkButton="/login"
+        />
       </form>
     </div>
   );
 }
+
+//       <form className={s.form} onSubmit={formik.handleSubmit}>
+//          <div className={s.logo}>
+//          <img src={logo} alt="LogoImg" className={s.logoImg} />
+//           <h1 className={s.title}>Wallet</h1>
+//           </div>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="email"
+//             name="email"
+//             placeholder="E-mail"
+//             value={formik.email}
+//             required
+//             onChange={formik.handleChange}
+//             // error={formik.touched.email && Boolean(formik.errors.email)}
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="password"
+//             name="password"
+//             placeholder="Пароль"
+//             value={formik.password}
+//             onChange={formik.handleChange}
+//             // error={formik.touched.password && Boolean(formik.errors.password)}
+//             required
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="password"
+//             name="confirmPassword"
+//             placeholder="Подтвердите пароль"
+//             value={formik.confirmPassword}
+//             onChange={formik.handleChange}
+//             // error={
+//             //   formik.touched.confirmPassword &&
+//             //   Boolean(formik.errors.confirmPassword)
+//             // }
+//             required
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="name"
+//             name="name"
+//             placeholder="Ваше имя"
+//             value={formik.name}
+//             onChange={formik.handleChange}
+//             // error={formik.touched.name && Boolean(formik.errors.name)}
+//             required
+//           />
+//         </label>
+//         <FormButtons
+//           firtsButtonText="РЕГИСТРАЦИЯ"
+//           // firstLinkButton="/login"?????
+//           secondButtonText="ВХОД"
+//           secondLinkButton="/login"
+//        />
+
+//       </form>
+//     </div>
+//   );
+// }
