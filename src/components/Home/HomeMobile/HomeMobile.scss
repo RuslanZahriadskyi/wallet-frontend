@@ -1,10 +1,8 @@
-@import '../../scss/main.scss';
+@import '../../../scss/main.scss';
 
 .icons {
   display: flex;
   justify-content: center;
-  margin-top: 13px;
-  margin-bottom: 13px;
 }
 .icons-item {
   display: flex;
@@ -12,11 +10,11 @@
   align-items: center;
   width: 38px;
   height: 38px;
+  margin-top: 13px;
   margin-right: 36px;
   border-radius: 6px;
   color: getColor('third-text-color');
   background-color: getColor('fourth-text-color');
-  // background-color: rgba($color: getColor('fourth-text-color'), $alpha: 0.2);
 
   &:last-child {
     margin-right: 0;
@@ -29,11 +27,7 @@
 }
 .link {
   color: getColor('third-text-color');
-  background-color: rgba($color: getColor('fourth-text-color'), $alpha: 0.2);
 }
 .active-link {
   color: getColor('third-text-color');
-}
-.nav-title {
-  color: getColor('main-text-color');
 }
