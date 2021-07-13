@@ -58,7 +58,11 @@ export default function RegistrationForm() {
     //     dispatch(authOperations.register({ name, email, password }));
     //   },
     // });
-
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ email, password,  name }));
+    //     formik.resetForm();
+    //   },
+    // });
     onSubmit: (values, { resetForm }) => {
       const { email, password, name } = values;
       dispatch(authOperations.register({ email, password, name }));
