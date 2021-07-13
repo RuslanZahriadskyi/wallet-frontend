@@ -59,7 +59,7 @@ const FormButtons = ({
       {secondLinkButton && (
         <div className={s.buttonsContainer}>
           <button
-            type="button"
+            type="submit"
             className={[s.buttons, s.buttonAddTransaction].join(' ')}
           >
             {firtsButtonText}
