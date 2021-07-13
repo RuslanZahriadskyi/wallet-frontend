@@ -63,14 +63,14 @@ export default function LoginForm() {
         </div>
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <EmailIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="E-mail"
+          placeholder="E-mail"
           type="email"
           name="email"
           value={formik.email}
@@ -80,14 +80,14 @@ export default function LoginForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <LockIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Пароль"
+          placeholder="Пароль"
           type="password"
           name="password"
           value={formik.password}
