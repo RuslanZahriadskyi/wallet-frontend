@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
@@ -9,6 +9,12 @@ import DataPicker from '../DataPicker';
 import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  categoriesOperation,
+  categoriesSelectors,
+} from '../../../redux/category';
+import { getCategories } from '../../../redux/category/category-operations';
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
@@ -21,9 +27,12 @@ const operationSchema = Yup.object({
     then: Yup.string().required('Category is required'),
   }),
 });
-
 const FormAddTransactions = () => {
-  let checked;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoriesOperation.getCategories());
+  }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -42,8 +51,6 @@ const FormAddTransactions = () => {
     },
   });
 
-  checked = formik.values.checked;
-
   function onFormSubmit(values, resetForm) {
     let type = '';
     if (values.checked) {
@@ -53,6 +60,19 @@ const FormAddTransactions = () => {
     }
 
     if (values.category) {
+      if (values.category.includes('Add')) {
+        const newOperation = {
+          type,
+          category: values.category.slice(5, -1),
+          amount: values.amount,
+          date: Date.parse(values.date),
+          comments: values.comments,
+        };
+        console.log(newOperation);
+        resetForm();
+        return;
+      }
+
       const newOperation = {
         type,
         category: values.category,
@@ -62,6 +82,7 @@ const FormAddTransactions = () => {
       };
       console.log(newOperation);
       resetForm();
+      return;
     }
 
     const newOperation = {

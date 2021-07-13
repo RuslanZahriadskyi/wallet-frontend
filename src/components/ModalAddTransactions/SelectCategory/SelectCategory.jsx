@@ -1,13 +1,20 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { InputAdornment, TextField } from '@material-ui/core';
 import Autocomplete, {
   createFilterOptions,
 } from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../../scss/main.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  categoriesOperation,
+  categoriesSelectors,
+} from '../../../redux/category';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Fragment } from 'react';
+import { IconButton } from '@material-ui/core';
 
 const filter = createFilterOptions();
-
 const useStyles = makeStyles(theme => ({
   root: {
     fontFamily: 'Poppins',
@@ -73,6 +80,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
   },
   option: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
     '&[aria-selected="true"]': {
       color: '#24CCA7',
       backgroundColor: '#fff',
@@ -85,21 +96,27 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Category({ value, onChange, error, errorText }) {
+  const dispatch = useDispatch();
+  const categories = useSelector(categoriesSelectors.getAllUserCategory);
+
   const classes = useStyles();
   return (
     <Autocomplete
       classes={classes}
       value={value}
       onChange={(event, newValue) => {
+        if (newValue === null) {
+          return onChange('category', '');
+        }
         if (typeof newValue.value === 'string') {
-          onChange('category', newValue.value);
-        } else if (newValue.value && newValue.inputValue) {
-          // Create a new value from the user input
-          console.log(newValue.value);
-          console.log(newValue.inputValue);
+          const test = categories.some(
+            category => category.value === newValue.value,
+          );
+          if (!test) {
+            const newCategory = { category: newValue.value.slice(5, -1) };
+            dispatch(categoriesOperation.createCategory(newCategory));
+          }
 
-          onChange('category', newValue.value);
-        } else {
           onChange('category', newValue.value);
         }
       }}
@@ -116,25 +133,33 @@ export default function Category({ value, onChange, error, errorText }) {
 
         return filtered;
       }}
-      selectOnFocus
-      clearOnBlur
-      handleHomeEndKeys
       id="category"
-      options={category}
+      options={categories}
       getOptionLabel={option => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
-          return option.slice(5, -1);
+          if (option.includes('Add')) {
+            return option.slice(5, -1);
+          }
+          return option;
         }
         // Add "xxx" option created dynamically
         if (option.inputValue) {
-          console.log(option.inputValue);
           return option.inputValue;
         }
         // Regular option
         return option.value;
       }}
-      renderOption={option => option.value}
+      renderOption={option => {
+        return (
+          <div className={classes.option}>
+            {option.value}
+            <IconButton color="primary">
+              <DeleteIcon />
+            </IconButton>
+          </div>
+        );
+      }}
       //   style={{ width: '100%' }}
       freeSolo
       renderInput={params => (
@@ -149,15 +174,3 @@ export default function Category({ value, onChange, error, errorText }) {
     />
   );
 }
-
-const category = [
-  { value: 'house' },
-  { value: 'car' },
-  { value: 'kids' },
-  { value: 'sallary' },
-  { value: 'sallary' },
-  { value: 'sallary' },
-  { value: 'sallary' },
-  { value: 'sallary' },
-  { value: 'sallary' },
-];
