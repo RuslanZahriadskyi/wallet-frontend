@@ -84,14 +84,14 @@ export default function RegistrationForm() {
         </div>
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <EmailIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="E-mail"
+          placeholder="E-mail"
           type="email"
           name="email"
           value={formik.email}
@@ -101,14 +101,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <LockIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Пароль"
+          placeholder="Пароль"
           type="password"
           name="password"
           value={formik.password}
@@ -118,14 +118,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <LockIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Подтвердите пароль"
+          placeholder="Подтвердите пароль"
           type="confirmPassword"
           name="confirmPassword"
           value={formik.confirmPassword}
@@ -140,14 +140,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <AccountBoxIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Ваше имя"
+          placeholder="Ваше имя"
           type="name"
           name="name"
           value={formik.name}
