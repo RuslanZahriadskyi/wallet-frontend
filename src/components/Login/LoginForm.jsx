@@ -1,9 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import FormButtons from '../FormButtons/FormButtons';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+
+import logo from '../../images/logo.png';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import EmailIcon from '@material-ui/icons/Email';
+import LockIcon from '@material-ui/icons/Lock';
+
+import '../RegistrationForm/RegistrationForm.scss';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -23,7 +32,7 @@ export default function LoginForm() {
 
       password: yup
         .string('Пожалуйста, введите пароль')
-        .min(7, 'Пароль должен состоять не менее чем из 6 символов')
+        .min(7, 'Пароль должен состоять не менее чем из 7 символов')
         .max(26, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
     }),
@@ -32,42 +41,68 @@ export default function LoginForm() {
     //     dispatch(authOperations.register({ name, email, password }));
     //   },
     // });
+
     onSubmit: (values, { resetForm }) => {
-      const { email, password, name } = values;
-      dispatch(authOperations.register({ email, password, name }));
+      const { email, password } = values;
+      dispatch(authOperations.register({ email, password }));
       resetForm({});
     },
   });
 
   return (
-    <div>
-      {/* <Title text='Wallet' /> */}
-      <form onSubmit={formik.handleSubmit}>
-        <label>
-          <input
-            type="email"
-            name="email"
-            placeholder="E-mail"
-            value={formik.email}
-            required
-            onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            value={formik.password}
-            onChange={formik.handleChange}
-            // error={formik.touched.password && Boolean(formik.errors.password)}
-            required
-          />
-        </label>
+    <div className="container">
+      <form
+        className="form"
+        onSubmit={formik.handleSubmit}
+        noValidate
+        autoComplete="off"
+      >
+        <div className="logo">
+          <img src={logo} alt="LogoImg" className="logoImg" />
+          <h1 className="title">Wallet</h1>
+        </div>
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="E-mail"
+          type="email"
+          name="email"
+          value={formik.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment color="secondary" position="start">
+                <LockIcon />
+              </InputAdornment>
+            ),
+          }}
+          id="standard-basic"
+          label="Пароль"
+          type="password"
+          name="password"
+          value={formik.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
 
-        <button type="submit">РЕГИСТРАЦИЯ</button>
-        <NavLink to="/login">ВХОД</NavLink>
+        {/* <button type="submit">ВХОД</button>
+        <NavLink to="/register">РЕГИСТРАЦИЯ</NavLink> */}
+        <FormButtons
+          firtsButtonText="ВХОД"
+          secondLinkButton="/register"
+          secondButtonText="РЕГИСТРАЦИЯ"
+        />
       </form>
     </div>
   );

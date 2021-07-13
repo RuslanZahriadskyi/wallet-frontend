@@ -1,15 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import UserMenu from './UserMenu';
 import './Header.scss';
 import Logo from './Logo';
 import Modal from '../ModalAddTransactions/ModalAddTransactions';
 import ModalLogout from './ModalLogout';
-import { operationsSelectors } from '../../redux/operations';
+import { operationsSelectors, operationsAction } from '../../redux/operations';
 
 const Header = () => {
-  const modal = useSelector(operationsSelectors.getModalValue);
+  const dispatch = useDispatch();
+
+  const modalLogout = useSelector(state =>
+    operationsSelectors.logoutModalAction(state),
+  );
+
+  const closeModalLogout = () => dispatch(operationsAction.logoutModalAction());
 
   return (
     <header className="header">
@@ -17,8 +23,8 @@ const Header = () => {
         <Logo />
       </NavLink>
       <UserMenu />
-      {modal && (
-        <Modal modalValue={modal}>
+      {modalLogout && (
+        <Modal modalValue={modalLogout} modalAction={closeModalLogout}>
           <ModalLogout />
         </Modal>
       )}

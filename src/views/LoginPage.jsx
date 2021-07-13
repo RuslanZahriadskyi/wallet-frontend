@@ -1,10 +1,15 @@
 import React from 'react';
-import Login from '../components/Login/LoginForm';
+import LoginForm from '../components/Login/LoginForm';
+import images from '../images/login-desktop.png';
+import './LoginPage';
 
 const LoginPage = () => {
   return (
     <div>
-      <Login />
+      <div>
+        <img src={images} alt="LogPage" />
+      </div>
+      <LoginForm />
     </div>
   );
 };
