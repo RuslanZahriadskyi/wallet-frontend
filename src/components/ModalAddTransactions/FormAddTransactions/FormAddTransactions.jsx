@@ -11,6 +11,10 @@ import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
 
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { operationsAction } from '../../../redux/operations';
+
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
   comments: Yup.string('Enter your comments for operation')
@@ -77,6 +81,12 @@ const FormAddTransactions = () => {
     resetForm();
   }
 
+  const dispatch = useDispatch();
+  const closeModal = useCallback(
+    () => dispatch(operationsAction.closeModal()),
+    [dispatch],
+  );
+
   return (
     <div>
       <form className={s.form} onSubmit={formik.handleSubmit}>
@@ -130,7 +140,11 @@ const FormAddTransactions = () => {
           helperText={formik.touched.comments && formik.errors.comments}
         />
 
-        <FormButtons firtsButtonText="ДОБАВИТЬ" secondButtonText="ОТМЕНА" />
+        <FormButtons
+          firtsButtonText="ДОБАВИТЬ"
+          secondButtonText="ОТМЕНА"
+          canselAction={closeModal}
+        />
       </form>
     </div>
   );

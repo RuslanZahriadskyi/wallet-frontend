@@ -12,19 +12,27 @@ const LoginPage = lazy(() =>
   import('./views/LoginPage' /* webpackChunkName: "login-page" */),
 );
 
+const ErrorPage = lazy(() =>
+  import('./views/ErrorPage' /* webpackChunkName: "error-page" */),
+);
+
 function App() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
         {/* <Switch> */}
-        <Route>
-          <LoginPage />
-        </Route>
+        {/* <Route>
+              <LoginPage />
+            </Route> */}
         <Route path="/dashboard" exact>
           <DashboardPage />
         </Route>
         <Route>
           <RegistrationPage />
+        </Route>
+
+        <Route>
+          <ErrorPage />
         </Route>
         {/* </Switch> */}
       </Suspense>

@@ -1,9 +1,7 @@
 import { isValid } from 'date-fns';
 import React from 'react';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { operationsAction } from '../../redux/operations';
+
 import s from './FormButtons.module.scss';
 
 const FormButtons = ({
@@ -11,12 +9,8 @@ const FormButtons = ({
   secondButtonText,
   firstLinkButton,
   secondLinkButton,
+  canselAction,
 }) => {
-  const dispatch = useDispatch();
-  const closeModal = useCallback(
-    () => dispatch(operationsAction.closeModal()),
-    [dispatch],
-  );
   return (
     <>
       {!firstLinkButton && !secondLinkButton && (
@@ -30,7 +24,7 @@ const FormButtons = ({
           <button
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
-            onClick={closeModal}
+            onClick={canselAction}
             // disabled={!isValid()}
           >
             {secondButtonText}
@@ -50,7 +44,7 @@ const FormButtons = ({
           <button
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
-            onClick={closeModal}
+            onClick={canselAction}
           >
             {secondButtonText}
           </button>
