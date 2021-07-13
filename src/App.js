@@ -20,21 +20,21 @@ function App() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-        {/* <Switch> */}
-        {/* <Route>
-              <LoginPage />
-            </Route> */}
-        <Route path="/dashboard" exact>
-          <DashboardPage />
-        </Route>
-        <Route>
-          <RegistrationPage />
-        </Route>
+        <Switch>
+          <Route>
+            <LoginPage />
+          </Route>
+          <Route path="/dashboard" exact>
+            <DashboardPage />
+          </Route>
+          <Route>
+            <RegistrationPage />
+          </Route>
 
-        <Route>
-          <ErrorPage />
-        </Route>
-        {/* </Switch> */}
+          <Route>
+            <ErrorPage />
+          </Route>
+        </Switch>
       </Suspense>
     </>
   );
