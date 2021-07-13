@@ -22,7 +22,7 @@ const ModalLogout = ({ name }) => {
         type="button"
         onClick={openModal}
       >
-        <ExitToAppIcon />
+        <ExitToAppIcon className="icon_btn_logout" />
         <span className="title_exit">Выйти</span>
       </button>
     </div>
