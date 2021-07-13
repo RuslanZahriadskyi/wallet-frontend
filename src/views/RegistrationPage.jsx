@@ -6,10 +6,14 @@ import './RegistrationPage';
 const RegistrationPage = () => {
   return (
     <div className="registrationPage">
-      <div>
-        <img src={images} alt="RegPage" className="images" />
+      <div className="container">
+        <div className="blok1">
+          <img src={images} alt="RegPage" className="images" />
+        </div>
+        <div className="blok2">
+          <RegistrationForm />
+        </div>
       </div>
-      <RegistrationForm />
     </div>
   );
 };

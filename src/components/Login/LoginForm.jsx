@@ -44,7 +44,7 @@ export default function LoginForm() {
 
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-      dispatch(authOperations.register({ email, password }));
+      dispatch(authOperations.login({ email, password }));
       resetForm({});
     },
   });
