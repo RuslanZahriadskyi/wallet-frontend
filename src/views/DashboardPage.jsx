@@ -18,7 +18,7 @@ const DashboardPage = () => {
       <h1>Hello DashboardPage</h1>
       <Header />
       <Main />
-      <Statistics />
+      {/* <Statistics /> */}
       <Currency />
       <Ballance />
       <AddButton />
