@@ -46,12 +46,9 @@ function App() {
           </Route> */}
         {/* </Switch> */}
 
-          </Route>
-
-          <Route exact path="/statistics" component={Statistics} />
-          <Route exact path="/currency" component={Currency} />
-        </Switch>
-
+        <Route exact path="/statistics" component={Statistics} />
+        <Route exact path="/currency" component={Currency} />
+        {/* </Switch> */}
       </Suspense>
     </>
   );

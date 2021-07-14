@@ -12,26 +12,16 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-
-import {
-  modalReducer,
-  operationReducer,
-} from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
-
-import { statisticsReducer } from './operations/operations-reducer';
 
 import { authReducer } from './auth';
 import { operationsReducer } from './operations'; // defaults to localStorage for web
-
-
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
   },
 });
-
 
 const authPersistConfig = {
   key: 'auth',
@@ -46,7 +36,7 @@ let store = configureStore({
     auth: allOperations,
     modal: operationsReducer.modalReducer,
     logoutModalAction: operationsReducer.modalLogout,
-        operations,
+    operations: operationsReducer.operationReducer,
     categories: categoryReducer,
   },
   middleware,

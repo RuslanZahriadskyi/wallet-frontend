@@ -14,9 +14,7 @@ import { useDispatch } from 'react-redux';
 import { categoriesOperation } from '../../../redux/category';
 import { operationsOperation } from '../../../redux/operations';
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { operationsAction } from '../../../redux/operations';
-
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
@@ -101,7 +99,6 @@ const FormAddTransactions = () => {
     resetForm();
   }
 
-  const dispatch = useDispatch();
   const closeModal = useCallback(
     () => dispatch(operationsAction.closeModal()),
     [dispatch],
