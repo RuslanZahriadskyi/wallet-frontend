@@ -17,6 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { modalReducer, modalLogout } from './operations/operations-reducer'; // defaults to localStorage for web
+import { statisticsReducer } from './statistics';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -28,6 +29,7 @@ let store = configureStore({
   reducer: {
     modal: modalReducer,
     logoutModalAction: modalLogout,
+    statistics: statisticsReducer,
   },
   middleware,
 });
