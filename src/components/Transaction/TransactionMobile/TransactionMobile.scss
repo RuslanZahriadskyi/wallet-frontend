@@ -1,0 +1,17 @@
+@import '../../../scss/main.scss';
+.transaction-div {
+  margin-top: 30px;
+  padding: 16px 15px 20px;
+  // background-color: rgba($color: #e1e1e1, $alpha: 0.4);
+}
+.transaction-table {
+  width: 100%;
+  // text-align: center;
+  background-color: getColor('third-text-color');
+}
+.transaction-head {
+  background-color: getColor('third-text-color');
+}
+.transaction-data {
+  text-align: end;
+}

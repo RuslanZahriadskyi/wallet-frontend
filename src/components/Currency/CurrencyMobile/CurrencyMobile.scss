@@ -1,0 +1,24 @@
+@import '../../../scss/main.scss';
+
+.currency-div {
+  margin: 33px 20px 0;
+}
+
+.currency-table {
+  width: 100%;
+  border-radius: 30px;
+  text-align: center;
+  color: getColor('third-text-color');
+  background-color: getColor('fourth-text-color');
+}
+.currency-column {
+  padding: 10px;
+  font-size: 18px;
+}
+.currency-row {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -8.67%,
+    rgba(255, 255, 255, 0) 116.22%
+  );
+}

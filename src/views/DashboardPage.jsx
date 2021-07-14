@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import React, { Fragment, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Media from 'react-media';
 
-import { useDispatch } from 'react-redux';
+// Redux
+import { operationsAction, operationsSelectors } from '../redux/operations';
+
 import Header from '../components/Header/Header';
-import Main from '../components/MainContainer/MainContainer';
-import Statistics from '../components/Statistics';
-import Currency from '../components/Currency/Currency';
-import Ballance from '../components/Ballance/Ballance';
 import AddButton from '../components/ButtonAddTransaction';
 import FormAddTransactions from '../components/ModalAddTransactions/FormAddTransactions';
-import { operationsSelectors } from '../redux/operations';
 import Modal from '../components/ModalAddTransactions';
 
-import { operationsAction } from '../redux/operations';
+// Adaptive layout
+import MobileMainContainer from '../components/MainContainer/MobileMainContainer';
+import DesktopMainContainer from '../components/MainContainer/DesktopMainContainer';
 
 const DashboardPage = () => {
   const modal = useSelector(operationsSelectors.getModalValue);
@@ -25,10 +25,24 @@ const DashboardPage = () => {
   return (
     <div>
       <Header />
-      <Main />
-      <Statistics />
-      <Currency />
-      <Ballance />
+
+      <div>
+        <Media
+          queries={{
+            small: '(max-width: 767px)',
+            medium: '(min-width: 768px)',
+          }}
+        >
+          {matches => (
+            <Fragment>
+              {matches.small && <MobileMainContainer />}
+
+              {matches.medium && <DesktopMainContainer />}
+            </Fragment>
+          )}
+        </Media>
+      </div>
+
       <AddButton />
       {modal && (
         <Modal modalValue={modal} modalAction={() => closeModal()}>
