@@ -1,0 +1,38 @@
+@import '../../../scss/main.scss';
+
+// перезаписала из material-ui
+.MuiSvgIcon-root {
+  background-color: getColor('fourth-text-color');
+}
+.home-wrap {
+  width: calc((100% - 2 * 30px) / 2);
+
+  @media (min-width: 1280px) {
+    width: 100%;
+  }
+}
+.icons {
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+.icons-list {
+  display: flex;
+  margin-top: 13px;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.link {
+  text-decoration: none;
+}
+// .active-link {
+//   color: getColor('third-text-color');
+// }
+
+.icons-title {
+  margin-left: 20px;
+  color: getColor('main-text-color');
+}
