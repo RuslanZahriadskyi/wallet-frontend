@@ -14,7 +14,7 @@ import {
   getCurrentUserError,
 } from './auth-actions.js';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
 
 const token = {
   set(token) {
@@ -28,10 +28,7 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post('/users/signup', credentials);
-
-    console.log(response);
-
+    const response = await axios.post('/api/users/registration', credentials);
     token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
@@ -42,7 +39,7 @@ const register = credentials => async dispatch => {
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post('/users/login', credentials);
+    const response = await axios.post('/api/users/login', credentials);
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
   } catch (error) {
@@ -53,7 +50,7 @@ const login = credentials => async dispatch => {
 const logout = () => async dispatch => {
   dispatch(logoutRequest());
   try {
-    await axios.post('/users/logout');
+    await axios.post('/api/users/logout');
     // token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -73,7 +70,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get('users/current');
+    const response = await axios.get('/api/users/current');
 
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {

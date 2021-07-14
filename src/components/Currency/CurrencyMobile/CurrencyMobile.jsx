@@ -20,6 +20,7 @@ function CurrencyMobile() {
   }, []);
 
   const fetchRates = async () => {
+    //   сотояние загрузки, меняем значение
     setIsLoading(true);
 
     try {

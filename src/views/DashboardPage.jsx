@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Media from 'react-media';
-import { useSelector } from 'react-redux';
 
-// Components
+// Redux
+import { operationsAction, operationsSelectors } from '../redux/operations';
+
 import Header from '../components/Header/Header';
 import AddButton from '../components/ButtonAddTransaction';
 import FormAddTransactions from '../components/ModalAddTransactions/FormAddTransactions';
@@ -12,11 +14,13 @@ import Modal from '../components/ModalAddTransactions';
 import MobileMainContainer from '../components/MainContainer/MobileMainContainer';
 import DesktopMainContainer from '../components/MainContainer/DesktopMainContainer';
 
-// Redux
-import { operationsSelectors } from '../redux/operations';
-
 const DashboardPage = () => {
   const modal = useSelector(operationsSelectors.getModalValue);
+  const dispatch = useDispatch();
+  const closeModal = useCallback(
+    () => dispatch(operationsAction.closeModal()),
+    [dispatch],
+  );
 
   return (
     <div>
@@ -41,7 +45,7 @@ const DashboardPage = () => {
 
       <AddButton />
       {modal && (
-        <Modal modalValue={modal}>
+        <Modal modalValue={modal} modalAction={() => closeModal()}>
           <FormAddTransactions />
         </Modal>
       )}
