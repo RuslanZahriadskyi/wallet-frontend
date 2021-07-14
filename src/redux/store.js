@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  combineReducers,
-  getDefaultMiddleware,
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import {
   persistStore,
@@ -15,8 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import authReducer from './auth/auth-reducer';
-import { modalReducer, modalLogout } from './operations/operations-reducer'; // defaults to localStorage for web
+import { authReducer } from './auth';
+import { operationsReducer } from './operations'; // defaults to localStorage for web
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -35,8 +31,8 @@ const allOperations = persistReducer(authPersistConfig, authReducer);
 let store = configureStore({
   reducer: {
     auth: allOperations,
-    modal: modalReducer,
-    logoutModalAction: modalLogout,
+    modal: operationsReducer.modalReducer,
+    logoutModalAction: operationsReducer.modalLogout,
   },
   middleware,
 });

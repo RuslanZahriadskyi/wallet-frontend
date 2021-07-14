@@ -10,7 +10,6 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
 } from './auth-actions';
-import { create } from 'yup/lib/Reference';
 
 const initialUserState = { name: null, email: null };
 
