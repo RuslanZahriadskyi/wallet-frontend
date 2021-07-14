@@ -56,3 +56,4 @@ const createOperation = category => async dispatch => {
 };
 
 export { getOperations, createOperation };
+

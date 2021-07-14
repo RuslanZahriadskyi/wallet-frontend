@@ -109,6 +109,7 @@ export default function Category({ value, onChange, error, errorText }) {
           console.log(event.target);
           return;
         }
+
         if (newValue === null) {
           return onChange('category', '');
         }
@@ -163,6 +164,7 @@ export default function Category({ value, onChange, error, errorText }) {
       }}
       renderOption={option => {
         return (
+
           <>
             <div className={classes.option}>
               <p>{option.value}</p>
@@ -171,11 +173,14 @@ export default function Category({ value, onChange, error, errorText }) {
               color="primary"
               onClick={event => {
                 console.log(event.target);
+
               }}
             >
               <DeleteIcon />
             </IconButton>
+
           </>
+
         );
       }}
       //   style={{ width: '100%' }}

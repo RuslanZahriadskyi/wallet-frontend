@@ -1,9 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import FormButtons from '../FormButtons/FormButtons';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+
+import './RegistrationForm.scss';
+import logo from '../../images/logo.png';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import EmailIcon from '@material-ui/icons/Email';
+import LockIcon from '@material-ui/icons/Lock';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -29,8 +38,8 @@ export default function RegistrationForm() {
         .oneOf([yup.ref('email'), null], 'Электронные письма должны совпадать'),
       password: yup
         .string('Пожалуйста, введите пароль')
-        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
-        .max(12, 'Пароль должен содержать до 12 символов')
+        .min(7, 'Пароль должен состоять не менее чем из 7 символов')
+        .max(26, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
 
       confirmPassword: yup
@@ -45,58 +54,195 @@ export default function RegistrationForm() {
         .required('Требуется имя'),
     }),
 
-    onSubmit: ({ email, password, name }) => {
-      dispatch(authOperations.register({ name, email, password }));
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ name, email, password }));
+    //   },
+    // });
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ email, password,  name }));
+    //     formik.resetForm();
+    //   },
+    // });
+    onSubmit: (values, { resetForm }) => {
+      const { email, password, name } = values;
+      dispatch(authOperations.register({ email, password, name }));
+      resetForm({});
     },
   });
 
   return (
-    <div>
-      {/* <Title text='Wallet' /> */}
-      <form onSubmit={formik.handleSubmit}>
-        <label>
-          <input
+    <div className="containerRegisterForm">
+      <form
+        className="form"
+        onSubmit={formik.handleSubmit}
+        noValidate
+        autoComplete="off"
+      >
+        <div className="logo">
+          <img src={logo} alt="LogoImg" className="logoImg" />
+          <h1 className="title">Wallet</h1>
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <EmailIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="E-mail"
             type="email"
             name="email"
-            onChange={formik.handleChange}
             value={formik.email}
-            placeholder="E-mail"
-            required
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
-        </label>
-        <label>
-          <input
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <LockIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="Пароль"
             type="password"
             name="password"
-            onChange={formik.handleChange}
             value={formik.password}
-            placeholder="Пароль"
-            required
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="confirmPassword"
             onChange={formik.handleChange}
-            value={formik.confirmPassword}
-            placeholder="Подтвердите пароль"
-            required
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
-        </label>
-        <label>
-          <input
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <LockIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="Подтвердите пароль"
+            type="confirmPassword"
+            name="confirmPassword"
+            value={formik.confirmPassword}
+            onChange={formik.handleChange}
+            error={
+              formik.touched.confirmPassword &&
+              Boolean(formik.errors.confirmPassword)
+            }
+            helperText={
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+            }
+          />
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <AccountBoxIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            placeholder="Ваше имя"
+            className="placeholder"
             type="name"
             name="name"
-            onChange={formik.handleChange}
             value={formik.name}
-            placeholder="Ваше имя"
-            required
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
           />
-        </label>
-        <button type="submit">РЕГИСТРАЦИЯ</button>
-        <NavLink to="/login">ВХОД</NavLink>
+        </div>
+        {/* // <button type="submit">РЕГИСТРАЦИЯ</button>
+        // <NavLink to="/login">ВХОД</NavLink> */}
+        <FormButtons
+          firtsButtonText="РЕГИСТРАЦИЯ"
+          secondButtonText="ВХОД"
+          secondLinkButton="/login"
+        />
       </form>
     </div>
   );
 }
+
+//       <form className={s.form} onSubmit={formik.handleSubmit}>
+//          <div className={s.logo}>
+//          <img src={logo} alt="LogoImg" className={s.logoImg} />
+//           <h1 className={s.title}>Wallet</h1>
+//           </div>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="email"
+//             name="email"
+//             placeholder="E-mail"
+//             value={formik.email}
+//             required
+//             onChange={formik.handleChange}
+//             // error={formik.touched.email && Boolean(formik.errors.email)}
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="password"
+//             name="password"
+//             placeholder="Пароль"
+//             value={formik.password}
+//             onChange={formik.handleChange}
+//             // error={formik.touched.password && Boolean(formik.errors.password)}
+//             required
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="password"
+//             name="confirmPassword"
+//             placeholder="Подтвердите пароль"
+//             value={formik.confirmPassword}
+//             onChange={formik.handleChange}
+//             // error={
+//             //   formik.touched.confirmPassword &&
+//             //   Boolean(formik.errors.confirmPassword)
+//             // }
+//             required
+//           />
+//         </label>
+//         <label className={s.label}>
+//           <input
+//             className={s.input}
+//             type="name"
+//             name="name"
+//             placeholder="Ваше имя"
+//             value={formik.name}
+//             onChange={formik.handleChange}
+//             // error={formik.touched.name && Boolean(formik.errors.name)}
+//             required
+//           />
+//         </label>
+//         <FormButtons
+//           firtsButtonText="РЕГИСТРАЦИЯ"
+//           // firstLinkButton="/login"?????
+//           secondButtonText="ВХОД"
+//           secondLinkButton="/login"
+//        />
+
+//       </form>
+//     </div>
+//   );
+// }
