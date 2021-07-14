@@ -1,21 +1,17 @@
-// import React from 'react';
-// import { Redirect, Route } from 'react-router';
-// import { useSelector } from 'react-redux';
-// import authSelectors from '../redux/auth';
+import React from 'react';
+import { Redirect, Route } from 'react-router';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../redux/auth';
 
-// export default function PublicRouter({
-//     isAuthenticated,
-//     children,
-//     redirectTo,
-//     ...routeProps }) {
-//   const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
-// return (
-//     <Route {...routeProps}>
-//       {isLoggedIn && routeProps.restricted ? (
-//         <Redirect to={redirectTo} />
-//       ) : (
-//         children
-//       )}
-//     </Route>
-//   );
-// }
+export default function PublicRouter({ children, ...routeProps }) {
+  const isToken = useSelector(authSelectors.getToken);
+  return (
+    <Route {...routeProps}>
+      {Boolean(isToken) && routeProps.restricted ? (
+        <Redirect to="/dashboard" />
+      ) : (
+        children
+      )}
+    </Route>
+  );
+}

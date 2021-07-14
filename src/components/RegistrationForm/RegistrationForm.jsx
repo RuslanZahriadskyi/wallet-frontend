@@ -91,7 +91,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="E-mail"
             type="email"
@@ -111,7 +110,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="Пароль"
             type="password"
@@ -131,7 +129,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="Подтвердите пароль"
             type="confirmPassword"
@@ -156,7 +153,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             placeholder="Ваше имя"
             className="placeholder"
             type="name"

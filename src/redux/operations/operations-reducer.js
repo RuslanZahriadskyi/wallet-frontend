@@ -3,7 +3,6 @@ import {
   getOperationsSuccess,
   addNewOperationSuccess,
 } from './operations-action';
-import { combineReducers } from 'redux';
 import { openModal, closeModal, logoutModalAction } from './operations-action';
 
 const setTrue = () => true;
@@ -14,7 +13,7 @@ const operationReducer = createReducer([], {
   [addNewOperationSuccess]: (state, { payload }) => [...state, payload],
 });
 
-const modalReducer = createReducer(false, {
+const modalTransaction = createReducer(false, {
   [openModal]: setTrue,
   [closeModal]: setFalse,
 });
@@ -35,4 +34,4 @@ const modalLogout = createReducer(false, {
 //   []: () => false,
 // });
 
-export default combineReducers({ modalReducer, modalLogout, operationReducer });
+export { operationReducer, modalTransaction, modalLogout };
