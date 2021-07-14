@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { operationsAction } from '../../../redux/operations';
-import { authSelectors } from '../../../redux/auth';
+import { getUserName } from '../../../redux/auth/auth-selectors';
 import './UserMenu.scss';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -9,7 +9,7 @@ const ModalLogout = () => {
   const dispatch = useDispatch();
   const openModal = () => dispatch(operationsAction.logoutModalAction());
 
-  const name = useSelector(authSelectors.getUserName);
+  const name = useSelector(getUserName);
 
   return (
     <div className="header_container">
