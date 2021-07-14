@@ -1,0 +1,47 @@
+@import '../../../scss/main.scss';
+
+.user_name_text {
+  color: getColor('secondary-text-color');
+  font-size: 18px;
+
+  @media screen and (min-width: 768px) {
+    padding-right: 15px;
+  }
+}
+
+.btnLogout {
+  color: getColor('secondary-text-color');
+  border: none;
+  background-color: getColor('main-background-color');
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    border-left: 1px solid getColor('secondary-text-color');
+    padding-left: 15px;
+  }
+}
+
+.icon_btn_logout:hover,
+.icon_btn_logout:focus {
+  transform: scale(1.2);
+}
+
+.title_exit {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-left: 10px;
+    font-size: 18px;
+  }
+}
+
+.header_container {
+  display: flex;
+  align-items: center;
+}
