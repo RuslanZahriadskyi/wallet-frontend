@@ -103,7 +103,12 @@ export default function Category({ value, onChange, error, errorText }) {
     <Autocomplete
       classes={classes}
       value={value}
+      blurOnSelect="touch"
       onChange={(event, newValue) => {
+        if (event.currentTarget !== event.target) {
+          console.log(event.target);
+          return;
+        }
         if (newValue === null) {
           return onChange('category', '');
         }
@@ -129,7 +134,7 @@ export default function Category({ value, onChange, error, errorText }) {
             value: `Add "${params.inputValue}"`,
           });
         }
-
+        console.log(2);
         return filtered;
       }}
       id="category"
@@ -158,17 +163,19 @@ export default function Category({ value, onChange, error, errorText }) {
       }}
       renderOption={option => {
         return (
-          <div className={classes.option}>
-            {option.value}
+          <>
+            <div className={classes.option}>
+              <p>{option.value}</p>
+            </div>
             <IconButton
               color="primary"
-              onClick={() => {
-                console.log('click');
+              onClick={event => {
+                console.log(event.target);
               }}
             >
               <DeleteIcon />
             </IconButton>
-          </div>
+          </>
         );
       }}
       //   style={{ width: '100%' }}

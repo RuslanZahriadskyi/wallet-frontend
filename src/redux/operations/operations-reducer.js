@@ -3,7 +3,6 @@ import { openModal, closeModal } from './operations-action';
 import {
   getOperationsSuccess,
   addNewOperationSuccess,
-  getSatatisticsPerMonthRequest,
 } from './operations-action';
 
 const setTrue = () => true;
@@ -14,13 +13,9 @@ const operationReducer = createReducer([], {
   [addNewOperationSuccess]: (state, { payload }) => [...state, payload],
 });
 
-const statisticsReducer = createReducer([], {
-  [getSatatisticsPerMonthRequest]: (_, { payload }) => payload,
-});
-
 const modalReducer = createReducer(false, {
   [openModal]: setTrue,
   [closeModal]: setFalse,
 });
 
-export { modalReducer, operationReducer, statisticsReducer };
+export { modalReducer, operationReducer };
