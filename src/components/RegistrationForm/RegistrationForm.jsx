@@ -91,7 +91,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="E-mail"
             type="email"
@@ -111,7 +110,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="Пароль"
             type="password"
@@ -131,7 +129,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             className="placeholder"
             placeholder="Подтвердите пароль"
             type="confirmPassword"
@@ -156,7 +153,6 @@ export default function RegistrationForm() {
                 </InputAdornment>
               ),
             }}
-            id="standard-basic"
             placeholder="Ваше имя"
             className="placeholder"
             type="name"
@@ -167,8 +163,7 @@ export default function RegistrationForm() {
             helperText={formik.touched.name && formik.errors.name}
           />
         </div>
-        {/* // <button type="submit">РЕГИСТРАЦИЯ</button>
-        // <NavLink to="/login">ВХОД</NavLink> */}
+
         <FormButtons
           firtsButtonText="РЕГИСТРАЦИЯ"
           secondButtonText="ВХОД"
@@ -178,71 +173,3 @@ export default function RegistrationForm() {
     </div>
   );
 }
-
-//       <form className={s.form} onSubmit={formik.handleSubmit}>
-//          <div className={s.logo}>
-//          <img src={logo} alt="LogoImg" className={s.logoImg} />
-//           <h1 className={s.title}>Wallet</h1>
-//           </div>
-//         <label className={s.label}>
-//           <input
-//             className={s.input}
-//             type="email"
-//             name="email"
-//             placeholder="E-mail"
-//             value={formik.email}
-//             required
-//             onChange={formik.handleChange}
-//             // error={formik.touched.email && Boolean(formik.errors.email)}
-//           />
-//         </label>
-//         <label className={s.label}>
-//           <input
-//             className={s.input}
-//             type="password"
-//             name="password"
-//             placeholder="Пароль"
-//             value={formik.password}
-//             onChange={formik.handleChange}
-//             // error={formik.touched.password && Boolean(formik.errors.password)}
-//             required
-//           />
-//         </label>
-//         <label className={s.label}>
-//           <input
-//             className={s.input}
-//             type="password"
-//             name="confirmPassword"
-//             placeholder="Подтвердите пароль"
-//             value={formik.confirmPassword}
-//             onChange={formik.handleChange}
-//             // error={
-//             //   formik.touched.confirmPassword &&
-//             //   Boolean(formik.errors.confirmPassword)
-//             // }
-//             required
-//           />
-//         </label>
-//         <label className={s.label}>
-//           <input
-//             className={s.input}
-//             type="name"
-//             name="name"
-//             placeholder="Ваше имя"
-//             value={formik.name}
-//             onChange={formik.handleChange}
-//             // error={formik.touched.name && Boolean(formik.errors.name)}
-//             required
-//           />
-//         </label>
-//         <FormButtons
-//           firtsButtonText="РЕГИСТРАЦИЯ"
-//           // firstLinkButton="/login"?????
-//           secondButtonText="ВХОД"
-//           secondLinkButton="/login"
-//        />
-
-//       </form>
-//     </div>
-//   );
-// }

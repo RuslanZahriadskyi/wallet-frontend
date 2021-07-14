@@ -1,0 +1,97 @@
+@import '../../scss/main.scss';
+
+// .container {
+//   display: flex;
+// //   height: 100vh;
+// // }
+.registrationPage {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    background: rgba(231, 234, 242, 1);
+
+    //     .elips1 {
+    //   position: absolute;
+    //   background-image: url(../images/Ellipse1.png);
+    //   background-repeat: no-repeat;
+    //   z-index: -1;
+    // }
+  }
+
+  @media screen and (min-width: 1280px) {
+    justify-content: space-between;
+    background: rgba(231, 234, 242, 1);
+
+    display: flex;
+  }
+}
+
+.blok2 {
+  // padding-top: 136px;
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background: rgba(255, 255, 255, 0.4);
+
+    display: flex;
+    align-items: center;
+    padding: 52px 85px 52px 95px;
+  }
+}
+
+.blok1 {
+  // width: 560px;
+  justify-content: center;
+
+  // padding-right: 50px;
+
+  // background: rgba(255, 255, 255, 0.4);
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+    // padding-top: 153px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .images {
+    @media screen and (min-width: 768px) {
+      width: 274px;
+      height: 250px;
+      // padding-top: 60px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: 452px;
+      height: 412px;
+      // padding-: 60px;
+    }
+  }
+
+  .titleFin {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+  }
+}
