@@ -21,6 +21,7 @@ import {
   operationReducer,
 } from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
+import { statisticsReducer } from './operations/operations-reducer';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -28,9 +29,14 @@ const middleware = getDefaultMiddleware({
   },
 });
 
+const operations = combineReducers({
+  userOperations: operationReducer,
+  statistics: statisticsReducer,
+});
+
 let store = configureStore({
   reducer: {
-    operations: operationReducer,
+    operations,
     categories: categoryReducer,
     modal: modalReducer,
   },

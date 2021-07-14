@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputAdornment, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Autocomplete, {
   createFilterOptions,
 } from '@material-ui/lab/Autocomplete';
@@ -11,7 +11,6 @@ import {
   categoriesSelectors,
 } from '../../../redux/category';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Fragment } from 'react';
 import { IconButton } from '@material-ui/core';
 
 const filter = createFilterOptions();
@@ -84,10 +83,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    '&[aria-selected="true"]': {
-      color: '#24CCA7',
-      backgroundColor: '#fff',
-    },
+    // '&[aria-selected="true"]': {
+    //   color: '#24CCA7',
+    //   backgroundColor: '#fff',
+    // },
     '&[data-focus="true"]': {
       color: '#FF6596',
       backgroundColor: '#fff',
@@ -135,6 +134,13 @@ export default function Category({ value, onChange, error, errorText }) {
       }}
       id="category"
       options={categories}
+      getOptionSelected={(option, { multiple, value }) => {
+        if (!multiple) {
+          return option.value;
+        }
+
+        return false;
+      }}
       getOptionLabel={option => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
@@ -154,14 +160,18 @@ export default function Category({ value, onChange, error, errorText }) {
         return (
           <div className={classes.option}>
             {option.value}
-            <IconButton color="primary">
+            <IconButton
+              color="primary"
+              onClick={() => {
+                console.log('click');
+              }}
+            >
               <DeleteIcon />
             </IconButton>
           </div>
         );
       }}
       //   style={{ width: '100%' }}
-      freeSolo
       renderInput={params => (
         <TextField
           {...params}

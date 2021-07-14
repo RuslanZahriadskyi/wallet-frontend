@@ -9,12 +9,9 @@ import DataPicker from '../DataPicker';
 import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  categoriesOperation,
-  categoriesSelectors,
-} from '../../../redux/category';
-import { getCategories } from '../../../redux/category/category-operations';
+import { useDispatch } from 'react-redux';
+import { categoriesOperation } from '../../../redux/category';
+import { operationsOperation } from '../../../redux/operations';
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
@@ -32,6 +29,7 @@ const FormAddTransactions = () => {
 
   useEffect(() => {
     dispatch(categoriesOperation.getCategories());
+    dispatch(operationsOperation.getOperations());
   }, [dispatch]);
 
   const formik = useFormik({
@@ -68,7 +66,7 @@ const FormAddTransactions = () => {
           date: Date.parse(values.date),
           comments: values.comments,
         };
-        console.log(newOperation);
+        dispatch(operationsOperation.createOperation(newOperation));
         resetForm();
         return;
       }
@@ -80,7 +78,8 @@ const FormAddTransactions = () => {
         date: Date.parse(values.date),
         comments: values.comments,
       };
-      console.log(newOperation);
+      dispatch(operationsOperation.createOperation(newOperation));
+
       resetForm();
       return;
     }
@@ -92,8 +91,8 @@ const FormAddTransactions = () => {
       comments: values.comments,
     };
 
-    console.log(newOperation);
-    //  dispatch(newOperation.addOperation(newOperation));
+    dispatch(operationsOperation.createOperation(newOperation));
+
     resetForm();
   }
 

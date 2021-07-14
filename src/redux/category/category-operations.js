@@ -12,7 +12,7 @@ import {
 } from './category-action';
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZWNjMTQ5ODQ4OGRkNjgyYzAwNGJkZCIsImlhdCI6MTYyNjIxMzA1MiwiZXhwIjoxNjI2MjQ5MDUyfQ.RQjQo_t_T057MV13Na1uDPm2nrGp3t7VfxwEszeH9-k';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZWNjMTQ5ODQ4OGRkNjgyYzAwNGJkZCIsImlhdCI6MTYyNjI3NzY4NiwiZXhwIjoxNjI2MzEzNjg2fQ.Zd4pSUyjV8zxgkDnxlZ0ponMV2_cbzsNyDFDyyQ1O6M';
 
 axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
 

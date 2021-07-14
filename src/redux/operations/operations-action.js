@@ -11,6 +11,16 @@ const getOperationsRequest = createAction('operation/getOperationsRequest');
 const getOperationsSuccess = createAction('operation/getOperationsSuccess');
 const getOperationsError = createAction('operation/getOperationsError');
 
+const getSatatisticsPerMonthRequest = createAction(
+  'operation/getSatatisticsPerMonthRequest',
+);
+const getSatatisticsPerMonthSuccess = createAction(
+  'operation/getSatatisticsPerMonthSuccess',
+);
+const getSatatisticsPerMonthError = createAction(
+  'operation/getSatatisticsPerMonthError',
+);
+
 export {
   openModal,
   closeModal,
@@ -20,4 +30,7 @@ export {
   getOperationsRequest,
   getOperationsSuccess,
   getOperationsError,
+  getSatatisticsPerMonthRequest,
+  getSatatisticsPerMonthSuccess,
+  getSatatisticsPerMonthError,
 };
