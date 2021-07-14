@@ -6,7 +6,7 @@ import FormButtons from '../FormButtons/FormButtons';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
-import s from './RegistrationForm.module.scss';
+import './RegistrationForm.scss';
 import logo from '../../images/logo.png';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -58,7 +58,11 @@ export default function RegistrationForm() {
     //     dispatch(authOperations.register({ name, email, password }));
     //   },
     // });
-
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ email, password,  name }));
+    //     formik.resetForm();
+    //   },
+    // });
     onSubmit: (values, { resetForm }) => {
       const { email, password, name } = values;
       dispatch(authOperations.register({ email, password, name }));
@@ -67,27 +71,27 @@ export default function RegistrationForm() {
   });
 
   return (
-    <div className={s.container}>
+    <div className="container">
       <form
-        className={s.form}
+        className="form"
         onSubmit={formik.handleSubmit}
         noValidate
         autoComplete="off"
       >
-        <div className={s.logo}>
-          <img src={logo} alt="LogoImg" className={s.logoImg} />
-          <h1 className={s.title}>Wallet</h1>
+        <div className="logo">
+          <img src={logo} alt="LogoImg" className="logoImg" />
+          <h1 className="title">Wallet</h1>
         </div>
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <EmailIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="E-mail"
+          placeholder="E-mail"
           type="email"
           name="email"
           value={formik.email}
@@ -97,14 +101,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <LockIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Пароль"
+          placeholder="Пароль"
           type="password"
           name="password"
           value={formik.password}
@@ -114,14 +118,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <LockIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Подтвердите пароль"
+          placeholder="Подтвердите пароль"
           type="confirmPassword"
           name="confirmPassword"
           value={formik.confirmPassword}
@@ -136,14 +140,14 @@ export default function RegistrationForm() {
         />
         <TextField
           InputProps={{
-            endAdornment: (
+            startAdornment: (
               <InputAdornment color="secondary" position="start">
                 <AccountBoxIcon />
               </InputAdornment>
             ),
           }}
           id="standard-basic"
-          label="Ваше имя"
+          placeholder="Ваше имя"
           type="name"
           name="name"
           value={formik.name}
@@ -151,12 +155,10 @@ export default function RegistrationForm() {
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
         />
-        {/* <button type="submit">РЕГИСТРАЦИЯ</button>
-        <NavLink to="/login">ВХОД</NavLink> */}
+        {/* // <button type="submit">РЕГИСТРАЦИЯ</button>
+        // <NavLink to="/login">ВХОД</NavLink> */}
         <FormButtons
           firtsButtonText="РЕГИСТРАЦИЯ"
-          type="submit"
-          // firstLinkButton="/login"?????
           secondButtonText="ВХОД"
           secondLinkButton="/login"
         />
