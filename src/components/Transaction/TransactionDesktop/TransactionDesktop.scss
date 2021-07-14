@@ -1,0 +1,11 @@
+.transaction-div {
+  @media (min-width: 1280px) {
+    width: 100%;
+  }
+}
+.transaction-table {
+  @media (min-width: 768px) {
+    text-align: center;
+    background-color: rgba($color: #e1e1e1, $alpha: 0.4);
+  }
+}
