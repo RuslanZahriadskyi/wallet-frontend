@@ -16,6 +16,17 @@ const ErrorPage = lazy(() =>
   import('./views/ErrorPage' /* webpackChunkName: "error-page" */),
 );
 
+const Statistics = lazy(() =>
+  import(
+    './components/Statisctics/Statistics' /* webpackChunkName: "statistics-page" */
+  ),
+);
+
+const Currency = lazy(() =>
+  import(
+    './components/Currency/CurrencyMobile' /* webpackChunkName: "currency-page" */
+  ),
+);
 function App() {
   return (
     <>
@@ -31,8 +42,16 @@ function App() {
         {/* 
           <Route>
             <ErrorPage />
+
           </Route> */}
         {/* </Switch> */}
+
+          </Route>
+
+          <Route exact path="/statistics" component={Statistics} />
+          <Route exact path="/currency" component={Currency} />
+        </Switch>
+
       </Suspense>
     </>
   );
