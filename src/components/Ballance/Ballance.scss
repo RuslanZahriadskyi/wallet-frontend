@@ -1,11 +1,7 @@
 @import '../../scss/main.scss';
-.dashboard-container {
-  margin-right: auto;
-  margin-left: auto;
-  background-color: rgba($color: #e1e1e1, $alpha: 0.4);
-}
 
 .ballance-div {
+  margin-bottom: 30px;
   padding: 10px;
   border-radius: 30px;
   background-color: getColor('third-text-color');
@@ -26,13 +22,4 @@
 .hryvnia-sign {
   margin-right: 5px;
   font-weight: 400;
-}
-
-.transaction-div {
-  background-color: getColor('third-text-color');
-}
-.transaction-category {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }

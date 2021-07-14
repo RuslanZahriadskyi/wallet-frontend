@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
@@ -10,9 +10,10 @@ import DataPicker from '../DataPicker';
 import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
-
-import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { categoriesOperation } from '../../../redux/category';
+import { operationsOperation } from '../../../redux/operations';
+import { useCallback } from 'react';
 import { operationsAction } from '../../../redux/operations';
 
 const operationSchema = Yup.object({
@@ -26,9 +27,13 @@ const operationSchema = Yup.object({
     then: Yup.string().required('Category is required'),
   }),
 });
-
 const FormAddTransactions = () => {
-  let checked;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoriesOperation.getCategories());
+    dispatch(operationsOperation.getOperations());
+  }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -47,8 +52,6 @@ const FormAddTransactions = () => {
     },
   });
 
-  checked = formik.values.checked;
-
   function onFormSubmit(values, resetForm) {
     let type = '';
     if (values.checked) {
@@ -58,6 +61,19 @@ const FormAddTransactions = () => {
     }
 
     if (values.category) {
+      if (values.category.includes('Add')) {
+        const newOperation = {
+          type,
+          category: values.category.slice(5, -1),
+          amount: values.amount,
+          date: Date.parse(values.date),
+          comments: values.comments,
+        };
+        dispatch(operationsOperation.createOperation(newOperation));
+        resetForm();
+        return;
+      }
+
       const newOperation = {
         type,
         category: values.category,
@@ -65,8 +81,10 @@ const FormAddTransactions = () => {
         date: Date.parse(values.date),
         comments: values.comments,
       };
-      console.log(newOperation);
+      dispatch(operationsOperation.createOperation(newOperation));
+
       resetForm();
+      return;
     }
 
     const newOperation = {
@@ -76,12 +94,11 @@ const FormAddTransactions = () => {
       comments: values.comments,
     };
 
-    console.log(newOperation);
-    //  dispatch(newOperation.addOperation(newOperation));
+    dispatch(operationsOperation.createOperation(newOperation));
+
     resetForm();
   }
 
-  const dispatch = useDispatch();
   const closeModal = useCallback(
     () => dispatch(operationsAction.closeModal()),
     [dispatch],
