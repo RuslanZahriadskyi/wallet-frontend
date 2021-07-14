@@ -69,7 +69,6 @@ export default function LoginForm() {
               </InputAdornment>
             ),
           }}
-          id="standard-basic"
           placeholder="E-mail"
           type="email"
           name="email"
@@ -86,7 +85,6 @@ export default function LoginForm() {
               </InputAdornment>
             ),
           }}
-          id="standard-basic"
           placeholder="Пароль"
           type="password"
           name="password"
