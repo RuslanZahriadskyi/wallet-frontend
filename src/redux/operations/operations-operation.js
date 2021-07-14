@@ -55,21 +55,5 @@ const createOperation = category => async dispatch => {
   }
 };
 
-const getStatisticsPerMonth =
-  ({ month, year }) =>
-  async dispatch => {
-    dispatch(addNewOperationRequest());
-    try {
-      const {
-        data: {
-          response: { newCategory },
-        },
-      } = await axios.get(`/api/operations/statistics/${month}/${year}`);
+export { getOperations, createOperation };
 
-      dispatch(addNewOperationSuccess(newCategory));
-    } catch (error) {
-      dispatch(addNewOperationError(error.message));
-    }
-  };
-
-export { getOperations, createOperation, getStatisticsPerMonth };
