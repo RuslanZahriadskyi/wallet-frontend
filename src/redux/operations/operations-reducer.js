@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit';
-
 import {
   getOperationsSuccess,
   addNewOperationSuccess,
@@ -7,7 +6,6 @@ import {
 } from './operations-action';
 import { combineReducers } from 'redux';
 import { openModal, closeModal, logoutModalAction } from './operations-action';
-
 
 const setTrue = () => true;
 const setFalse = () => false;
@@ -17,14 +15,12 @@ const operationReducer = createReducer([], {
   [addNewOperationSuccess]: (state, { payload }) => [...state, payload],
 });
 
-const statisticsReducer = createReducer([], {
-  [getSatatisticsPerMonthRequest]: (_, { payload }) => payload,
-});
 
 const modalReducer = createReducer(false, {
   [openModal]: setTrue,
   [closeModal]: setFalse,
 });
+
 
 
 const modalLogout = createReducer(false, {

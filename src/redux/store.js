@@ -18,10 +18,12 @@ import {
   operationReducer,
 } from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
+
 import { statisticsReducer } from './operations/operations-reducer';
 
 import { authReducer } from './auth';
 import { operationsReducer } from './operations'; // defaults to localStorage for web
+
 
 
 const middleware = getDefaultMiddleware({
@@ -46,7 +48,6 @@ let store = configureStore({
     logoutModalAction: operationsReducer.modalLogout,
         operations,
     categories: categoryReducer,
-
   },
   middleware,
 });

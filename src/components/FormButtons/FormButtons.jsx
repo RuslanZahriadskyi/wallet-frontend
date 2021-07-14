@@ -24,6 +24,7 @@ const FormButtons = ({
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
             onClick={canselAction}
+
             // disabled={!isValid()}
           >
             {secondButtonText}
