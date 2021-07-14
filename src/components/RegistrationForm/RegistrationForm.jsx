@@ -71,7 +71,7 @@ export default function RegistrationForm() {
   });
 
   return (
-    <div className="container">
+    <div className="containerRegisterForm">
       <form
         className="form"
         onSubmit={formik.handleSubmit}
@@ -82,79 +82,91 @@ export default function RegistrationForm() {
           <img src={logo} alt="LogoImg" className="logoImg" />
           <h1 className="title">Wallet</h1>
         </div>
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <EmailIcon />
-              </InputAdornment>
-            ),
-          }}
-          id="standard-basic"
-          placeholder="E-mail"
-          type="email"
-          name="email"
-          value={formik.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-          }}
-          id="standard-basic"
-          placeholder="Пароль"
-          type="password"
-          name="password"
-          value={formik.password}
-          onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-          }}
-          id="standard-basic"
-          placeholder="Подтвердите пароль"
-          type="confirmPassword"
-          name="confirmPassword"
-          value={formik.confirmPassword}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.confirmPassword &&
-            Boolean(formik.errors.confirmPassword)
-          }
-          helperText={
-            formik.touched.confirmPassword && formik.errors.confirmPassword
-          }
-        />
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <AccountBoxIcon />
-              </InputAdornment>
-            ),
-          }}
-          id="standard-basic"
-          placeholder="Ваше имя"
-          type="name"
-          name="name"
-          value={formik.name}
-          onChange={formik.handleChange}
-          error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
-        />
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <EmailIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="E-mail"
+            type="email"
+            name="email"
+            value={formik.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <LockIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="Пароль"
+            type="password"
+            name="password"
+            value={formik.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <LockIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            className="placeholder"
+            placeholder="Подтвердите пароль"
+            type="confirmPassword"
+            name="confirmPassword"
+            value={formik.confirmPassword}
+            onChange={formik.handleChange}
+            error={
+              formik.touched.confirmPassword &&
+              Boolean(formik.errors.confirmPassword)
+            }
+            helperText={
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+            }
+          />
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <AccountBoxIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            id="standard-basic"
+            placeholder="Ваше имя"
+            className="placeholder"
+            type="name"
+            name="name"
+            value={formik.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          />
+        </div>
         {/* // <button type="submit">РЕГИСТРАЦИЯ</button>
         // <NavLink to="/login">ВХОД</NavLink> */}
         <FormButtons
