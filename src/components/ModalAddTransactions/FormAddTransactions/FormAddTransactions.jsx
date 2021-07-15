@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
@@ -12,9 +12,10 @@ import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { categoriesOperation } from '../../../redux/category';
-import { operationsOperation } from '../../../redux/operations';
-import { useCallback } from 'react';
-import { operationsAction } from '../../../redux/operations';
+import {
+  operationsOperation,
+  operationsAction,
+} from '../../../redux/operations';
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),

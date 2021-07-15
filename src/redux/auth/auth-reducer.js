@@ -24,7 +24,15 @@ const user = createReducer(initialUserState, {
     avatarId,
   }),
   [logoutSuccess]: () => initialUserState,
-  [getCurrentUserSuccess]: (_, { payload }) => payload,
+  [getCurrentUserSuccess]: (
+    _,
+    { payload: { name, email, avatar, avatarId } },
+  ) => ({
+    name,
+    email,
+    avatar,
+    avatarId,
+  }),
 });
 
 const token = createReducer(null, {

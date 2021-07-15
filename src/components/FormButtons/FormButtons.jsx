@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { authOperations } from '../../redux/auth';
+import { operationsAction } from '../../redux/operations';
 
 import s from './FormButtons.module.scss';
 
@@ -10,6 +13,12 @@ const FormButtons = ({
   secondLinkButton,
   canselAction,
 }) => {
+  const dispatch = useDispatch();
+
+  function closeModal() {
+    dispatch(operationsAction.logoutModalAction());
+  }
+
   return (
     <>
       {!firstLinkButton && !secondLinkButton && (
@@ -37,6 +46,10 @@ const FormButtons = ({
             <button
               type="button"
               className={[s.buttons, s.buttonAddTransaction].join(' ')}
+              onClick={() => {
+                dispatch(authOperations.logout());
+                closeModal();
+              }}
             >
               {firtsButtonText}
             </button>
