@@ -103,10 +103,10 @@ export default function Category({ value, onChange, error, errorText }) {
     <Autocomplete
       classes={classes}
       value={value}
-      blurOnSelect="touch"
       onChange={(event, newValue) => {
         if (event.currentTarget !== event.target) {
-          console.log(event.target);
+          console.log(value);
+          // onChange('category', '');
           return;
         }
 
@@ -142,11 +142,13 @@ export default function Category({ value, onChange, error, errorText }) {
       options={categories}
       getOptionSelected={(option, { multiple, value }) => {
         if (!multiple) {
+          console.log(multiple);
           return option.value;
         }
 
         return false;
       }}
+      disableCloseOnSelect={() => {}}
       getOptionLabel={option => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
@@ -164,26 +166,20 @@ export default function Category({ value, onChange, error, errorText }) {
       }}
       renderOption={option => {
         return (
-
           <>
-            <div className={classes.option}>
-              <p>{option.value}</p>
-            </div>
+            {option.value}
+
             <IconButton
               color="primary"
-              onClick={event => {
-                console.log(event.target);
-
+              onClick={() => {
+                console.log('click');
               }}
             >
               <DeleteIcon />
             </IconButton>
-
           </>
-
         );
       }}
-      //   style={{ width: '100%' }}
       renderInput={params => (
         <TextField
           {...params}
