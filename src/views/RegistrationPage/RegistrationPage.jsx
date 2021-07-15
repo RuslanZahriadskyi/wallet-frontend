@@ -1,9 +1,9 @@
 import React from 'react';
-import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
-import images from '../images/register-desktop.png';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import images from '../../images/register-desktop.png';
 // import elips1 from '../images/Ellipse1.svg';
 // import elips2 from '../images/Ellipse2.svg';
-import './RegistrationPage.scss';
+import '../RegistrationPage/RegistrationPage.scss';
 
 const RegistrationPage = () => {
   return (

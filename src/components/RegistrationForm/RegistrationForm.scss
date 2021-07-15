@@ -1,40 +1,4 @@
 @import '../../scss/main.scss';
-// @import '../../../scss/index.scss';
-
-// .container {
-//   max-width: 320px;
-//   height: 600px;
-//   margin: 0 auto;
-//   padding: 40px 10px;
-//   border-radius: 20px;
-//   background-color: white;
-//   // border-bottom: 1px solid #e0e0e0;
-//   justify-content: center;
-// }
-// .containerRegisterForm {
-//   position: relative;
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding-left: 20px;
-//   padding-right: 20px;
-//   width: 100%;
-//   border-radius: 20px;
-// }
-// @media screen and (min-width: 768px){
-
-//     padding-left: 40px;
-//     padding-right: 40px;
-
-//   }
-
-// @media screen and (min-width: 1280px)
-
-//  {
-//     padding-left: 85px;
-//     padding-right: 85px;
-
-//   }
-// }
 
 .title {
   font-family: Poppins;
@@ -71,7 +35,6 @@
     height: 616px;
     background-color: white;
     border-radius: 20px;
-    margin-top: 50px;
     margin-left: 114px;
     margin-right: 114px;
   }
@@ -79,6 +42,7 @@
 .logo {
   align-items: center;
   display: flex;
+  padding-bottom: 50px;
 }
 
 .logoImg {
@@ -94,7 +58,6 @@
   margin-bottom: 40px;
   height: 35px;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
   text-align: left;
   cursor: pointer;
   transition: 1s;
