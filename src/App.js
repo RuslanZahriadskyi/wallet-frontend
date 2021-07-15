@@ -37,7 +37,6 @@ function App() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-
         <Switch>
           <PublicRouter path="/login" restricted exact>
             <LoginPage />
@@ -45,7 +44,7 @@ function App() {
           <PrivateRouter path="/dashboard" exact>
             <DashboardPage />
           </PrivateRouter>
-          <PublicRouter path="/login" restricted exact>
+          <PublicRouter path="/register" restricted exact>
             <RegistrationPage />
           </PublicRouter>
           <PrivateRouter path="/statistics" exact>
@@ -54,7 +53,6 @@ function App() {
           <PrivateRouter path="/currency" exact>
             <Currency />
           </PrivateRouter>
-
 
           {/* <ErrorPage /> */}
         </Switch>
