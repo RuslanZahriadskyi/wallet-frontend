@@ -52,7 +52,7 @@ const logout = () => async dispatch => {
   dispatch(logoutRequest());
   try {
     await axios.post('/api/users/logout');
-    // token.unset();
+    token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
