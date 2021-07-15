@@ -1,9 +1,5 @@
 @import '../../scss/main.scss';
 
-// .container {
-//   display: flex;
-// //   height: 100vh;
-// // }
 .loginPage {
   margin-left: auto;
   margin-right: auto;
@@ -30,26 +26,29 @@
   }
 }
 
-.blok2 {
+.blokLog2 {
   // padding-top: 136px;
 
   @media screen and (min-width: 768px) {
     align-items: center;
     display: flex;
-    // padding-top: 50px;
+    padding-top: 50px;
     justify-content: center;
   }
 
   @media screen and (min-width: 1280px) {
     background: rgba(255, 255, 255, 0.4);
-
+    //  padding: 136px 85px 116px 95px;
+    // max-width: 720px;
+    // background-image: url(../../images/Ellipse2.png);
+    // background-repeat: no-repeat;
     display: flex;
     align-items: center;
     padding: 52px 85px 52px 95px;
   }
 }
 
-.blok1 {
+.blokLog1 {
   // width: 560px;
   justify-content: center;
 
@@ -73,7 +72,7 @@
     flex-direction: column;
     justify-content: center;
   }
-  .images {
+  .imagLog {
     @media screen and (min-width: 768px) {
       width: 274px;
       height: 250px;
@@ -87,11 +86,12 @@
     }
   }
 
-  .titleFin {
+  .titleFinLog {
     font-family: Poppins;
     font-weight: 400;
     font-size: 30px;
     line-height: 45px;
     text-align: center;
+    padding-left: 40px;
   }
 }

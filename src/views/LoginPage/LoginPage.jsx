@@ -6,11 +6,11 @@ import '../LoginPage/LoginPage.scss';
 const LoginPage = () => {
   return (
     <div className="loginPage">
-      <div className="blok1">
+      <div className="blokLog1">
         <img src={images} alt="LogPage" className="imagLog" />
-        <h1 className="titleFin">Finance App</h1>
+        <h1 className="titleFinLog">Finance App</h1>
       </div>
-      <div className="blok2">
+      <div className="blokLog2">
         <LoginForm />
       </div>
     </div>
