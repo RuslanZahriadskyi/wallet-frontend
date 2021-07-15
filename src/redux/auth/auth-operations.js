@@ -29,7 +29,9 @@ const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
     const response = await axios.post('/api/users/registration', credentials);
+
     token.set(response.data.token);
+
     dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
@@ -49,9 +51,10 @@ const login = credentials => async dispatch => {
 
 const logout = () => async dispatch => {
   dispatch(logoutRequest());
+
   try {
     await axios.post('/api/users/logout');
-    // token.unset();
+    token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));

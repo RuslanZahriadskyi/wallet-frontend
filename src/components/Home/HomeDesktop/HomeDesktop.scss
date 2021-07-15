@@ -1,9 +1,7 @@
 @import '../../../scss/main.scss';
 
 // перезаписала из material-ui
-.MuiSvgIcon-root {
-  background-color: getColor('fourth-text-color');
-}
+
 .home-wrap {
   width: calc((100% - 2 * 30px) / 2);
 
