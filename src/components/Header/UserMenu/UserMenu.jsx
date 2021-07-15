@@ -30,6 +30,11 @@ const ModalLogout = () => {
   return (
     <div className="header_container">
       <div className="img_container">
+        <Avatar
+          alt="Remy Sharp"
+          src={defaultAvatar}
+          className={classes.small}
+        />
         <input
           accept="image/*"
           className={classes.input}
@@ -45,11 +50,6 @@ const ModalLogout = () => {
           type="file"
         />
         <label htmlFor="icon-button-file">
-          <Avatar
-            alt="Remy Sharp"
-            src={defaultAvatar}
-            className={classes.small}
-          />
           <AddCircleOutlineIcon className="addCircle_icon" />
         </label>
       </div>

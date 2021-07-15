@@ -12,6 +12,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  getCurrentUserAvatarRequest,
+  getCurrentUserAvatarSuccess,
+  getCurrentAvatarUserError,
 } from './auth-actions.js';
 
 axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
@@ -42,6 +45,7 @@ const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
     const response = await axios.post('/api/users/login', credentials);
+
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
   } catch (error) {
@@ -81,10 +85,23 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
+const getCurrenAvatartUser = () => async dispatch => {
+  dispatch(getCurrentUserAvatarRequest());
+
+  try {
+    const response = await axios.post('/api/users/avatars');
+    console.log(response);
+    dispatch(getCurrentUserAvatarSuccess());
+  } catch (error) {
+    dispatch(getCurrentAvatarUserError(error.message));
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   register,
   login,
   logout,
   getCurrentUser,
+  getCurrenAvatartUser,
 };
