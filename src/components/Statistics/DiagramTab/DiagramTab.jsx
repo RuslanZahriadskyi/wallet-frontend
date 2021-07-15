@@ -1,105 +1,135 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { v4 as id } from 'uuid';
 
 import Chart from '../Chart';
 import Table from '../Table';
 import s from './DiagramTab.module.scss';
+import Spinner from '../../Spinner';
 
-const data = {
-  chart: {
+import date from './monthAndYear';
+import {
+  statisticsOperations,
+  statisticsSelectors,
+} from '../../../redux/statistics';
+
+const data = ['15000', '2000', '3000', '4500', '10000', '2000', '3000', '4000'];
+
+function DiagramTab() {
+  const [month, setMonth] = useState(date.currentMonth);
+
+  const handleChangeMonth = ({ target: { value } }) => {
+    setMonth(value);
+  };
+
+  const [year, setYear] = useState(date.currentYear);
+
+  const handleChangeYear = ({ target: { value } }) => {
+    setYear(value);
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(statisticsOperations.fetchBalance());
+    dispatch(statisticsOperations.fetchCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(month, year);
+    dispatch(statisticsOperations.fetchStatistics(month, year));
+  }, [dispatch, month, year]);
+
+  const statisticsData = useSelector(statisticsSelectors.getItems);
+  const categories = useSelector(statisticsSelectors.getCategories);
+  const total = useSelector(statisticsSelectors.getBalance);
+  const income = useSelector(statisticsSelectors.getIncome);
+  const outlay = useSelector(statisticsSelectors.getOutlay);
+
+  const backgroundColor = categories
+    ? categories.map(({ color }) => color)
+    : [];
+
+  const chartData = {
     datasets: [
       {
-        data: [10, 15, 3, 6, 4, 20, 2, 8, 17],
-        backgroundColor: [
-          '#fed057',
-          '#ffd8d0',
-          '#fd9498',
-          '#c5baff',
-          '#6e78e8',
-          '#4a56e2',
-          '#81e1ff',
-          '#24cca7',
-          '#00AD84',
-        ],
+        data,
+        backgroundColor,
         borderWidth: 0,
       },
     ],
-  },
-  table: [
-    {
-      color: '#fed057',
-      category: 'Основные расходы',
-      amount: 1000,
-    },
-    {
-      color: '#ffd8d0',
-      category: 'Продукты',
-      amount: 1000,
-    },
-    {
-      color: '#fd9498',
-      category: 'Машина',
-      amount: 1000,
-    },
-    {
-      color: '#c5baff',
-      category: 'Забота о себе',
-      amount: 1000,
-    },
-    {
-      color: '#6e78e8',
-      category: 'Забота о детях',
-      amount: 1000,
-    },
-    {
-      color: '#4a56e2',
-      category: 'Товары для дома',
-      amount: 1000,
-    },
-    {
-      color: '#81e1ff',
-      category: 'Образование',
-      amount: 1000,
-    },
-    {
-      color: '#24cca7',
-      category: 'Досуг',
-      amount: 1000,
-    },
-    {
-      color: '#00AD84',
-      category: ' Другие расходы',
-      amount: 1000,
-    },
-  ],
-};
+  };
 
-const DiagramTab = () => {
   return (
     <section className={s.section}>
       <h2 className={s.sectionTitle}>Статистика</h2>
 
-      <div className={s.wrapper}>
-        <div className={s.visualPart}>
-          <div className={s.chartTotal}>$24000.0</div>
+      {data && categories ? (
+        <div className={s.wrapper}>
+          <div className={s.visualPart}>
+            <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
 
-          <Chart data={data.chart} />
-        </div>
-
-        <div className={s.tablePart}>
-          <div className={s.filter}>
-            <button type="button" className={s.button}>
-              Месяц
-            </button>
-            <button type="button" className={s.button}>
-              Год
-            </button>
+            <Chart data={chartData} />
           </div>
 
-          <Table data={data.table} />
+          <div className={s.tablePart}>
+            <div className={s.filter}>
+              <select
+                value={month}
+                id="month"
+                className={s.dropdown}
+                onChange={handleChangeMonth}
+              >
+                {date.months.map(month => (
+                  <option value={month} key={id()}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={year}
+                id="year"
+                className={s.dropdown}
+                onChange={handleChangeYear}
+              >
+                {date.years.map(year => (
+                  <option value={year} key={id()}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <Table
+              data={data}
+              categories={categories}
+              income={income}
+              outlay={outlay}
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        <Spinner />
+      )}
     </section>
   );
-};
+}
 
 export default DiagramTab;
+
+// // Для фильтрации при условии добавления поля  в массив категорий
+// const newObjectsArray = statisticsData.map(({count, name}) => {
+//   let obj = {};
+
+//   obj.category = categories.find(({category}) => category === query).value;
+//   obj.color = categories.find(({category}) => category === query).color;
+//   obj.count = count;
+
+//   return obj;
+// })
+
+// const data = newObjectsArray.map(({count}) => count);
+// const dataCategories = newObjectsArray.map(({category}) => category);
+// const dataBgc = newObjectsArray.map(({color}) => color);

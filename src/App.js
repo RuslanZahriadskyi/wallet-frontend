@@ -1,6 +1,8 @@
 import { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Spinner from './components/Spinner';
+import PrivateRouter from './components/PrivateRouter';
+import PublicRouter from './components/PublicRouter';
 
 const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
@@ -32,22 +34,23 @@ function App() {
     <>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route>
+          <PublicRouter path="/login" restricted exact>
             <LoginPage />
-          </Route>
-          <Route path="/dashboard" exact>
+          </PublicRouter>
+          <PrivateRouter path="/dashboard" exact>
             <DashboardPage />
-          </Route>
-          <Route>
+          </PrivateRouter>
+          <PublicRouter path="/login" restricted exact>
             <RegistrationPage />
-          </Route>
+          </PublicRouter>
+          <PrivateRouter path="/statistics" exact>
+            <Statistics />
+          </PrivateRouter>
+          <PrivateRouter path="/currency" exact>
+            <Currency />
+          </PrivateRouter>
 
-          <Route>
-            <ErrorPage />
-          </Route>
-
-          <Route exact path="/statistics" component={Statistics} />
-          <Route exact path="/currency" component={Currency} />
+          {/* <ErrorPage /> */}
         </Switch>
       </Suspense>
     </>

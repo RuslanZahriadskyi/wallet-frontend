@@ -1,4 +1,3 @@
-import { isValid } from 'date-fns';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -25,6 +24,7 @@ const FormButtons = ({
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
             onClick={canselAction}
+
             // disabled={!isValid()}
           >
             {secondButtonText}
