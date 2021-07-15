@@ -61,38 +61,44 @@ export default function LoginForm() {
           <img src={logo} alt="LogoImg" className="logoImg" />
           <h1 className="title">Wallet</h1>
         </div>
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <EmailIcon />
-              </InputAdornment>
-            ),
-          }}
-          placeholder="E-mail"
-          type="email"
-          name="email"
-          value={formik.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment color="secondary" position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-          }}
-          placeholder="Пароль"
-          type="password"
-          name="password"
-          value={formik.password}
-          onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <EmailIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            className="placeholder"
+            placeholder="E-mail"
+            type="email"
+            name="email"
+            value={formik.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment color="secondary" position="start">
+                  <LockIcon className="icon" />
+                </InputAdornment>
+              ),
+            }}
+            className="placeholder"
+            placeholder="Пароль"
+            type="password"
+            name="password"
+            value={formik.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+        </div>
 
         {/* <button type="submit">ВХОД</button>
         <NavLink to="/register">РЕГИСТРАЦИЯ</NavLink> */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { operationsAction } from '../../../redux/operations';
-import { getUserName } from '../../../redux/auth/auth-selectors';
+import { getUserName, avatarUser } from '../../../redux/auth/auth-selectors';
 import './UserMenu.scss';
 import defaultAvatar from './avatar.png';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ModalLogout = () => {
+const ModalLogout = ({ userAvatar }) => {
   const dispatch = useDispatch();
   const openModal = () => dispatch(operationsAction.logoutModalAction());
 
@@ -27,27 +27,22 @@ const ModalLogout = () => {
 
   const classes = useStyles();
 
+  const avatarChange = e => dispatch(avatarUser(e.target.files[0]));
+
   return (
     <div className="header_container">
       <div className="img_container">
         <Avatar
           alt="Remy Sharp"
-          src={defaultAvatar}
+          src={userAvatar || defaultAvatar}
           className={classes.small}
         />
         <input
           accept="image/*"
           className={classes.input}
-          id="contained-button-file"
-          multiple
-          type="file"
-        />
-        <label htmlFor="contained-button-file"></label>
-        <input
-          accept="image/*"
-          className={classes.input}
           id="icon-button-file"
           type="file"
+          onChange={avatarChange}
         />
         <label htmlFor="icon-button-file">
           <AddCircleOutlineIcon className="addCircle_icon" />

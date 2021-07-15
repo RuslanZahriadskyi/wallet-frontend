@@ -53,9 +53,9 @@ const error = createReducer(null, {
 });
 
 const avatar = createReducer(null, {
-  [getCurrentUserAvatarSuccess]: (_, { avatar, avatarId }) => ({
+  [getCurrentUserAvatarSuccess]: (_, { urlAvatar, avatar }) => ({
+    urlAvatar,
     avatar,
-    avatarId,
   }),
   [logoutSuccess]: () => null,
   [getCurrentAvatarUserError]: () => null,

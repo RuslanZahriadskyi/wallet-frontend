@@ -8,10 +8,14 @@ const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
 );
 const RegistrationPage = lazy(() =>
-  import('./views/RegistrationPage' /* webpackChunkName: "register-page" */),
+  import(
+    './views/RegistrationPage/RegistrationPage.jsx' /* webpackChunkName: "register-page" */
+  ),
 );
 const LoginPage = lazy(() =>
-  import('./views/LoginPage' /* webpackChunkName: "login-page" */),
+  import(
+    './views/LoginPage/LoginPage.jsx' /* webpackChunkName: "login-page" */
+  ),
 );
 
 const ErrorPage = lazy(() =>

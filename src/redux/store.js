@@ -13,13 +13,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { statisticsReducer } from './statistics';
-
 import { operationReducer } from './operations/operations-reducer';
-
 import { categoryReducer } from './category/category-reducer';
-
 import { authReducer } from './auth';
-import { modalTransaction, modalLogout } from './operations/operations-reducer'; // defaults to localStorage for web
+import { modalTransaction, modalLogout } from './operations/operations-reducer';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
