@@ -100,6 +100,7 @@ export default function LoginForm() {
           />
         </div>
 
+
         {/* <button type="submit">ВХОД</button>
         <NavLink to="/register">РЕГИСТРАЦИЯ</NavLink> */}
         <FormButtons

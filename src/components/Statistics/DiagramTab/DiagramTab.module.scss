@@ -87,7 +87,10 @@
   }
 }
 
-.button {
+.dropdown {
+  outline: none;
+  appearance: none;
+
   display: inline-flex;
   margin-bottom: 20px;
 
@@ -105,6 +108,9 @@
   font-size: 16px;
   line-height: 1.5;
 
+  background: url(../../../images/arrow-bottom.svg) no-repeat right;
+  background-position-x: calc(100% - 20px);
+
   @media (min-width: 768px) {
     margin: 0;
     min-width: 165px;
@@ -119,19 +125,5 @@
   &:hover,
   &:focus {
     cursor: pointer;
-  }
-
-  &::after {
-    content: '';
-    width: 18px;
-    height: 9px;
-    background-size: contain;
-
-    background-repeat: no-repeat;
-    background-position: center;
-
-    background-image: url(../../../images/arrow-bottom.svg);
-
-    margin-left: auto;
   }
 }
