@@ -1,8 +1,10 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import Spinner from './components/Spinner';
 import PrivateRouter from './components/PrivateRouter';
 import PublicRouter from './components/PublicRouter';
+import { useDispatch } from 'react-redux';
+import { authOperations } from './redux/auth';
 
 const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
@@ -34,6 +36,12 @@ const Currency = lazy(() =>
   ),
 );
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Suspense fallback={<Spinner />}>
@@ -45,7 +53,7 @@ function App() {
           <PrivateRouter path="/dashboard" exact>
             <DashboardPage />
           </PrivateRouter>
-          <PublicRouter path="/login" restricted exact>
+          <PublicRouter path="/registration" restricted exact>
             <RegistrationPage />
           </PublicRouter>
           <PrivateRouter path="/statistics" exact>
