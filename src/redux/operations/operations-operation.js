@@ -8,22 +8,6 @@ import {
   getOperationsError,
 } from './operations-action';
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZWNjMTQ5ODQ4OGRkNjgyYzAwNGJkZCIsImlhdCI6MTYyNjI3NzY4NiwiZXhwIjoxNjI2MzEzNjg2fQ.Zd4pSUyjV8zxgkDnxlZ0ponMV2_cbzsNyDFDyyQ1O6M';
-
-axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
-
-axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unSet() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
-
 const getOperations = () => async dispatch => {
   dispatch(getOperationsRequest());
 
@@ -56,4 +40,3 @@ const createOperation = category => async dispatch => {
 };
 
 export { getOperations, createOperation };
-
