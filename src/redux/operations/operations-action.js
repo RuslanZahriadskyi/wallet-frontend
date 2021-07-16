@@ -22,7 +22,11 @@ const getSatatisticsPerMonthError = createAction(
 
 const logoutModalAction = createAction('operations/modalLogout');
 
-export { openModal, closeModal, logoutModalAction,addNewOperationRequest,
+export {
+  openModal,
+  closeModal,
+  logoutModalAction,
+  addNewOperationRequest,
   addNewOperationSuccess,
   addNewOperationError,
   getOperationsRequest,
@@ -32,4 +36,3 @@ export { openModal, closeModal, logoutModalAction,addNewOperationRequest,
   getSatatisticsPerMonthSuccess,
   getSatatisticsPerMonthError,
 };
-

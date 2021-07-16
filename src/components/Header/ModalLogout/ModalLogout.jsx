@@ -12,6 +12,7 @@ const ModalLogout = () => {
     () => dispatch(operationsAction.logoutModalAction()),
     [dispatch],
   );
+
   return (
     <div className="container_modal_logout">
       <h2 className="title_modal_logout">Вы уверены, что хотите выйти?</h2>
