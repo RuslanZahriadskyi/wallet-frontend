@@ -14,7 +14,10 @@ import {
   statisticsSelectors,
 } from '../../../redux/statistics';
 
-const data = ['15000', '2000', '3000', '4500', '10000', '2000', '3000', '4000'];
+import {
+  categoriesOperation,
+  categoriesSelectors,
+} from '../../../redux/category';
 
 function DiagramTab() {
   const [month, setMonth] = useState(date.currentMonth);
@@ -33,23 +36,34 @@ function DiagramTab() {
 
   useEffect(() => {
     dispatch(statisticsOperations.fetchBalance());
-    dispatch(statisticsOperations.fetchCategories());
+    dispatch(categoriesOperation.getCategories());
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(month, year);
     dispatch(statisticsOperations.fetchStatistics(month, year));
   }, [dispatch, month, year]);
 
   const statisticsData = useSelector(statisticsSelectors.getItems);
-  const categories = useSelector(statisticsSelectors.getCategories);
+  const categories = useSelector(categoriesSelectors.getAllUserCategory);
   const total = useSelector(statisticsSelectors.getBalance);
   const income = useSelector(statisticsSelectors.getIncome);
   const outlay = useSelector(statisticsSelectors.getOutlay);
 
-  const backgroundColor = categories
-    ? categories.map(({ color }) => color)
-    : [];
+  const newDataArray =
+    statisticsData && categories
+      ? statisticsData.map(({ count, name }) => {
+          let obj = {};
+
+          obj.category = categories.find(({ value }) => value === name).value;
+          obj.color = categories.find(({ value }) => value === name).color;
+          obj.count = count;
+
+          return obj;
+        })
+      : null;
+
+  const data = newDataArray.map(({ count }) => count);
+  const backgroundColor = newDataArray.map(({ color }) => color);
 
   const chartData = {
     datasets: [
@@ -65,7 +79,7 @@ function DiagramTab() {
     <section className={s.section}>
       <h2 className={s.sectionTitle}>Статистика</h2>
 
-      {data && categories ? (
+      {statisticsData && categories && total && income && outlay ? (
         <div className={s.wrapper}>
           <div className={s.visualPart}>
             <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
@@ -102,12 +116,7 @@ function DiagramTab() {
               </select>
             </div>
 
-            <Table
-              data={data}
-              categories={categories}
-              income={income}
-              outlay={outlay}
-            />
+            <Table data={newDataArray} income={income} outlay={outlay} />
           </div>
         </div>
       ) : (
@@ -118,18 +127,3 @@ function DiagramTab() {
 }
 
 export default DiagramTab;
-
-// // Для фильтрации при условии добавления поля  в массив категорий
-// const newObjectsArray = statisticsData.map(({count, name}) => {
-//   let obj = {};
-
-//   obj.category = categories.find(({category}) => category === query).value;
-//   obj.color = categories.find(({category}) => category === query).color;
-//   obj.count = count;
-
-//   return obj;
-// })
-
-// const data = newObjectsArray.map(({count}) => count);
-// const dataCategories = newObjectsArray.map(({category}) => category);
-// const dataBgc = newObjectsArray.map(({color}) => color);
