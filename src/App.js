@@ -25,9 +25,7 @@ const ErrorPage = lazy(() =>
 );
 
 const Statistics = lazy(() =>
-  import(
-    './components/Statistics/Statistics' /* webpackChunkName: "statistics-page" */
-  ),
+  import('./components/Statistics' /* webpackChunkName: "statistics-page" */),
 );
 
 const Currency = lazy(() =>
@@ -52,7 +50,7 @@ function App() {
           <PrivateRouter path="/dashboard" exact>
             <DashboardPage />
           </PrivateRouter>
-          <PublicRouter path="/registration" restricted exact>
+          <PublicRouter path="/register" restricted exact>
             <RegistrationPage />
           </PublicRouter>
           <PrivateRouter path="/statistics" exact>
