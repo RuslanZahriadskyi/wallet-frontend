@@ -26,7 +26,7 @@ const ErrorPage = lazy(() =>
 
 const Statistics = lazy(() =>
   import(
-    './components/Statisctics/Statistics' /* webpackChunkName: "statistics-page" */
+    './components/Statistics/Statistics' /* webpackChunkName: "statistics-page" */
   ),
 );
 
@@ -45,7 +45,6 @@ function App() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-
         <Switch>
           <PublicRouter path="/login" restricted exact>
             <LoginPage />
@@ -62,7 +61,6 @@ function App() {
           <PrivateRouter path="/currency" exact>
             <Currency />
           </PrivateRouter>
-
 
           {/* <ErrorPage /> */}
         </Switch>
