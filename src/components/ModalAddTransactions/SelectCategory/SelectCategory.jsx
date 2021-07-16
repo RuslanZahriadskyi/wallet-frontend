@@ -148,7 +148,7 @@ export default function Category({ value, onChange, error, errorText }) {
 
         return false;
       }}
-      disableCloseOnSelect={() => {}}
+      disableCloseOnSelect={true}
       getOptionLabel={option => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
