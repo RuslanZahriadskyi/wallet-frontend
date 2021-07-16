@@ -25,9 +25,7 @@ const ErrorPage = lazy(() =>
 );
 
 const Statistics = lazy(() =>
-  import(
-    './components/Statisctics/Statistics' /* webpackChunkName: "statistics-page" */
-  ),
+  import('./components/Statistics' /* webpackChunkName: "statistics-page" */),
 );
 
 const Currency = lazy(() =>

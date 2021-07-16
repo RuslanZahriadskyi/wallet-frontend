@@ -1,16 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-import actions from './statisticts-actions';
+import actions from './statistics-actions';
 
 const {
   fetchStatisticsRequest,
   fetchStatisticsSuccess,
   fetchStatisticsError,
-
-  fetchCategoriesRequest,
-  fetchCategoriesSuccess,
-  fetchCategoriesError,
 
   fetchBalanceRequest,
   fetchBalanceSuccess,
@@ -23,15 +19,10 @@ const items = createReducer([], {
   [fetchStatisticsError]: (_, { payload }) => payload,
 });
 
-const categories = createReducer(null, {
-  [fetchCategoriesRequest]: (_, { payload }) => payload,
-  [fetchCategoriesSuccess]: (_, { payload }) => [...payload],
-  [fetchCategoriesError]: (_, { payload }) => payload,
-});
-
 const income = createReducer(null, {
   [fetchStatisticsRequest]: (_, { payload }) => payload,
   [fetchStatisticsSuccess]: (_, { payload }) => payload.income,
+  [fetchStatisticsError]: (_, { payload }) => payload,
 });
 
 const outlay = createReducer(null, {
@@ -48,7 +39,6 @@ const balance = createReducer(null, {
 
 const statisticsReducer = combineReducers({
   items,
-  categories,
   income,
   outlay,
   balance,

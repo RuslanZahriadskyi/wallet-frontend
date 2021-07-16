@@ -1,3 +1,14 @@
+@import '../../../scss/main.scss';
+
+tbody td {
+  padding: 10px 0 10px;
+
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.13;
+}
+
 .transaction-div {
   @media (min-width: 1280px) {
     width: 100%;
@@ -8,4 +19,11 @@
     text-align: center;
     background-color: rgba($color: #e1e1e1, $alpha: 0.4);
   }
+}
+.transaction-head {
+  font-family: Circe, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: getColor('third-text-color');
 }
