@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import actions from './statistics-actions';
+
 
 const fetchStatistics = (month, year) => async dispatch => {
   dispatch(actions.fetchStatisticsRequest());

@@ -15,3 +15,13 @@ export const logoutError = createAction('auth/logoutError');
 export const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 export const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 export const getCurrentUserError = createAction('auth/getCurrentUserError');
+
+export const getCurrentUserAvatarRequest = createAction(
+  'auth/getCurrentUserAvatarRequest',
+);
+export const getCurrentUserAvatarSuccess = createAction(
+  'auth/getCurrentUserAvatarSuccess',
+);
+export const getCurrentAvatarUserError = createAction(
+  'auth/getCurrentUserAvatarError',
+);
