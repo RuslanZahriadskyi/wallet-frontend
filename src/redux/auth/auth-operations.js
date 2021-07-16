@@ -86,25 +86,24 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-const getCurrenAvatartUser =
-  ({ urlAvatar, avatar }) =>
-  async dispatch => {
-    dispatch(getCurrentUserAvatarRequest());
+const getCurrenAvatartUser = avatar => async dispatch => {
+  dispatch(getCurrentUserAvatarRequest());
 
-    try {
-      let formData = new FormData();
-      formData.append('file', avatar);
-      const response = await axios.patch(urlAvatar, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log(response);
-      dispatch(getCurrentUserAvatarSuccess());
-    } catch (error) {
-      dispatch(getCurrentAvatarUserError(error.message));
-    }
-  };
+  try {
+    let formData = new FormData();
+    formData.append('file', avatar);
+
+    const response = await axios.patch('/api/users/avatars', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response);
+    dispatch(getCurrentUserAvatarSuccess(response.data));
+  } catch (error) {
+    dispatch(getCurrentAvatarUserError(error.message));
+  }
+};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

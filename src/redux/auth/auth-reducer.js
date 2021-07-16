@@ -33,6 +33,10 @@ const user = createReducer(initialUserState, {
     avatar,
     avatarId,
   }),
+  [getCurrentUserAvatarSuccess]: (state, { avatar, avatarId }) => [
+    ...state,
+    { avatar, avatarId },
+  ],
 });
 
 const token = createReducer(null, {
@@ -60,19 +64,11 @@ const error = createReducer(null, {
   [getCurrentUserError]: setError,
 });
 
-const avatar = createReducer(null, {
-  [getCurrentUserAvatarSuccess]: (_, { urlAvatar, avatar }) => ({
-    urlAvatar,
-    avatar,
-  }),
-  [logoutSuccess]: () => null,
-  [getCurrentAvatarUserError]: () => null,
-});
+// const saveAvatar = createReducer(avatar);
 
 export default combineReducers({
   user,
   token,
   isAuthenticated,
   error,
-  avatar,
 });
