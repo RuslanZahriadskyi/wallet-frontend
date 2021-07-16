@@ -6,7 +6,7 @@ import { v4 as id } from 'uuid';
 import Chart from '../Chart';
 import Table from '../Table';
 import s from './DiagramTab.module.scss';
-import Spinner from '../../Spinner';
+// import Spinner from '../../Spinner';
 
 import date from './monthAndYear';
 import {
@@ -49,18 +49,15 @@ function DiagramTab() {
   const income = useSelector(statisticsSelectors.getIncome);
   const outlay = useSelector(statisticsSelectors.getOutlay);
 
-  const newDataArray =
-    statisticsData && categories
-      ? statisticsData.map(({ count, name }) => {
-          let obj = {};
+  const newDataArray = statisticsData.map(({ count, name }) => {
+    let obj = {};
 
-          obj.category = categories.find(({ value }) => value === name).value;
-          obj.color = categories.find(({ value }) => value === name).color;
-          obj.count = count;
+    obj.category = categories.find(({ value }) => value === name).value;
+    obj.color = categories.find(({ value }) => value === name).color;
+    obj.count = count;
 
-          return obj;
-        })
-      : null;
+    return obj;
+  });
 
   const data = newDataArray.map(({ count }) => count);
   const backgroundColor = newDataArray.map(({ color }) => color);
@@ -79,49 +76,45 @@ function DiagramTab() {
     <section className={s.section}>
       <h2 className={s.sectionTitle}>Статистика</h2>
 
-      {statisticsData && categories && total && income && outlay ? (
-        <div className={s.wrapper}>
-          <div className={s.visualPart}>
-            <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
+      <div className={s.wrapper}>
+        <div className={s.visualPart}>
+          <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
 
-            <Chart data={chartData} />
-          </div>
-
-          <div className={s.tablePart}>
-            <div className={s.filter}>
-              <select
-                value={month}
-                id="month"
-                className={s.dropdown}
-                onChange={handleChangeMonth}
-              >
-                {date.months.map(month => (
-                  <option value={month} key={id()}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={year}
-                id="year"
-                className={s.dropdown}
-                onChange={handleChangeYear}
-              >
-                {date.years.map(year => (
-                  <option value={year} key={id()}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <Table data={newDataArray} income={income} outlay={outlay} />
-          </div>
+          {data ? <Chart data={chartData} /> : null}
         </div>
-      ) : (
-        <Spinner />
-      )}
+
+        <div className={s.tablePart}>
+          <div className={s.filter}>
+            <select
+              value={month}
+              id="month"
+              className={s.dropdown}
+              onChange={handleChangeMonth}
+            >
+              {date.months.map(month => (
+                <option value={month} key={id()}>
+                  {month}
+                </option>
+              ))}
+            </select>
+
+            <select
+              value={year}
+              id="year"
+              className={s.dropdown}
+              onChange={handleChangeYear}
+            >
+              {date.years.map(year => (
+                <option value={year} key={id()}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <Table data={newDataArray} income={income} outlay={outlay} />
+        </div>
+      </div>
     </section>
   );
 }

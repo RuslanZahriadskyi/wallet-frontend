@@ -40,6 +40,8 @@ const Table = ({ data, income, outlay }) => {
           </tr>
         </tfoot>
       </table>
+
+      {/* <p className={s.warning}>Пожалуйста, добавьте операции</p> */}
     </>
   );
 };
