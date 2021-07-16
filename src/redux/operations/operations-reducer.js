@@ -22,16 +22,4 @@ const modalLogout = createReducer(false, {
   [logoutModalAction]: (state, _) => !state,
 });
 
-// const loading = createReducer(false, {
-//   []: () => true,
-//   []: () => false,
-//   []: () => false,
-//   []: () => true,
-//   []: () => false,
-//   []: () => false,
-//   []: () => true,
-//   []: () => false,
-//   []: () => false,
-// });
-
 export { operationReducer, modalTransaction, modalLogout };

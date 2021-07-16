@@ -17,6 +17,7 @@ import { operationReducer } from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
 import { authReducer } from './auth';
 import { modalTransaction, modalLogout } from './operations/operations-reducer';
+import isLoading from './isLoading/isLoading-reducer';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -40,6 +41,7 @@ let store = configureStore({
     logoutModalAction: modalLogout,
     operations: operationReducer,
     categories: categoryReducer,
+    isLoading,
   },
   middleware,
 });
