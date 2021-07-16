@@ -3,11 +3,7 @@ import { combineReducers } from 'redux';
 
 import actions from './statistics-actions';
 
-const {
-  fetchStatisticsSuccess,
-
-  fetchBalanceSuccess,
-} = actions;
+const { fetchStatisticsSuccess, fetchBalanceSuccess } = actions;
 
 const items = createReducer([], {
   [fetchStatisticsSuccess]: (_, { payload }) => [...payload.monthOutlay],

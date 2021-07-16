@@ -17,7 +17,7 @@ import {
 import { categoriesOperation } from '../../../redux/category';
 
 function DiagramTab() {
-  const [month, setMonth] = useState('july');
+  const [month, setMonth] = useState(date.currentMonth);
 
   const handleChangeMonth = ({ target: { value } }) => {
     setMonth(value);
@@ -37,11 +37,8 @@ function DiagramTab() {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(month);
-    console.log(year);
-
     dispatch(statisticsOperations.fetchStatistics(month, year));
-  }, [dispatch, month]);
+  }, [dispatch, month, year]);
 
   const statisticsData = useSelector(statisticsSelectors.getItems);
   const total = useSelector(statisticsSelectors.getBalance);
