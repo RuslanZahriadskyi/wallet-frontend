@@ -52,7 +52,7 @@ function App() {
           <PrivateRouter path="/dashboard" exact>
             <DashboardPage />
           </PrivateRouter>
-          <PublicRouter path="/registration" restricted exact>
+          <PublicRouter path="/register" restricted exact>
             <RegistrationPage />
           </PublicRouter>
           <PrivateRouter path="/statistics" exact>
