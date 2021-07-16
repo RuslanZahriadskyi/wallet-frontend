@@ -32,7 +32,7 @@ const FormAddTransactions = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(categoriesOperation.getCategories());
+    // dispatch(categoriesOperation.getCategories());
     dispatch(operationsOperation.getOperations());
   }, [dispatch]);
 

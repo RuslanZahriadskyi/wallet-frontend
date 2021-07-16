@@ -14,7 +14,7 @@ const Table = ({ data, income, outlay }) => {
 
       <table className={s.table}>
         <tbody className={s.tableBody}>
-          {data.map(({ category, color, count }) => (
+          {data.map(({ name, color, count }) => (
             <tr key={id()}>
               <td className={s.tableData}>
                 <span
@@ -22,7 +22,7 @@ const Table = ({ data, income, outlay }) => {
                   style={{ backgroundColor: color }}
                 ></span>
 
-                {category}
+                {name}
               </td>
               <td className={s.tableData}>{count.toFixed(1)}</td>
             </tr>

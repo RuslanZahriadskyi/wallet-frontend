@@ -14,13 +14,10 @@ import {
   statisticsSelectors,
 } from '../../../redux/statistics';
 
-import {
-  categoriesOperation,
-  categoriesSelectors,
-} from '../../../redux/category';
+import { categoriesOperation } from '../../../redux/category';
 
 function DiagramTab() {
-  const [month, setMonth] = useState(date.currentMonth);
+  const [month, setMonth] = useState('july');
 
   const handleChangeMonth = ({ target: { value } }) => {
     setMonth(value);
@@ -35,32 +32,24 @@ function DiagramTab() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(statisticsOperations.fetchBalance());
     dispatch(categoriesOperation.getCategories());
+    dispatch(statisticsOperations.fetchBalance());
   }, [dispatch]);
 
   useEffect(() => {
+    console.log(month);
+    console.log(year);
+
     dispatch(statisticsOperations.fetchStatistics(month, year));
-  }, [dispatch, month, year]);
+  }, [dispatch, month]);
 
   const statisticsData = useSelector(statisticsSelectors.getItems);
-  const categories = useSelector(categoriesSelectors.getAllUserCategory);
   const total = useSelector(statisticsSelectors.getBalance);
   const income = useSelector(statisticsSelectors.getIncome);
   const outlay = useSelector(statisticsSelectors.getOutlay);
 
-  const newDataArray = statisticsData.map(({ count, name }) => {
-    let obj = {};
-
-    obj.category = categories.find(({ value }) => value === name).value;
-    obj.color = categories.find(({ value }) => value === name).color;
-    obj.count = count;
-
-    return obj;
-  });
-
-  const data = newDataArray.map(({ count }) => count);
-  const backgroundColor = newDataArray.map(({ color }) => color);
+  const data = statisticsData.map(({ count }) => count);
+  const backgroundColor = statisticsData.map(({ color }) => color);
 
   const chartData = {
     datasets: [
@@ -80,7 +69,7 @@ function DiagramTab() {
         <div className={s.visualPart}>
           <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
 
-          {data ? <Chart data={chartData} /> : null}
+          <Chart data={chartData} />
         </div>
 
         <div className={s.tablePart}>
@@ -112,7 +101,7 @@ function DiagramTab() {
             </select>
           </div>
 
-          <Table data={newDataArray} income={income} outlay={outlay} />
+          <Table data={statisticsData} income={income} outlay={outlay} />
         </div>
       </div>
     </section>

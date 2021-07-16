@@ -8,6 +8,7 @@ const fetchStatistics = (month, year) => async dispatch => {
     const {
       data: { statistics },
     } = await axios.get(`/api/operations/statistics/${month}/${year}`);
+
     dispatch(actions.fetchStatisticsSuccess(statistics));
   } catch (e) {
     dispatch(actions.fetchStatisticsError(e.message));
@@ -23,6 +24,7 @@ const fetchBalance = () => async dispatch => {
         response: { totalBalance },
       },
     } = await axios.get('/api/operations');
+
     dispatch(actions.fetchBalanceSuccess(totalBalance));
   } catch (e) {
     dispatch(actions.fetchBalanceError(e.message));
