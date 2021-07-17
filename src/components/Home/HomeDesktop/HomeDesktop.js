@@ -11,8 +11,8 @@ import './HomeDesktop.scss';
 const HomeDesktop = () => {
   return (
     <>
-      <div className="home-wrap">
-        <ul className="icons">
+      <div className="home-wrap-desktop">
+        <ul>
           <li className="icons-list">
             <NavLink
               to="/dashboard"

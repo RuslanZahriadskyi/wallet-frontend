@@ -11,11 +11,24 @@ td {
 .transaction-table {
   width: 100%;
   // text-align: center;
-  background-color: getColor('third-text-color');
+  // background-color: getColor('third-text-color');
 }
 // .transaction-head {
 //   background-color: getColor('third-text-color');
 // }
+.transaction-row {
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: getColor('third-text-color');
+}
+
 .transaction-data {
-  text-align: end;
+  // text-align: end;
+  display: flex;
+  justify-content: space-between;
+}
+.transaction-title {
+  font-weight: 700;
+  font-size: 18px;
 }
