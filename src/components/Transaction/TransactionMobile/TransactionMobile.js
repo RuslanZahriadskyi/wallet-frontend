@@ -8,14 +8,13 @@ import {
 import './TransactionMobile.scss';
 
 function TransactionMobile() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(operationsOperation.getOperations());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(operationsOperation.getOperations());
+  }, [dispatch]);
 
-  // const operations = useSelector(operationsSelectors.getOperations);
-  // console.log(operations);
+  const operations = useSelector(operationsSelectors.getOperations);
 
   return (
     <>
@@ -23,35 +22,49 @@ function TransactionMobile() {
         <table className="transaction-table">
           <tbody>
             {/* здесь отрендерить данные транзакций с бекенда */}
-            <tr>
-              <td>Дата</td>
-              <td className="transaction-data">11.07.2021</td>
-            </tr>
+            {operations.map(
+              ({
+                id,
+                date,
+                type,
+                category,
+                comments,
+                amount,
+                balanceAfter,
+              }) => (
+                <tr className="transaction-row" key={id}>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Дата</span>
+                    <span>{date}</span>
+                  </td>
 
-            <tr>
-              <td>Тип</td>
-              <td className="transaction-data">+</td>
-            </tr>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Тип</span>
+                    <span>{type}</span>
+                  </td>
 
-            <tr>
-              <td>Категория</td>
-              <td className="transaction-data">Test</td>
-            </tr>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Категория</span>
+                    <span>{category}</span>
+                  </td>
 
-            <tr>
-              <td>Комментарий</td>
-              <td className="transaction-data">Test</td>
-            </tr>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Комментарий</span>
+                    <span>{comments}</span>
+                  </td>
 
-            <tr>
-              <td>Сумма</td>
-              <td className="transaction-data">300</td>
-            </tr>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Сумма</span>
+                    <span>{amount}</span>
+                  </td>
 
-            <tr>
-              <td>Баланс</td>
-              <td className="transaction-data">12345</td>
-            </tr>
+                  <td className="transaction-data">
+                    <span className="transaction-title">Баланс</span>
+                    <span>{balanceAfter}</span>
+                  </td>
+                </tr>
+              ),
+            )}
           </tbody>
         </table>
       </div>

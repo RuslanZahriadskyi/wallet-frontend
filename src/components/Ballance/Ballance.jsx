@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   statisticsOperations,
@@ -7,7 +7,9 @@ import {
 
 import './Ballance.scss';
 
-function Ballance() {
+const Ballance = ({ total }) => {
+  console.log(total);
+
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -20,11 +22,11 @@ function Ballance() {
     <div className="ballance-div">
       <h2 className="ballance-title">Ваш баланс</h2>
       <p className="ballance">
-        <span className="hryvnia-sign">&#8372;</span> 2323232
-        {/* {total ? total.toFixed(2) : 0} */}
+        <span className="hryvnia-sign">&#8372;</span>
+        {total ? total.toFixed(2) : 0}
       </p>
     </div>
   );
-}
+};
 
 export default Ballance;

@@ -30,7 +30,8 @@ const Statistics = lazy(() =>
 
 const Currency = lazy(() =>
   import(
-    './components/Currency/CurrencyMobile' /* webpackChunkName: "currency-page" */
+    './components/Currency' /* 
+  webpackChunkName: "currency-page" */
   ),
 );
 function App() {
