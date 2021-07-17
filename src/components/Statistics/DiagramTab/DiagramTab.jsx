@@ -98,7 +98,11 @@ function DiagramTab() {
             </select>
           </div>
 
-          <Table data={statisticsData} income={income} outlay={outlay} />
+          {statisticsData.length ? (
+            <Table data={statisticsData} income={income} outlay={outlay} />
+          ) : (
+            <p className={s.warning}>Пожалуйста, добавьте операции</p>
+          )}
         </div>
       </div>
     </section>
