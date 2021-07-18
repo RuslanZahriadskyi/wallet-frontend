@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 import './RegistrationForm.scss';
+import '../Register/Register.scss';
 import logo from '../../images/logo.png';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -71,7 +72,7 @@ export default function RegistrationForm() {
   });
 
   return (
-    <div className="containerRegisterForm">
+    <div className="blok2">
       <form
         className="form"
         onSubmit={formik.handleSubmit}

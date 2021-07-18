@@ -7,12 +7,15 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 import logo from '../../images/logo.png';
+
+// import elips2 from '../../images/Ellipse2.svg';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 
-import '../RegistrationForm/RegistrationForm.scss';
+import '../LoginForm/LoginForm.scss';
+import '../Login/Login.scss';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -50,18 +53,18 @@ export default function LoginForm() {
   });
 
   return (
-    <div className="container">
+    <div className="blokLog2">
       <form
-        className="form"
+        className="formLog"
         onSubmit={formik.handleSubmit}
         noValidate
         autoComplete="off"
       >
-        <div className="logo">
-          <img src={logo} alt="LogoImg" className="logoImg" />
-          <h1 className="title">Wallet</h1>
+        <div className="logoLogin ">
+          <img src={logo} alt="LogoImg" className="logoImgLog" />
+          <h1 className="titleWalletLogin">Wallet</h1>
         </div>
-        <div className="input">
+        <div className="inputLog ">
           <TextField
             InputProps={{
               startAdornment: (
@@ -70,7 +73,7 @@ export default function LoginForm() {
                 </InputAdornment>
               ),
             }}
-            className="placeholder"
+            className="placeholderLog "
             placeholder="E-mail"
             type="email"
             name="email"
@@ -80,7 +83,7 @@ export default function LoginForm() {
             helperText={formik.touched.email && formik.errors.email}
           />
         </div>
-        <div className="input">
+        <div className="inputLog ">
           <TextField
             InputProps={{
               startAdornment: (
@@ -89,7 +92,7 @@ export default function LoginForm() {
                 </InputAdornment>
               ),
             }}
-            className="placeholder"
+            className="placeholderLog "
             placeholder="Пароль"
             type="password"
             name="password"

@@ -1,0 +1,113 @@
+@import '../../scss/main.scss';
+
+.loginPage {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    background: rgba(231, 234, 242, 1);
+  }
+
+  @media screen and (min-width: 1280px) {
+    background: rgba(231, 234, 242, 1);
+    display: flex;
+  }
+
+  &::after {
+    @media screen and (min-width: 768px) {
+      position: absolute;
+      content: '';
+      background-image: url(../../images/Ellipse2.svg);
+
+      right: 0;
+      top: 0;
+
+      width: 618px;
+      height: 547px;
+      background-repeat: no-repeat;
+      background-size: 618px 547px;
+    }
+  }
+}
+
+.blokLog1 {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.imagLog {
+  @media screen and (min-width: 768px) {
+    width: 274px;
+    height: 250px;
+    justify-content: space-around;
+    z-index: 1;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 452px;
+    height: 412px;
+    width: 100%;
+  }
+}
+
+.titleFinLog {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  padding-left: 40px;
+  z-index: 2;
+}
+
+.blokLog1::after {
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    content: '';
+    background-image: url(../../images/Ellipse1.svg);
+
+    left: 0;
+    bottom: 0;
+
+    width: 618px;
+    height: 547px;
+    background-repeat: no-repeat;
+    background-size: 618px 547px;
+  }
+}
+
+.blokLog2 {
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    padding-bottom: 196px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 136px 85px 116px 95px;
+
+    width: 55%;
+    backdrop-filter: blur(8px);
+    z-index: 1;
+  }
+}

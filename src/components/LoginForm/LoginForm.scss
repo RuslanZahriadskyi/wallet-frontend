@@ -1,6 +1,6 @@
 @import '../../scss/main.scss';
 
-.title {
+.titleWalletLogin {
   font-family: Poppins;
   font-weight: 700;
   text-decoration: none;
@@ -11,7 +11,7 @@
   margin-left: 16px;
 }
 
-.form {
+.formLog {
   width: 320px;
   height: 568px;
   display: inline-flex;
@@ -26,7 +26,7 @@
 
   @media screen and (min-width: 768px) {
     width: 540px;
-    height: 616px;
+    height: 468px;
     background-color: white;
     border-radius: 20px;
     z-index: 1;
@@ -36,12 +36,12 @@
     border-radius: 20px;
   }
 }
-.logo {
+.logoLogin {
   align-items: center;
   display: flex;
 }
 
-.logoImg {
+.logoImgLog {
   width: 30px;
   height: 30px;
 }
@@ -49,8 +49,7 @@
   color: getColor('noActive-text-color');
 }
 
-.input {
-  font-family: Poppins;
+.inputLog {
   width: 100%;
   margin-top: 40px;
   height: 35px;
@@ -67,7 +66,7 @@
   }
 }
 
-.placeholder {
+.placeholderLog {
   width: 100%;
   font-family: Poppins;
   font-size: 18px;
