@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 // API
 import currencyApi from '../../../api/privatbank-api';
 
-import '../CurrencyMobile/CurrencyMobile.scss';
+import './CurrencyTab.scss';
 
-function CurrencyDesktop() {
+function CurrencyTab() {
   const [rates, setRates] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // спиннер
   const [error, setError] = useState(null);
@@ -63,4 +63,4 @@ function CurrencyDesktop() {
   );
 }
 
-export default CurrencyDesktop;
+export default CurrencyTab;

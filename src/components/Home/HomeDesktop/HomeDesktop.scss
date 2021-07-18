@@ -1,18 +1,17 @@
 @import '../../../scss/main.scss';
 
-
-.home-wrap {
+.home-wrap-desktop {
   width: calc((100% - 2 * 30px) / 2);
 
   @media (min-width: 1280px) {
     width: 100%;
   }
 }
-.icons {
-  @media (min-width: 768px) {
-    display: block;
-  }
-}
+// .icons-desktop {
+//   @media (min-width: 768px) {
+//     display: block;
+//   }
+// }
 .icons-list {
   display: flex;
   margin-top: 13px;

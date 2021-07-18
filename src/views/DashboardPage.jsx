@@ -1,9 +1,10 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Media from 'react-media';
 
 // Redux
 import { operationsAction, operationsSelectors } from '../redux/operations';
+import { statisticsOperations, statisticsSelectors } from '../redux/statistics';
 
 import Header from '../components/Header/Header';
 import AddButton from '../components/ButtonAddTransaction';
@@ -15,8 +16,15 @@ import MobileMainContainer from '../components/MainContainer/MobileMainContainer
 import DesktopMainContainer from '../components/MainContainer/DesktopMainContainer';
 
 const DashboardPage = () => {
-  const modal = useSelector(operationsSelectors.getModalValue);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(statisticsOperations.fetchBalance());
+  }, [dispatch]);
+
+  const total = useSelector(statisticsSelectors.getBalance);
+
+  const modal = useSelector(operationsSelectors.getModalValue);
   const closeModal = useCallback(
     () => dispatch(operationsAction.closeModal()),
     [dispatch],
@@ -35,9 +43,9 @@ const DashboardPage = () => {
         >
           {matches => (
             <Fragment>
-              {matches.small && <MobileMainContainer />}
+              {matches.small && <MobileMainContainer total={total} />}
 
-              {matches.medium && <DesktopMainContainer />}
+              {matches.medium && <DesktopMainContainer total={total} />}
             </Fragment>
           )}
         </Media>
