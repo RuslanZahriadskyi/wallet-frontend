@@ -1,7 +1,10 @@
 import React from 'react';
+
+import { v4 as id } from 'uuid';
+
 import s from './Table.module.scss';
 
-const Table = ({ data, categories, income, outlay }) => {
+const Table = ({ data, income, outlay }) => {
   return (
     <>
       <div className={s.tableHead}>
@@ -11,17 +14,17 @@ const Table = ({ data, categories, income, outlay }) => {
 
       <table className={s.table}>
         <tbody className={s.tableBody}>
-          {categories.map(({ color, value, id }, i) => (
-            <tr key={id}>
+          {data.map(({ name, color, count }) => (
+            <tr key={id()}>
               <td className={s.tableData}>
                 <span
                   className={s.mark}
                   style={{ backgroundColor: color }}
                 ></span>
 
-                {value}
+                {name}
               </td>
-              <td className={s.tableData}>{Number(data[i]).toFixed(1)}</td>
+              <td className={s.tableData}>{count.toFixed(1)}</td>
             </tr>
           ))}
         </tbody>
@@ -37,6 +40,8 @@ const Table = ({ data, categories, income, outlay }) => {
           </tr>
         </tfoot>
       </table>
+
+      {/* <p className={s.warning}>Пожалуйста, добавьте операции</p> */}
     </>
   );
 };

@@ -1,9 +1,6 @@
 @import '../../../scss/main.scss';
 
-// перезаписала из material-ui
-.MuiSvgIcon-root {
-  background-color: getColor('fourth-text-color');
-}
+
 .home-wrap {
   width: calc((100% - 2 * 30px) / 2);
 
@@ -26,11 +23,20 @@
   }
 }
 .link {
+  font-size: 18px;
+  line-height: 1.5;
   text-decoration: none;
 }
-// .active-link {
-//   color: getColor('third-text-color');
-// }
+.active-link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.icons-ui {
+  display: inline-flex;
+  background-color: getColor('fourth-text-color');
+}
 
 .icons-title {
   margin-left: 20px;

@@ -13,7 +13,7 @@ const ModalAddTransactions = ({ modalValue, modalAction, children }) => {
         aria-describedby="transition-modal-description"
         className="modal"
         open={modalValue}
-        onClose={modalAction}
+        onClick={modalAction}
         closeAfterTransition
       >
         <div className="paper">{children}</div>

@@ -19,7 +19,10 @@ const HomeDesktop = () => {
               className="link"
               activeClassName="active-link"
             >
-              <HomeIcon />
+              <span className="icons-ui">
+                <HomeIcon />
+              </span>
+
               <span className="icons-title">Главная</span>
             </NavLink>
           </li>
@@ -30,7 +33,10 @@ const HomeDesktop = () => {
               className="link"
               activeClassName="active-link"
             >
-              <TimelineIcon className="icons-ui" />
+              <span className="icons-ui">
+                <TimelineIcon />
+              </span>
+
               <span className="icons-title">Статистика</span>
             </NavLink>
           </li>

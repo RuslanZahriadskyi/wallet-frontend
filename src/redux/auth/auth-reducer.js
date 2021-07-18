@@ -9,6 +9,8 @@ import {
   logoutError,
   getCurrentUserSuccess,
   getCurrentUserError,
+  getCurrentUserAvatarSuccess,
+  getCurrentAvatarUserError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -31,6 +33,10 @@ const user = createReducer(initialUserState, {
     avatar,
     avatarId,
   }),
+  [getCurrentUserAvatarSuccess]: (state, { avatar, avatarId }) => [
+    ...state,
+    { avatar, avatarId },
+  ],
 });
 
 const token = createReducer(null, {
@@ -57,6 +63,8 @@ const error = createReducer(null, {
   [logoutError]: setError,
   [getCurrentUserError]: setError,
 });
+
+// const saveAvatar = createReducer(avatar);
 
 export default combineReducers({
   user,
