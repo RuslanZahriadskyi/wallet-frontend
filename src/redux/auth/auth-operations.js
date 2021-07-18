@@ -75,11 +75,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 
   token.set(storageToken);
-
   dispatch(getCurrentUserRequest());
   try {
     const response = await axios.get('/api/users/current');
-
+    console.log(response);
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));

@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import Spinner from './components/Spinner';
 import PrivateRouter from './components/PrivateRouter';
 import PublicRouter from './components/PublicRouter';
@@ -20,16 +20,6 @@ const ErrorPage = lazy(() =>
   import('./views/ErrorPage' /* webpackChunkName: "error-page" */),
 );
 
-const Statistics = lazy(() =>
-  import('./components/Statistics' /* webpackChunkName: "statistics-page" */),
-);
-
-const Currency = lazy(() =>
-  import(
-    './components/Currency' /* 
-  webpackChunkName: "currency-page" */
-  ),
-);
 function App() {
   const dispatch = useDispatch();
 
@@ -44,20 +34,13 @@ function App() {
           <PublicRouter path="/login" restricted exact>
             <LoginPage />
           </PublicRouter>
-          <PrivateRouter path="/dashboard" exact>
+          <PrivateRouter path="/dashboard/:title" exact>
             <DashboardPage />
           </PrivateRouter>
           <PublicRouter path="/register" restricted exact>
             <RegistrationPage />
           </PublicRouter>
-          <PrivateRouter path="/statistics" exact>
-            <Statistics />
-          </PrivateRouter>
-          <PrivateRouter path="/currency" exact>
-            <Currency />
-          </PrivateRouter>
-
-          {/* <ErrorPage /> */}
+          <Redirect from="/" to="/login" />
         </Switch>
       </Suspense>
     </>

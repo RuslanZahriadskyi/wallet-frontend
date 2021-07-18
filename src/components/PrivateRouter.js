@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { authSelectors } from '../redux/auth';
 
 export default function PrivateRouter({ children, ...routeProps }) {
-  //   const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
   const isToken = useSelector(authSelectors.getToken);
   return (
     <Route {...routeProps}>

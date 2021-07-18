@@ -8,8 +8,8 @@ import CurrencyTab from '../Currency/CurrencyTab';
 const Currency = () => {
   return (
     <>
-      <Header />
-      <HomeMobile />
+      {/* <Header />
+      <HomeMobile /> */}
       <CurrencyTab />
     </>
   );

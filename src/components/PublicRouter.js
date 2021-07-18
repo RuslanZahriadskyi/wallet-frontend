@@ -8,7 +8,7 @@ export default function PublicRouter({ children, ...routeProps }) {
   return (
     <Route {...routeProps}>
       {Boolean(isToken) && routeProps.restricted ? (
-        <Redirect to="/dashboard" />
+        <Redirect to="/dashboard/home" />
       ) : (
         children
       )}
