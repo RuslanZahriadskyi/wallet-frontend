@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import s from './buttonAddTransaction.module.scss';
 import { operationsAction } from '../../redux/operations';
 
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/Add';
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function ButtonAddTransaction() {
         name="addOperation"
         onClick={openModal}
       >
-        <AddCircleIcon fontSize="large" className={s.buttonIcon} />
+        <AddIcon className={s.buttonIcon} fontSize="large" />
       </button>
     </div>
   );

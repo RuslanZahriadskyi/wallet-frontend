@@ -1,17 +1,35 @@
 @import '../../scss/main.scss';
 
 .button {
-  background-color: #fff;
   border: none;
-  border-radius: 10px;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 6px 15px getColor('button-color-income');
+  width: 44px;
+  height: 44px;
+  right: 20px;
+  bottom: 20px;
+  padding: 0;
+  display: block;
+  background-color: getColor('button-color-income');
+
+  @media screen and (min-width: 768px) {
+    right: 40px;
+    bottom: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 85px;
+    bottom: 40px;
+  }
 }
 
 .buttonIcon {
-  color: getColor('button-color-income');
+  color: getColor(main-background-color);
+
   cursor: pointer;
 }
 
-.buttonIcon:hover,
-.buttonIcon:focus {
+.button:hover,
+.button:focus {
   transform: scale(1.2);
 }
