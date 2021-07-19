@@ -11,13 +11,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38px;
-  height: 38px;
+
   margin-top: 13px;
   margin-right: 36px;
-  border-radius: 6px;
-  color: getColor('third-text-color');
-  background-color: getColor('fourth-text-color');
 
   &:last-child {
     margin-right: 0;
@@ -30,7 +26,30 @@
 }
 .link {
   color: getColor('third-text-color');
+  background-color: rgba(74, 86, 226, 0.8);
+  border-radius: 6px;
+  padding: 0;
+  text-align: center;
+
+  width: 38px;
+  height: 38px;
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    border-radius: 2px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+
+    text-decoration: none;
+  }
 }
+
 .active-link {
-  color: getColor('third-text-color');
+  background-color: #4a56e2;
+  box-shadow: 0px 1px 7px rgba(74, 86, 226, 0.8);
+
+  @media screen and (min-width: 768px) {
+  }
+  font-weight: 700;
 }

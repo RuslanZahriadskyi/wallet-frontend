@@ -12,16 +12,14 @@ const HomeDesktop = () => {
   return (
     <>
       <div className="home-wrap-desktop">
-        <ul>
+        <ul className="list-home-links">
           <li className="icons-list">
             <NavLink
               to="/dashboard"
               className="link"
               activeClassName="active-link"
             >
-              <span className="icons-ui">
-                <HomeIcon />
-              </span>
+              <HomeIcon fontSize="small" />
 
               <span className="icons-title">Главная</span>
             </NavLink>
@@ -33,16 +31,13 @@ const HomeDesktop = () => {
               className="link"
               activeClassName="active-link"
             >
-              <span className="icons-ui">
-                <TimelineIcon />
-              </span>
+              <TimelineIcon fontSize="small" />
 
               <span className="icons-title">Статистика</span>
             </NavLink>
           </li>
         </ul>
 
-        {/* Ballance */}
         <Ballance />
       </div>
     </>

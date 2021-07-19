@@ -30,7 +30,7 @@ const HomeMobile = () => {
               className="link"
               activeClassName="active-link"
             >
-              <HomeIcon />
+              <HomeIcon fontSize="large" />
             </NavLink>
           </li>
           <li className="icons-item">
@@ -39,7 +39,7 @@ const HomeMobile = () => {
               className="link"
               activeClassName="active-link"
             >
-              <TimelineIcon />
+              <TimelineIcon fontSize="large" />
             </NavLink>
           </li>
 
@@ -49,7 +49,7 @@ const HomeMobile = () => {
               className="link"
               activeClassName="active-link"
             >
-              <MonetizationOnOutlinedIcon />
+              <MonetizationOnOutlinedIcon fontSize="large" />
             </NavLink>
           </li>
         </ul>
