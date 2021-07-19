@@ -1,11 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 
-
 // // Icon Material-ui
 import HomeIcon from '@material-ui/icons/Home';
 import TimelineIcon from '@material-ui/icons/Timeline';
-
 
 // Components
 import Ballance from '../../Ballance';
@@ -14,6 +12,8 @@ import Loading from '../../Spinner';
 
 // Styles
 import './DesktopMainContainer.scss';
+import '../../Home/HomeDesktop/HomeDesktop.scss';
+import '../../Home/HomeMobile/HomeMobile.scss';
 
 const HomeDesktop = lazy(() =>
   import('../../Home/HomeDesktop' /* webpackChunkName: "home-page" */),
@@ -33,51 +33,51 @@ const Statistics = lazy(() =>
 const DesktopMainContainer = () => {
   return (
     <div className="dashboard-container">
-      <div className="background-blur">
+      <div className="background-ellipse">
         <div className="bg_filter">
-      <div className="dashboard-top-container">
-        <div className="home-wrap-desktop">
-          <ul>
-            <li className="icons-list">
-              <NavLink
-                to="/dashboard/home"
-                className="link"
-                activeClassName="active-link"
-              >
-                  <HomeIcon fontSize="small"/>
-                <span className="icons-title">Главная</span>
-              </NavLink>
-            </li>
+          <div className="dashboard-top-container">
+            <div className="home-wrap-desktop">
+              <ul>
+                <li className="icons-list">
+                  <NavLink
+                    to="/dashboard/home"
+                    className="link"
+                    activeClassName="active-link"
+                  >
+                    <HomeIcon fontSize="small" />
+                    <span className="icons-title">Главная</span>
+                  </NavLink>
+                </li>
 
-            <li className="icons-list">
-              <NavLink
-                to="/dashboard/statistics"
-                className="link"
-                activeClassName="active-link"
-              >
-                  <TimelineIcon fontSize="small" />
-                <span className="icons-title">Статистика</span>
-              </NavLink>
-            </li>
-          </ul>
+                <li className="icons-list">
+                  <NavLink
+                    to="/dashboard/statistics"
+                    className="link"
+                    activeClassName="active-link"
+                  >
+                    <TimelineIcon fontSize="small" />
+                    <span className="icons-title">Статистика</span>
+                  </NavLink>
+                </li>
+              </ul>
 
-          {/* Ballance */}
-          <Ballance />
+              {/* Ballance */}
+              <Ballance />
+            </div>
+            <Currency />
+          </div>
+
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route path="/dashboard/home" component={HomeDesktop} />
+
+              <Route path="/dashboard/statistics" component={Statistics} />
+
+              {/* <Route path="/dashboard/currency" component={Currency} /> */}
+            </Switch>
+          </Suspense>
         </div>
-        <Currency />
       </div>
-   </div>
-      </div>
-
-      <Suspense fallback={<Loading />}>
-        <Switch>
-          <Route path="/dashboard/home" component={HomeDesktop} />
-
-          <Route path="/dashboard/statistics" component={Statistics} />
-
-          {/* <Route path="/dashboard/currency" component={Currency} /> */}
-        </Switch>
-      </Suspense>
     </div>
   );
 };

@@ -4,8 +4,6 @@
   background-color: #e1e1e1;
   position: relative;
   height: 100vh;
-  padding-right: 20px;
-  padding-left: 20px;
 
   @media (min-width: 768px) {
     padding-right: 0px;
@@ -29,7 +27,7 @@
   }
 }
 
-.background-blur {
+.background-ellipse {
   @media (min-width: 768px) {
     &::before {
       position: absolute;
@@ -48,10 +46,13 @@
 }
 
 .bg_filter {
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+  padding-right: 20px;
+  padding-left: 20px;
+
   @media (min-width: 768px) {
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(50px);
     padding-left: 40px;
     padding-right: 40px;
   }
@@ -78,15 +79,15 @@
 .home-wrap-desktop {
   width: calc((100% - 2 * 30px) / 2);
 
+  @media (min-width: 768px) {
+    margin-right: 20px;
+  }
+
   @media (min-width: 1280px) {
     width: 100%;
   }
 }
-// .icons-desktop {
-//   @media (min-width: 768px) {
-//     display: block;
-//   }
-// }
+
 .icons-list {
   display: flex;
   margin-top: 13px;
