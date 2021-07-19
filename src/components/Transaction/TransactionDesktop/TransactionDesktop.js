@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { operationsSelectors } from '../../../redux/operations';
 
 import './TransactionDesktop.scss';
 
 function TransactionDesktop() {
+  const operations = useSelector(operationsSelectors.getOperations);
+
   return (
     <>
       <div className="transaction-div">
@@ -20,23 +24,26 @@ function TransactionDesktop() {
 
           <tbody className="transaction-tbody">
             {/* здесь отрендерить данные транзакций с бекенда */}
-            <tr>
-              <td>11.07.2021</td>
-              <td>+</td>
-              <td>Test</td>
-              <td>Test</td>
-              <td>300</td>
-              <td>12345</td>
-            </tr>
-
-            <tr>
-              <td>11.07.2021</td>
-              <td>+</td>
-              <td>Test</td>
-              <td>Test</td>
-              <td>300</td>
-              <td>12345</td>
-            </tr>
+            {operations.map(
+              ({
+                id,
+                date,
+                type,
+                category,
+                comments,
+                amount,
+                balanceAfter,
+              }) => (
+                <tr key={id}>
+                  <td>{date}</td>
+                  <td>{type}</td>
+                  <td>{category}</td>
+                  <td>{comments}</td>
+                  <td>{amount}</td>
+                  <td>{balanceAfter}</td>
+                </tr>
+              ),
+            )}
           </tbody>
         </table>
       </div>

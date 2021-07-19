@@ -1,19 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  operationsOperation,
-  operationsSelectors,
-} from '../../../redux/operations';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { operationsSelectors } from '../../../redux/operations';
 
 import './TransactionMobile.scss';
 
 function TransactionMobile() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(operationsOperation.getOperations());
-  }, [dispatch]);
-
   const operations = useSelector(operationsSelectors.getOperations);
 
   return (
