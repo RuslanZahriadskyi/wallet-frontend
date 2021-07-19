@@ -14,3 +14,38 @@
     display: block;
   }
 }
+.home-wrap-desktop {
+  width: calc((100% - 2 * 30px) / 2);
+
+  @media (min-width: 1280px) {
+    width: 100%;
+  }
+}
+// .icons-desktop {
+//   @media (min-width: 768px) {
+//     display: block;
+//   }
+// }
+.icons-list {
+  display: flex;
+  margin-top: 13px;
+}
+.link {
+  font-size: 18px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.active-link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.icons-ui {
+  display: inline-flex;
+  border-radius: 2px;
+  background-color: getColor('fourth-text-color');
+}
+.icons-title {
+  margin-left: 20px;
+  color: getColor('main-text-color');
+}
