@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Media from 'react-media';
 
 // Redux
-import { operationsAction, operationsSelectors } from '../redux/operations';
+import {
+  operationsAction,
+  operationsSelectors,
+  operationsOperation,
+} from '../redux/operations';
 import { statisticsOperations, statisticsSelectors } from '../redux/statistics';
 
 import Header from '../components/Header/Header';
@@ -20,9 +24,8 @@ const DashboardPage = () => {
 
   useEffect(() => {
     dispatch(statisticsOperations.fetchBalance());
+    dispatch(operationsOperation.getOperations());
   }, [dispatch]);
-
-  const total = useSelector(statisticsSelectors.getBalance);
 
   const modal = useSelector(operationsSelectors.getModalValue);
   const closeModal = useCallback(
@@ -43,9 +46,9 @@ const DashboardPage = () => {
         >
           {matches => (
             <Fragment>
-              {matches.small && <MobileMainContainer total={total} />}
+              {matches.small && <MobileMainContainer />}
 
-              {matches.medium && <DesktopMainContainer total={total} />}
+              {matches.medium && <DesktopMainContainer />}
             </Fragment>
           )}
         </Media>

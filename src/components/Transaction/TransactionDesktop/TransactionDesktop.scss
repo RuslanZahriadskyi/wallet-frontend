@@ -16,8 +16,9 @@ tbody td {
 }
 .transaction-table {
   @media (min-width: 768px) {
+    width: 100%;
     text-align: center;
-    background-color: rgba($color: #e1e1e1, $alpha: 0.4);
+    // background-color: rgba($color: #e1e1e1, $alpha: 0.4);
   }
 }
 .transaction-head {
