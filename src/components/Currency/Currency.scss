@@ -1,5 +1,6 @@
 @import '../../scss/main.scss';
 
+
 .currency-tbody {
   border: none;
 
@@ -29,10 +30,6 @@
   display: block;
   border-spacing: 0px;
   overflow: hidden;
-
-  //   td:first-child {
-  //       padding-top: 20px;
-  //   }
 
   @media (min-width: 1280px) {
     height: 348px;
@@ -64,7 +61,6 @@
     padding: 20px 15px;
   }
 }
-
 .currency-row {
   background: linear-gradient(
     180deg,

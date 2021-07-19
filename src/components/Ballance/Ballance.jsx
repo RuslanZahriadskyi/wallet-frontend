@@ -1,22 +1,11 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  statisticsOperations,
-  statisticsSelectors,
-} from '../../redux/statistics';
+import { useSelector } from 'react-redux';
+import { statisticsSelectors } from '../../redux/statistics';
 
 import './Ballance.scss';
 
-const Ballance = ({ total }) => {
-  console.log(total);
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(statisticsOperations.fetchBalance());
-  // }, [dispatch]);
-
-  // const total = useSelector(statisticsSelectors.getBalance);
+const Ballance = () => {
+  const total = useSelector(statisticsSelectors.getBalance);
 
   return (
     <div className="ballance-div">
