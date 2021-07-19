@@ -2,6 +2,7 @@
 
 .transaction-div {
   position: relative;
+  margin-top: 40px;
 
   @media (min-width: 1280px) {
     width: 100%;
@@ -34,6 +35,10 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: getColor('third-text-color');
+
+  th {
+    padding: 15px 0px 16px 0px;
+  }
 
   th:first-child {
     border-radius: 30px 0px 0px 30px;
