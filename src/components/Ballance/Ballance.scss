@@ -1,14 +1,16 @@
 @import '../../scss/main.scss';
 
 .ballance-div {
-  margin-bottom: 30px;
-  padding: 10px;
+  width: 100%;
+  padding: 8px 10px 13px 40px;
+  margin: 0 auto;
   border-radius: 30px;
   background-color: getColor('third-text-color');
+  margin-top: 13px;
 }
 
 .ballance-title {
-  margin: 10px;
+  margin-bottom: 10px;
   font-size: 12px;
   line-height: 1.5;
   text-transform: uppercase;

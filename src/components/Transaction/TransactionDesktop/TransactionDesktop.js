@@ -18,7 +18,7 @@ function TransactionDesktop() {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="transaction-tbody">
             {/* здесь отрендерить данные транзакций с бекенда */}
             <tr>
               <td>11.07.2021</td>
