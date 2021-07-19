@@ -1,6 +1,7 @@
 @import '../../scss/main.scss';
 
 .registrationPage {
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -107,6 +108,7 @@
     padding: 52px 85px 52px 95px;
 
     width: 55%;
+    height: 100vh;
     backdrop-filter: blur(8px);
     z-index: 1;
   }
