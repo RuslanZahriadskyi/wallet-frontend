@@ -2,6 +2,7 @@
 
 .user_name_text {
   color: getColor('secondary-text-color');
+  font-family: 'Circe';
   font-size: 18px;
   font-weight: normal;
   line-height: 26px;
@@ -20,6 +21,7 @@
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
+  font-family: 'Circe';
 
   @media screen and (min-width: 768px) {
     border-left: 1px solid getColor('secondary-text-color');

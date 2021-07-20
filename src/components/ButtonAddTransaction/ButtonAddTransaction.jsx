@@ -14,7 +14,7 @@ export default function ButtonAddTransaction() {
   );
 
   return (
-    <div>
+    <>
       <button
         className={s.button}
         type="button"
@@ -23,6 +23,6 @@ export default function ButtonAddTransaction() {
       >
         <AddIcon className={s.buttonIcon} fontSize="large" />
       </button>
-    </div>
+    </>
   );
 }

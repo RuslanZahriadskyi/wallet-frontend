@@ -1,19 +1,69 @@
 @import '../../scss/main.scss';
 
+.currency-tbody {
+  border: none;
+  height: 100%;
+
+  tr:first-child td {
+    padding-top: 20px;
+  }
+
+  td {
+    border: none;
+    padding-bottom: 23px;
+  }
+}
+
 .currency-div {
-  margin: 33px 20px 0;
+  margin-top: 33px;
+  z-index: 2;
+  position: relative;
 }
 
 .currency-table {
-  width: 100%;
   border-radius: 30px;
   text-align: center;
   color: getColor('third-text-color');
   background-color: getColor('fourth-text-color');
+  display: block;
+  border-spacing: 0px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 1280px) {
+    height: 348px;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-image: url(../../images/wave-currency.svg);
+
+    left: 0;
+    bottom: 0;
+
+    width: 335px;
+    height: 111px;
+    background-repeat: no-repeat;
+
+    @media (max-width: 767px) {
+      left: 24px;
+    }
+
+    @media (min-width: 1280px) {
+      height: 134px;
+    }
+  }
 }
+
 .currency-column {
-  padding: 10px;
+  padding: 15px;
   font-size: 18px;
+
+  @media (min-width: 1280px) {
+    padding: 20px 15px;
+  }
 }
 .currency-row {
   background: linear-gradient(

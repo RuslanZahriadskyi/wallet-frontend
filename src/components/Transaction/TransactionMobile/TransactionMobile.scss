@@ -1,21 +1,9 @@
 @import '../../../scss/main.scss';
-td {
-  border-bottom: 1px solid #dcdcdf;
-}
 
-.transaction-div {
-  margin-top: 30px;
-  padding: 16px 15px 20px;
-  // background-color: rgba($color: #e1e1e1, $alpha: 0.4);
-}
 .transaction-table {
   width: 100%;
-  // text-align: center;
-  // background-color: getColor('third-text-color');
 }
-// .transaction-head {
-//   background-color: getColor('third-text-color');
-// }
+
 .transaction-row {
   display: block;
   margin-bottom: 10px;
@@ -24,7 +12,6 @@ td {
 }
 
 .transaction-data {
-  // text-align: end;
   display: flex;
   justify-content: space-between;
 }

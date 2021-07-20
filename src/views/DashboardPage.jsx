@@ -34,7 +34,7 @@ const DashboardPage = () => {
   );
 
   return (
-    <div>
+    <>
       <Header />
 
       <div>
@@ -60,7 +60,7 @@ const DashboardPage = () => {
           <FormAddTransactions />
         </Modal>
       )}
-    </div>
+    </>
   );
 };
 
