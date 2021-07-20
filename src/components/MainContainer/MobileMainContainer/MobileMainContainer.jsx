@@ -11,6 +11,8 @@ import Loading from '../../Spinner';
 
 // Styles
 import './MobileMainContainer.scss';
+import '../../Home/HomeDesktop/HomeDesktop.scss';
+import '../../Home/HomeMobile/HomeMobile.scss';
 
 const HomeMobile = lazy(() =>
   import('../../Home/HomeMobile' /* webpackChunkName: "home-page" */),
@@ -31,46 +33,48 @@ const MobileMainContainer = () => {
   return (
     <>
       <div className="dashboard-container">
-        <ul className="icons">
-          <li className="icons-item">
-            <NavLink
-              to="/dashboard/home"
-              className="link"
-              activeClassName="active-link"
-            >
-              <HomeIcon fontSize="large" />
-            </NavLink>
-          </li>
-          <li className="icons-item">
-            <NavLink
-              to="/dashboard/statistics"
-              className="link"
-              activeClassName="active-link"
-            >
-              <TimelineIcon fontSize="large" />
-            </NavLink>
-          </li>
+        <div className="bg_filter">
+          <ul className="icons">
+            <li className="icons-item">
+              <NavLink
+                to="/dashboard/home"
+                className="link"
+                activeClassName="active-link"
+              >
+                <HomeIcon fontSize="large" />
+              </NavLink>
+            </li>
+            <li className="icons-item">
+              <NavLink
+                to="/dashboard/statistics"
+                className="link"
+                activeClassName="active-link"
+              >
+                <TimelineIcon fontSize="large" />
+              </NavLink>
+            </li>
 
-          <li className="icons-item">
-            <NavLink
-              to="/dashboard/currency"
-              className="link"
-              activeClassName="active-link"
-            >
-              <MonetizationOnOutlinedIcon fontSize="large" />
-            </NavLink>
-          </li>
-        </ul>
+            <li className="icons-item">
+              <NavLink
+                to="/dashboard/currency"
+                className="link"
+                activeClassName="active-link"
+              >
+                <MonetizationOnOutlinedIcon fontSize="large" />
+              </NavLink>
+            </li>
+          </ul>
 
-        <Suspense fallback={<Loading />}>
-          <Switch>
-            <Route path="/dashboard/home" component={HomeMobile} />
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route path="/dashboard/home" component={HomeMobile} />
 
-            <Route path="/dashboard/statistics" component={Statistics} />
+              <Route path="/dashboard/statistics" component={Statistics} />
 
-            <Route path="/dashboard/currency" component={Currency} />
-          </Switch>
-        </Suspense>
+              <Route path="/dashboard/currency" component={Currency} />
+            </Switch>
+          </Suspense>
+        </div>
       </div>
     </>
   );

@@ -14,7 +14,6 @@
   }
 
   @media screen and (min-width: 1280px) {
-    background: rgba(231, 234, 242, 1);
     display: flex;
   }
 
@@ -105,11 +104,11 @@
 
   @media screen and (min-width: 1280px) {
     background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
     padding: 136px 85px 116px 95px;
 
     width: 55%;
     height: 100vh;
-    backdrop-filter: blur(8px);
     z-index: 1;
   }
 }

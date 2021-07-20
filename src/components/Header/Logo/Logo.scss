@@ -14,8 +14,10 @@
 
 .logoText {
   color: getColor('main-text-color');
-  font: 20px Poppins;
+  font-family: 'Montserrat';
   font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
 
   @media screen and (min-width: 768px) {
     font-size: 30px;

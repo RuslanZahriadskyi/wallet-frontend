@@ -22,7 +22,7 @@ function TransactionDesktop() {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="transaction-tbody">
             {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
               ({
