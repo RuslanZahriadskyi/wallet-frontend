@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../redux/isLoading/isLoading-selectors';
 
 import Spinner from '../Spinner';
 
@@ -9,8 +11,10 @@ import './Currency.scss';
 
 function Currency() {
   const [rates, setRates] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // спиннер
   const [error, setError] = useState(null);
+
+  const isLoading = useSelector(getIsLoading);
+  console.log(isLoading);
 
   useEffect(() => {
     fetchRates();
@@ -19,7 +23,7 @@ function Currency() {
 
   const fetchRates = async () => {
     //   сотояние загрузки, меняем значение
-    setIsLoading(true);
+    // isLoading(true);
 
     try {
       const data = await currencyApi.fetchRates();
@@ -30,7 +34,7 @@ function Currency() {
       throw new Error('Something get wrong. Please, waiting!'); //notification????
     }
 
-    setIsLoading(false);
+    // isLoading(false);
   };
 
   return (

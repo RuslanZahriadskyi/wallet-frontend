@@ -40,9 +40,7 @@ const DesktopMainContainer = () => {
                 className="link"
                 activeClassName="active-link"
               >
-                <span className="icons-ui">
-                  <HomeIcon />
-                </span>
+                <HomeIcon fontSize="small" />
 
                 <span className="icons-title">Главная</span>
               </NavLink>
@@ -54,9 +52,7 @@ const DesktopMainContainer = () => {
                 className="link"
                 activeClassName="active-link"
               >
-                <span className="icons-ui">
-                  <TimelineIcon />
-                </span>
+                <TimelineIcon fontSize="small" />
 
                 <span className="icons-title">Статистика</span>
               </NavLink>
