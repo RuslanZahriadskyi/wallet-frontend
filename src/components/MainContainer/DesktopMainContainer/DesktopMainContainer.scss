@@ -46,21 +46,22 @@
 }
 
 .bg_filter {
-  height: 100vh;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(50px);
   padding-right: 20px;
   padding-left: 20px;
 
   @media (min-width: 768px) {
+    height: 100vh;
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 23px;
   }
 
   @media (min-width: 1280px) {
     display: flex;
     padding-left: 85px;
     padding-right: 85px;
+    padding-bottom: 40px;
   }
 }
 
@@ -68,12 +69,16 @@
   display: flex;
   align-items: baseline;
 
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
+
   @media (min-width: 1280px) {
     flex-direction: column;
     justify-content: flex-start;
     padding-right: 30px;
     border-right: 1px solid #dcdcdf;
-    box-shadow: 0px 5px 3px -4px rgba(255, 255, 255, 0.8);
+    box-shadow: 5px 0 4px -5px rgba(255, 255, 255, 0.6);
   }
 }
 .home-wrap-desktop {
@@ -85,6 +90,9 @@
 
   @media (min-width: 1280px) {
     width: 100%;
+    ul {
+      margin-top: 40px;
+    }
   }
 }
 

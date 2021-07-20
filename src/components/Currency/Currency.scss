@@ -25,13 +25,19 @@
   text-align: center;
   color: getColor('third-text-color');
   background-color: getColor('fourth-text-color');
-  display: block;
+  width: 100%;
   border-spacing: 0px;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+
+  //  @media (min-width: 768px) {
+
+  //  }
 
   @media (min-width: 1280px) {
+    display: block;
     height: 348px;
   }
 
@@ -43,17 +49,14 @@
     left: 0;
     bottom: 0;
 
-    width: 335px;
+    width: 100%;
     height: 111px;
     background-repeat: no-repeat;
+    background-size: 100%;
 
-    @media (max-width: 767px) {
-      left: 24px;
-    }
-
-    @media (min-width: 1280px) {
-      height: 134px;
-    }
+    // @media (max-width: 767px) {
+    //   width: 400px;
+    // }
   }
 }
 

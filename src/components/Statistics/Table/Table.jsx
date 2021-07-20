@@ -7,29 +7,31 @@ import s from './Table.module.scss';
 const Table = ({ data, income, outlay }) => {
   return (
     <>
-      <div className={s.tableHead}>
-        <p className={s.tableFirstCol}>Категория</p>
-        <p className={s.tableSecondCol}>Сумма</p>
-      </div>
-
-      <table className={s.table}>
-        <tbody className={s.tableBody}>
-          {data.map(({ name, color, count }) => (
-            <tr key={id()}>
-              <td className={s.tableData}>
-                <span
-                  className={s.mark}
-                  style={{ backgroundColor: color }}
-                ></span>
-
-                {name}
-              </td>
-              <td className={s.tableData}>{count.toFixed(1)}</td>
+      <div className={s.container}>
+        <table className={s.table}>
+          <thead className={s.tableHead}>
+            <tr>
+              <th className={s.tableFirstCol}>Категория</th>
+              <th className={s.tableSecondCol}>Сумма</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
+          <tbody className={s.tableBody}>
+            {data.map(({ name, color, count }) => (
+              <tr key={id()}>
+                <td className={s.tableData}>
+                  <span
+                    className={s.mark}
+                    style={{ backgroundColor: color }}
+                  ></span>
 
-        <tfoot className={s.tableFoot}>
+                  {name}
+                </td>
+                <td className={s.tableData}>{count.toFixed(1)}</td>
+              </tr>
+            ))}
+          </tbody>
+
+           <tfoot className={s.tableFoot}>
           <tr className={s.footRaw}>
             <th className={s.footTitle}>Расходы:</th>
             <td className={s.expenses}>{outlay ? outlay.toFixed(1) : 0}</td>
@@ -39,7 +41,11 @@ const Table = ({ data, income, outlay }) => {
             <td className={s.incomes}>{income ? income.toFixed(1) : 0}</td>
           </tr>
         </tfoot>
-      </table>
+        </table>
+      </div>
+
+      {/* <p className={s.warning}>Пожалуйста, добавьте операции</p> */}
+
     </>
   );
 };
