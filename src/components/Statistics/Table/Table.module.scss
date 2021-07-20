@@ -1,31 +1,67 @@
 @import '../../../scss/main.scss';
+.container {
+  position: relative;
+  margin-top: 40px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 20px;
+  }
+}
 
 .table {
-  table-layout: fixed;
+  border-spacing: 0px;
   width: 100%;
-  border-collapse: collapse;
+  // td {
+  //   @media (max-width: 767px) {
+
+  //     padding-left: 20px;
+  //   }
+  //   padding: 15px 0 15px;
+  //   font-family: Circe, sans-serif;
+  //   font-weight: 400;
+  //   font-size: 16px;
+  //   line-height: 1.13;
+  // }
+
+  // @media (min-width: 768px) {
+  //   width: 100%;
+  //   text-align: center;
+  // }
 }
 
 .tableHead {
-  display: flex;
-  justify-content: space-between;
+  // padding: 15px 20px;
 
-  margin: 0;
-  padding: 15px 20px;
+  // max-height: 50px;
 
-  max-height: 50px;
-
-  border-radius: 33px;
+  // border-radius: 33px;
 
   align-items: center;
   background-color: getColor('main-background-color');
-
   font-family: Circe, sans-serif;
   font-weight: 700;
   font-size: 18px;
 
   @media (min-width: 768px) {
     padding: 15px 30px;
+  }
+
+  th {
+    padding: 15px 0px 16px 0px;
+  }
+
+  th:first-child {
+    text-align: start;
+    padding-left: 30px;
+    border-radius: 30px 0px 0px 30px;
+  }
+
+  th:last-child {
+    border-radius: 0px 30px 30px 0px;
   }
 }
 
@@ -35,42 +71,38 @@
   background-color: transparent;
 }
 
-tbody td {
-  padding: 10px 0 10px;
-
+.tableBody td {
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0 5px 4px -5px rgb(255 255 255 / 60%);
   font-family: Circe, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.13;
-}
 
-tbody tr {
-  border: none;
-  border-bottom: 0.1px solid getColor('table-border-color');
+  &:not(:first-child) {
+    padding: 19px 0 17px;
+  }
 }
 
 .tableData {
+  vertical-align: baseline;
   &:first-child {
-    display: inline-flex;
     align-items: center;
-    padding-left: 20px;
   }
 
   &:last-child {
     text-align: right;
-    padding-right: 20px;
-
-    @media (min-width: 768px) {
-      padding-right: 30px;
-    }
+    padding-right: 15px;
   }
 }
 
 .mark {
-  display: block;
-  min-width: 24px;
-  min-height: 24px;
+  display: inline-flex;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
   margin-right: 15px;
+  margin-left: 10px;
 }
 
 tfoot th,
@@ -96,24 +128,25 @@ tfoot td {
 
 .expenses {
   text-align: right;
-  padding-right: 20px;
+
   padding-top: 15px;
   padding-bottom: 10px;
 
   color: getColor('consumption-text-color');
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     padding-right: 30px;
   }
 }
 
 .incomes {
   text-align: right;
-  padding-right: 20px;
+
+  padding-bottom: 17px;
 
   color: getColor('income-text-color');
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     padding-right: 30px;
   }
 }

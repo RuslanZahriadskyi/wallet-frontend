@@ -1,19 +1,18 @@
 @import '../../../scss/main.scss';
 
 .section {
-  margin-right: auto;
-  margin-left: auto;
-  padding: 30px 20px 40px 20px;
+  // margin-right: auto;
+  // margin-left: auto;
 
   @media (min-width: 768px) {
-    display: block;
-    padding: 40px;
-    padding-right: 20px;
+    //  height: 100vh;
+    padding-top: 40px;
+    width: 100%;
   }
 
-  @media (min-width: 1280px) {
-    padding: 30px 85px 35px 30px;
-  }
+  // @media (min-width: 1280px) {
+  //   padding: 30px 85px 35px 30px;
+  // }
 
   &Title {
     margin: 0;
@@ -34,17 +33,17 @@
 .wrapper {
   @media (min-width: 768px) {
     display: flex;
+    justify-content: space-around;
   }
 }
 
 .visualPart {
   position: relative;
-
-  margin: 0;
-  margin-bottom: 20px;
-  padding: 0;
-
   height: 100%;
+
+  @media (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 
   @media (min-width: 768px) {
     margin-right: 35px;
@@ -66,9 +65,9 @@
   font-size: 18px;
   line-height: 1.5;
 
-  @media (min-width: 768px) {
-    transform: translate(-50%, -50%);
-  }
+  // @media (min-width: 768px) {
+  //   transform: translate(-50%, -50%);
+  // }
 }
 
 .filter {

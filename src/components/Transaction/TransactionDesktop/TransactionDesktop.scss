@@ -17,6 +17,10 @@
   border-radius: 30px;
 
   td {
+    @media (max-width: 767px) {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
     padding: 15px 0 15px;
     font-family: Circe, sans-serif;
     font-weight: 400;
@@ -50,8 +54,10 @@
   }
 }
 
-.transaction-tbody {
+.transaction-tbody-desctop {
   td {
     border-bottom: 1px solid #dcdcdf;
+
+    box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
   }
 }

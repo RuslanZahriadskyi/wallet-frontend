@@ -1,5 +1,6 @@
 import React, { Fragment, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
 
 // Redux
@@ -48,7 +49,12 @@ const DashboardPage = () => {
             <Fragment>
               {matches.small && <MobileMainContainer />}
 
-              {matches.medium && <DesktopMainContainer />}
+              {matches.medium && (
+                <>
+                  <Redirect to="/dashboard/home" />
+                  <DesktopMainContainer />
+                </>
+              )}
             </Fragment>
           )}
         </Media>

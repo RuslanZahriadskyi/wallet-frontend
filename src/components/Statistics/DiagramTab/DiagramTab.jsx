@@ -64,7 +64,7 @@ function DiagramTab() {
 
       <div className={s.wrapper}>
         <div className={s.visualPart}>
-          <div className={s.chartTotal}>₴{total ? total.toFixed(2) : 0}</div>
+          <h2 className={s.chartTotal}>₴ {total ? total.toFixed(2) : 0}</h2>
 
           <Chart data={chartData} />
         </div>
