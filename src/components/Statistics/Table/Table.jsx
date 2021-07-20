@@ -31,20 +31,21 @@ const Table = ({ data, income, outlay }) => {
             ))}
           </tbody>
 
-          <tfoot className={s.tableFoot}>
-            <tr className={s.footRaw}>
-              <th className={s.footTitle}>Расходы:</th>
-              <td className={s.expenses}>{outlay ? outlay.toFixed(1) : 0}</td>
-            </tr>
-            <tr className={s.footRow}>
-              <th className={s.footTitle}>Доходы:</th>
-              <td className={s.incomes}>{income ? income.toFixed(1) : 0}</td>
-            </tr>
-          </tfoot>
+           <tfoot className={s.tableFoot}>
+          <tr className={s.footRaw}>
+            <th className={s.footTitle}>Расходы:</th>
+            <td className={s.expenses}>{outlay ? outlay.toFixed(1) : 0}</td>
+          </tr>
+          <tr className={s.footRow}>
+            <th className={s.footTitle}>Доходы:</th>
+            <td className={s.incomes}>{income ? income.toFixed(1) : 0}</td>
+          </tr>
+        </tfoot>
         </table>
       </div>
 
       {/* <p className={s.warning}>Пожалуйста, добавьте операции</p> */}
+
     </>
   );
 };

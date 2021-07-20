@@ -6,7 +6,6 @@ import { v4 as id } from 'uuid';
 import Chart from '../Chart';
 import Table from '../Table';
 import s from './DiagramTab.module.scss';
-// import Spinner from '../../Spinner';
 
 import date from './monthAndYear';
 import {
@@ -98,7 +97,11 @@ function DiagramTab() {
             </select>
           </div>
 
-          <Table data={statisticsData} income={income} outlay={outlay} />
+          {statisticsData.length ? (
+            <Table data={statisticsData} income={income} outlay={outlay} />
+          ) : (
+            <p className={s.warning}>Пожалуйста, добавьте операции</p>
+          )}
         </div>
       </div>
     </section>
