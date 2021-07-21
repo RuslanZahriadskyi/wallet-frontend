@@ -11,9 +11,9 @@ import Avatar from '@material-ui/core/Avatar';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useStyles = makeStyles(theme => ({
-  small: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
   },
   input: {
     display: 'none',

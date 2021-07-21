@@ -22,6 +22,6 @@ export const getCurrentUserAvatarRequest = createAction(
 export const getCurrentUserAvatarSuccess = createAction(
   'auth/getCurrentUserAvatarSuccess',
 );
-export const getCurrentAvatarUserError = createAction(
+export const getCurrentUserAvatarError = createAction(
   'auth/getCurrentUserAvatarError',
 );

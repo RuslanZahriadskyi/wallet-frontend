@@ -23,8 +23,6 @@ function Currency() {
     try {
       const data = await currencyApi.fetchRates();
 
-      console.log(data);
-
       data.length = 3; //переделать
       setRates([...rates, ...data]);
     } catch (error) {
@@ -45,7 +43,7 @@ function Currency() {
               <th className="currency-column">Продажа</th>
             </tr>
           </thead>
-    
+
           <tbody className="currency-tbody">
             {rates.map(({ ccy, buy, sale }) => (
               <tr key={buy}>

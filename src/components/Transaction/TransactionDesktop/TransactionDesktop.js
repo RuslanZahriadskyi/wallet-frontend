@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { operationsSelectors } from '../../../redux/operations';
+import AddButton from '../../ButtonAddTransaction';
+import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
 
 import './TransactionDesktop.scss';
 
@@ -47,6 +49,7 @@ function TransactionDesktop() {
           </tbody>
         </table>
       </div>
+      <AddButton />
     </>
   );
 }
