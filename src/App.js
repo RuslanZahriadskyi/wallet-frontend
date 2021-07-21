@@ -16,10 +16,6 @@ const LoginPage = lazy(() =>
   import('./views/LoginPage.jsx' /* webpackChunkName: "login-page" */),
 );
 
-const ErrorPage = lazy(() =>
-  import('./views/ErrorPage' /* webpackChunkName: "error-page" */),
-);
-
 function App() {
   const dispatch = useDispatch();
 

@@ -3,7 +3,6 @@
 .dashboard-container {
   background-color: #e1e1e1;
   position: relative;
-  height: 100vh;
 
   @media (min-width: 768px) {
     padding-right: 0px;
@@ -50,6 +49,10 @@
   backdrop-filter: blur(50px);
   padding-right: 20px;
   padding-left: 20px;
+  padding-bottom: 40px;
+
+  @media (max-width: 767px) {
+  }
 
   @media (min-width: 768px) {
     height: 100vh;
@@ -61,7 +64,6 @@
     display: flex;
     padding-left: 85px;
     padding-right: 85px;
-    padding-bottom: 40px;
   }
 }
 
@@ -92,30 +94,40 @@
     width: 100%;
     ul {
       margin-top: 40px;
+      margin-bottom: 0px;
     }
   }
 }
 
 .icons-list {
   display: flex;
-  margin-top: 13px;
+  margin: 0;
+
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
 }
+
 .link {
   font-size: 18px;
   line-height: 1.5;
   text-decoration: none;
 }
+
 .active-link {
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
 }
+
 .icons-ui {
   display: inline-flex;
   border-radius: 2px;
   background-color: getColor('fourth-text-color');
 }
+
 .icons-title {
   margin-left: 20px;
+  font-size: 18px;
   color: getColor('main-text-color');
 }
