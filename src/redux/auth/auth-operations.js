@@ -14,7 +14,7 @@ import {
   getCurrentUserError,
   getCurrentUserAvatarRequest,
   getCurrentUserAvatarSuccess,
-  getCurrentAvatarUserError,
+  getCurrentUserAvatarError,
 } from './auth-actions.js';
 
 axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
@@ -78,7 +78,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
   try {
     const response = await axios.get('/api/users/current');
-    console.log(response);
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
@@ -90,17 +89,18 @@ const getCurrenAvatartUser = avatar => async dispatch => {
 
   try {
     let formData = new FormData();
-    formData.append('file', avatar);
+    formData.append('avatar', avatar);
 
     const response = await axios.patch('/api/users/avatars', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(response);
+
     dispatch(getCurrentUserAvatarSuccess(response.data));
   } catch (error) {
-    dispatch(getCurrentAvatarUserError(error.message));
+    console.log(error);
+    dispatch(getCurrentUserAvatarError(error.message));
   }
 };
 
