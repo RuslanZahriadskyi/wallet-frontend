@@ -26,16 +26,14 @@ function Currency() {
       setRates([...rates, ...data]);
     } catch (error) {
       // throw new Error('Something get wrong. Please, waiting!'); //notification????
-      setIsLoading(true);
       setError(error);
     }
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   return (
     <>
-
-      {!isLoading && (
+      {isLoading && (
         <div className="currency-div">
           <table className="currency-table">
             <thead>
@@ -59,7 +57,7 @@ function Currency() {
         </div>
       )}
 
-      {error && <p>Здесь сделать notification об ошибке</p>}
+      {error && <p>Что-то пошло не так. Попробуйте позже.</p>}
     </>
   );
 }

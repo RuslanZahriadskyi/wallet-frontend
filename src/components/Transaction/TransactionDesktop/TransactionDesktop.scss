@@ -2,6 +2,8 @@
 
 .transaction-div {
   position: relative;
+  max-height: 68vh;
+  overflow: auto;
   margin-top: 40px;
 
   @media (min-width: 1280px) {
@@ -60,4 +62,10 @@
   th:last-child {
     border-radius: 0px 30px 30px 0px;
   }
+}
+.outlay-color {
+  color: getColor('consumption-text-color');
+}
+.income-color {
+  color: getColor('income-text-color');
 }
