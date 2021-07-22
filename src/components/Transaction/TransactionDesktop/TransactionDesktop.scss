@@ -15,7 +15,6 @@
 
 .transaction-table {
   border-spacing: 0px;
-
   border-radius: 30px;
 
   td {
@@ -63,9 +62,11 @@
     border-radius: 0px 30px 30px 0px;
   }
 }
+
 .outlay-color {
   color: getColor('consumption-text-color');
 }
 .income-color {
   color: getColor('income-text-color');
 }
+
