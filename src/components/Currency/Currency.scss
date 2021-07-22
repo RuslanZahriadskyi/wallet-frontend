@@ -15,7 +15,7 @@
 }
 
 .currency-div {
-  margin-top: 33px;
+  margin-top: 20px;
   z-index: 2;
   position: relative;
 }
@@ -28,6 +28,7 @@
   width: 100%;
   border-spacing: 0px;
   overflow: hidden;
+
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -39,6 +40,7 @@
   @media (min-width: 1280px) {
     display: block;
     height: 348px;
+    width: 347px;
   }
 
   &::before {
@@ -63,9 +65,10 @@
 .currency-column {
   padding: 15px;
   font-size: 18px;
+  line-height: 26.53px;
 
   @media (min-width: 1280px) {
-    padding: 20px 15px;
+    padding: 16px 19px 17px 18px;
   }
 }
 .currency-row {

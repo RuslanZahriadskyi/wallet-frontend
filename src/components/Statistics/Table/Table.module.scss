@@ -15,31 +15,9 @@
 .table {
   border-spacing: 0px;
   width: 100%;
-  // td {
-  //   @media (max-width: 767px) {
-
-  //     padding-left: 20px;
-  //   }
-  //   padding: 15px 0 15px;
-  //   font-family: Circe, sans-serif;
-  //   font-weight: 400;
-  //   font-size: 16px;
-  //   line-height: 1.13;
-  // }
-
-  // @media (min-width: 768px) {
-  //   width: 100%;
-  //   text-align: center;
-  // }
 }
 
 .tableHead {
-  // padding: 15px 20px;
-
-  // max-height: 50px;
-
-  // border-radius: 33px;
-
   align-items: center;
   background-color: getColor('main-background-color');
   font-family: Circe, sans-serif;

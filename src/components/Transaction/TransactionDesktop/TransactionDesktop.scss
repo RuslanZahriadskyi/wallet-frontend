@@ -2,8 +2,6 @@
 
 .transaction-div {
   position: relative;
-  max-height: 67vh;
-  overflow: auto;
   margin-top: 40px;
 
   @media (min-width: 1280px) {
@@ -15,19 +13,26 @@
 
 .transaction-table {
   border-spacing: 0px;
+
   border-radius: 30px;
 
   td {
-
-    padding: 15px 0 15px 15px;
     @media (max-width: 767px) {
       padding-right: 20px;
       padding-left: 20px;
     }
+    padding: 19px 0 16px 15px;
     font-family: Circe, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.13;
+    border-bottom: 1px solid #dcdcdf;
+    text-align: start;
+    box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
+  }
+
+  td:first-child {
+    padding-left: 20px;
   }
 
   @media (min-width: 768px) {
@@ -45,35 +50,14 @@
 
   th {
     padding: 15px 0px 16px 0px;
-    text-align: start;
   }
 
   th:first-child {
-    padding-left: 20px;
     border-radius: 30px 0px 0px 30px;
+    align-items: start;
   }
 
   th:last-child {
     border-radius: 0px 30px 30px 0px;
   }
-}
-
-.transaction-tbody-desctop {
-  td {
-    border-bottom: 1px solid #dcdcdf;
-
-    text-align: start;
-
-    &:first-child {
-      padding-left: 20px;
-    }
-
-   box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
-  }
-}
-.outlay-color {
-  color: getColor('income-text-color');
-}
-.income-color {
-  color: getColor('consumption-text-color');
 }

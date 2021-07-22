@@ -28,6 +28,7 @@ const operationSchema = Yup.object({
     then: Yup.string().required('Category is required'),
   }),
 });
+
 const FormAddTransactions = () => {
   const dispatch = useDispatch();
 
