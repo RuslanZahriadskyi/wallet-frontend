@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { operationsSelectors } from '../../../redux/operations';
+import AddButton from '../../ButtonAddTransaction';
+import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
 
 import './TransactionDesktop.scss';
 
@@ -22,7 +24,7 @@ function TransactionDesktop() {
             </tr>
           </thead>
 
-          <tbody className="transaction-tbody">
+          <tbody className="transaction-tbody-desctop">
             {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
               ({
@@ -68,6 +70,7 @@ function TransactionDesktop() {
           </tbody>
         </table>
       </div>
+      <AddButton />
     </>
   );
 }

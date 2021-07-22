@@ -1,5 +1,6 @@
-import React, { Fragment, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
 
 // Redux
@@ -11,9 +12,6 @@ import {
 import { statisticsOperations } from '../redux/statistics';
 
 import Header from '../components/Header/Header';
-import AddButton from '../components/ButtonAddTransaction';
-import FormAddTransactions from '../components/ModalAddTransactions/FormAddTransactions';
-import Modal from '../components/ModalAddTransactions';
 
 // Adaptive layout
 import MobileMainContainer from '../components/MainContainer/MobileMainContainer';
@@ -26,12 +24,6 @@ const DashboardPage = () => {
     dispatch(statisticsOperations.fetchBalance());
     dispatch(operationsOperation.getOperations());
   }, [dispatch]);
-
-  const modal = useSelector(operationsSelectors.getModalValue);
-  const closeModal = useCallback(
-    () => dispatch(operationsAction.closeModal()),
-    [dispatch],
-  );
 
   return (
     <>
@@ -48,18 +40,16 @@ const DashboardPage = () => {
             <Fragment>
               {matches.small && <MobileMainContainer />}
 
-              {matches.medium && <DesktopMainContainer />}
+              {matches.medium && (
+                <>
+                  <Redirect to="/dashboard/home" />
+                  <DesktopMainContainer />
+                </>
+              )}
             </Fragment>
           )}
         </Media>
       </div>
-
-      <AddButton />
-      {modal && (
-        <Modal modalValue={modal} modalAction={() => closeModal()}>
-          <FormAddTransactions />
-        </Modal>
-      )}
     </>
   );
 };

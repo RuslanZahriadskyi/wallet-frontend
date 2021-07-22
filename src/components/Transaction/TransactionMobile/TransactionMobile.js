@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { operationsSelectors } from '../../../redux/operations';
+import AddButton from '../../ButtonAddTransaction';
 
 import './TransactionMobile.scss';
+import '../TransactionDesktop/TransactionDesktop.scss';
 
 function TransactionMobile() {
   const operations = useSelector(operationsSelectors.getOperations);
@@ -12,7 +14,7 @@ function TransactionMobile() {
     <>
       <div className="transaction-div">
         <table className="transaction-table">
-          <tbody>
+          <tbody className="transaction-tbody transaction-tbody-mobile">
             {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
               ({
@@ -93,6 +95,7 @@ function TransactionMobile() {
           </tbody>
         </table>
       </div>
+      <AddButton />
     </>
   );
 }

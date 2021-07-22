@@ -14,7 +14,7 @@ import {
   getCurrentUserError,
   getCurrentUserAvatarRequest,
   getCurrentUserAvatarSuccess,
-  getCurrentAvatarUserError,
+  getCurrentUserAvatarError,
 } from '../auth/auth-actions';
 import { categoriesAction } from '../category';
 import { operationsAction } from '../operations';
@@ -35,7 +35,7 @@ const isLoading = createReducer(false, {
   [getCurrentUserError]: () => false,
   [getCurrentUserAvatarRequest]: () => true,
   [getCurrentUserAvatarSuccess]: () => false,
-  [getCurrentAvatarUserError]: () => false,
+  [getCurrentUserAvatarError]: () => false,
   [categoriesAction.addNewCategoryRequest]: () => true,
   [categoriesAction.addNewCategorySuccess]: () => false,
   [categoriesAction.addNewCategoryError]: () => false,

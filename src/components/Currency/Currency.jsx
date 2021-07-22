@@ -22,7 +22,6 @@ function Currency() {
       setIsLoading(true);
 
       const data = await currencyApi.fetchRates();
-      // console.log(data);
       data.length = 3; //переделать
       setRates([...rates, ...data]);
     } catch (error) {
@@ -35,6 +34,7 @@ function Currency() {
 
   return (
     <>
+
       {!isLoading && (
         <div className="currency-div">
           <table className="currency-table">

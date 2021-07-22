@@ -10,7 +10,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
   getCurrentUserAvatarSuccess,
-  getCurrentAvatarUserError,
+  getCurrentUserAvatarError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -33,10 +33,10 @@ const user = createReducer(initialUserState, {
     avatar,
     avatarId,
   }),
-  [getCurrentUserAvatarSuccess]: (state, { avatar, avatarId }) => [
+  [getCurrentUserAvatarSuccess]: (state, { payload: { avatarUrl } }) => ({
     ...state,
-    { avatar, avatarId },
-  ],
+    avatar: avatarUrl,
+  }),
 });
 
 const token = createReducer(null, {

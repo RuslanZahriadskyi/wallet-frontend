@@ -25,6 +25,14 @@
   }
 }
 
+.transaction-tbody-mobile {
+  td:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
+
+    box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
+  }
+}
+
 .transaction-row {
   display: block;
   margin-bottom: 10px;
