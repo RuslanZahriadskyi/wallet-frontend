@@ -15,14 +15,10 @@
   }
 }
 .outlay-border {
-  &::before {
-    border-right: 4px solid getColor('consumption-text-color');
-  }
+  border-left: 4px solid getColor('consumption-text-color');
 }
 .income-border {
-  &::before {
-    border-right: 4px solid getColor('income-text-color');
-  }
+  border-left: 4px solid getColor('income-text-color');
 }
 
 .transaction-tbody-mobile {

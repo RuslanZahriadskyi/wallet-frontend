@@ -23,13 +23,6 @@ const Statistics = lazy(() =>
   import('../../Statistics' /* webpackChunkName: "statistics-page" */),
 );
 
-// const Currency = lazy(() =>
-//   import(
-//     '../../Currency' /*
-//   webpackChunkName: "currency-page" */
-//   ),
-// );
-
 const DesktopMainContainer = () => {
   return (
     <div className="dashboard-container">
@@ -61,7 +54,6 @@ const DesktopMainContainer = () => {
                 </li>
               </ul>
 
-              {/* Ballance */}
               <Ballance />
             </div>
             <Currency />
@@ -72,8 +64,6 @@ const DesktopMainContainer = () => {
               <Route path="/dashboard/home" component={HomeDesktop} />
 
               <Route path="/dashboard/statistics" component={Statistics} />
-
-              {/* <Route path="/dashboard/currency" component={Currency} /> */}
             </Switch>
           </Suspense>
         </div>
