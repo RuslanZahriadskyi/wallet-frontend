@@ -1,21 +1,27 @@
 @import '../../scss/main.scss';
 
 .registrationPage {
-  min-height: 100vh;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
   justify-content: center;
   position: relative;
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 36px 20px;
+  }
+
   @media screen and (min-width: 768px) {
-    justify-content: space-between;
     background: rgba(231, 234, 242, 1);
+    padding: 63px 114px 48px 114px;
   }
 
   @media screen and (min-width: 1280px) {
     background: rgba(231, 234, 242, 1);
     display: flex;
+    padding: 0px;
   }
 
   &::after {
@@ -40,7 +46,6 @@
     display: none;
   }
   @media screen and (min-width: 768px) {
-    padding-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,15 +105,14 @@
     display: flex;
     padding-top: 50px;
     justify-content: center;
-    padding-bottom: 48px;
   }
 
   @media screen and (min-width: 1280px) {
     background: rgba(255, 255, 255, 0.4);
-    padding: 52px 85px 52px 95px;
-
+    // padding: 52px 85px 52px 95px;
+    padding: 0;
     width: 55%;
-    height: 100vh;
+    height: 100%;
     backdrop-filter: blur(8px);
     z-index: 1;
   }
