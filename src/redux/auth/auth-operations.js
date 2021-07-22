@@ -17,6 +17,9 @@ import {
   getCurrentUserAvatarError,
 } from './auth-actions.js';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 axios.defaults.baseURL = 'https://own-wallet.herokuapp.com/';
 
 const token = {
@@ -36,8 +39,11 @@ const register = credentials => async dispatch => {
     token.set(response.data.token);
 
     dispatch(registerSuccess(response.data));
+    console.log(response.data);
+    toast.success(`Пожалуйста, подвердите регистрацию на своей почте :)`);
   } catch (error) {
     dispatch(registerError(error.message));
+    toast.error('Такой пользователь уже существует');
   }
 };
 
@@ -48,8 +54,12 @@ const login = credentials => async dispatch => {
 
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
+    toast.success(`Добро пожаловать в Wallet`);
   } catch (error) {
     dispatch(loginError(error.message));
+    toast.error(
+      'Ваш аккаунт не верифицирован, пожалуйста, подвердите свою почту',
+    );
   }
 };
 
@@ -62,6 +72,7 @@ const logout = () => async dispatch => {
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
+    toast.error('Упс, что-то пошло не так :(');
   }
 };
 
@@ -96,7 +107,6 @@ const getCurrenAvatartUser = avatar => async dispatch => {
         'Content-Type': 'multipart/form-data',
       },
     });
-
     dispatch(getCurrentUserAvatarSuccess(response.data));
   } catch (error) {
     console.log(error);

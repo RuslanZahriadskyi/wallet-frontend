@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import FormButtons from '../FormButtons/FormButtons';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
 import './RegistrationForm.scss';
@@ -15,7 +15,30 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 
-export default function RegistrationForm() {
+import PasswordStrengthBar from 'react-password-strength-bar';
+
+const operationSchema = Yup.object({
+  email: Yup.string()
+    .email('Введите корректную почту')
+    .required('Это поле является обязательным'),
+
+  password: Yup.string()
+    .min(7, 'Пароль должен состоять не менее чем из 7 символов')
+    .max(12, 'Пароль должен содержать 12 символов')
+    .required('Это поле является обязательным')
+    .matches(/^[a-zA-Z0-9]{7,30}$/, 'Ввеедите минимум 7 символов'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+    .required('Это поле является обязательным'),
+
+  name: Yup.string()
+    .min(4, 'Введите свое настоящее имя')
+    .max(12, 'Пароль должен содержать до 12 символов')
+    .required('Требуется имя'),
+});
+
+const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -25,60 +48,21 @@ export default function RegistrationForm() {
       confirmPassword: '',
       name: '',
     },
+    validationSchema: operationSchema,
 
-    validation: yup.object({
-      username: yup.string().required('Пожалуйста, введите имя пользователя'),
-      email: yup
-        .string()
-        .email()
-        .required('Пожалуйста, введите свой адрес электронной почты'),
-      confirmEmail: yup
-        .string('Пожалуйста, введите свой адрес электронной почты')
-        .email('Пожалуйста,ведите действующий адрес электронной почты')
-        .required('Требуется электронная почта')
-        .oneOf([yup.ref('email'), null], 'Электронные письма должны совпадать'),
-      password: yup
-        .string('Пожалуйста, введите пароль')
-        .min(7, 'Пароль должен состоять не менее чем из 7 символов')
-        .max(26, 'Пароль должен содержать до 12 символов')
-        .required('Требуется пароль'),
+    onSubmit: ({ email, password, name }, { resetForm }) => {
+      const newUser = { email, password, name };
 
-      confirmPassword: yup
-        .string('Пожалуйста, повторите пароль')
-        .required('Требуется пароль')
-        .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
-
-      name: yup
-        .string('Пожалуйста введите свое имя')
-        .min(3, 'Пароль должен состоять не менее чем из 3 символов')
-        .max(12, 'Пароль должен содержать до 12 символов')
-        .required('Требуется имя'),
-    }),
-
-    //   onSubmit: ({ email, password, name }) => {
-    //     dispatch(authOperations.register({ name, email, password }));
-    //   },
-    // });
-    //   onSubmit: ({ email, password, name }) => {
-    //     dispatch(authOperations.register({ email, password,  name }));
-    //     formik.resetForm();
-    //   },
-    // });
-    onSubmit: (values, { resetForm }) => {
-      const { email, password, name } = values;
-      dispatch(authOperations.register({ email, password, name }));
+      dispatch(authOperations.register(newUser));
       resetForm({});
     },
   });
 
+  const pass = formik.values.password;
+
   return (
     <div className="blok2">
-      <form
-        className="form"
-        onSubmit={formik.handleSubmit}
-        noValidate
-        autoComplete="off"
-      >
+      <form className="form" onSubmit={formik.handleSubmit}>
         <div className="logo">
           <img src={logo} alt="LogoImg" className="logoImg" />
           <h1 className="title">Wallet</h1>
@@ -96,7 +80,7 @@ export default function RegistrationForm() {
             placeholder="E-mail"
             type="email"
             name="email"
-            value={formik.email}
+            value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
@@ -115,11 +99,13 @@ export default function RegistrationForm() {
             placeholder="Пароль"
             type="password"
             name="password"
-            value={formik.password}
+            inputProps={{ autoComplete: 'true' }}
+            value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
+          <PasswordStrengthBar password={pass} />
         </div>
         <div className="input">
           <TextField
@@ -132,9 +118,10 @@ export default function RegistrationForm() {
             }}
             className="placeholder"
             placeholder="Подтвердите пароль"
-            type="confirmPassword"
+            type="password"
             name="confirmPassword"
-            value={formik.confirmPassword}
+            autoComplete="true"
+            value={formik.values.confirmPassword}
             onChange={formik.handleChange}
             error={
               formik.touched.confirmPassword &&
@@ -158,7 +145,7 @@ export default function RegistrationForm() {
             className="placeholder"
             type="name"
             name="name"
-            value={formik.name}
+            value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
@@ -173,4 +160,6 @@ export default function RegistrationForm() {
       </form>
     </div>
   );
-}
+};
+
+export default RegistrationForm;

@@ -43,6 +43,7 @@ const operationSchema = Yup.object({
     then: Yup.string().required('Category is required'),
   }),
 });
+
 const FormAddTransactions = () => {
   const classes = useStyles();
   const dispatch = useDispatch();

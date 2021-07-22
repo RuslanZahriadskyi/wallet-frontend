@@ -25,15 +25,22 @@ function TransactionMobile() {
                 amount,
                 balanceAfter,
               }) => (
-                <tr className="transaction-row" key={id}>
+                <tr
+                  className={
+                    type === 'outlay'
+                      ? ' transaction-row type-wrapper outlay-border'
+                      : ' transaction-row type-wrapper income-border'
+                  }
+                  key={id}
+                >
                   <td className="transaction-data">
                     <span className="transaction-title">Дата</span>
-                    <span>{date}</span>
+                    <span>{new Date(date).toLocaleString().slice(0, 10)}</span>
                   </td>
 
                   <td className="transaction-data">
                     <span className="transaction-title">Тип</span>
-                    <span>{type}</span>
+                    <span>{type === 'outlay' ? '-' : '+'}</span>
                   </td>
 
                   <td className="transaction-data">
@@ -48,12 +55,33 @@ function TransactionMobile() {
 
                   <td className="transaction-data">
                     <span className="transaction-title">Сумма</span>
-                    <span>{amount}</span>
+                    <span>
+                      {type === 'outlay' ? (
+                        <span className="outlay-color">
+                          {String(amount.toFixed(2)).replace(
+                            /(\d)(?=(\d{3})+([^\d]|$))/g,
+                            '$1 ',
+                          )}
+                        </span>
+                      ) : (
+                        <span className="income-color">
+                          {String(amount.toFixed(2)).replace(
+                            /(\d)(?=(\d{3})+([^\d]|$))/g,
+                            '$1 ',
+                          )}
+                        </span>
+                      )}
+                    </span>
                   </td>
 
                   <td className="transaction-data">
                     <span className="transaction-title">Баланс</span>
-                    <span>{balanceAfter}</span>
+                    <span>
+                      {String(balanceAfter.toFixed(2)).replace(
+                        /(\d)(?=(\d{3})+([^\d]|$))/g,
+                        '$1 ',
+                      )}
+                    </span>
                   </td>
                 </tr>
               ),

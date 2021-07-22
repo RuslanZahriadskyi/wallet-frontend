@@ -24,6 +24,7 @@
     "react-input-mask": "^2.0.4",
     "react-loader-spinner": "^4.0.0",
     "react-media": "^1.10.0",
+    "react-password-strength-bar": "^0.3.4",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -34,6 +35,7 @@
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
     "sass": "^1.35.1",
+    "unn": "^4.11.4",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
