@@ -107,7 +107,6 @@ const getCurrenAvatartUser = avatar => async dispatch => {
         'Content-Type': 'multipart/form-data',
       },
     });
-
     dispatch(getCurrentUserAvatarSuccess(response.data));
   } catch (error) {
     console.log(error);
