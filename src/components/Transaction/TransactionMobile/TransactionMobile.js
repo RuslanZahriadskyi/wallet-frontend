@@ -7,7 +7,7 @@ import './TransactionMobile.scss';
 import '../TransactionDesktop/TransactionDesktop.scss';
 
 function TransactionMobile() {
-  const operations = useSelector(operationsSelectors.getOperations);
+  const operations = useSelector(operationsSelectors.getSortedOperations);
 
   return (
     <>

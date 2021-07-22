@@ -44,7 +44,7 @@ export default function ButtonAddTransaction() {
         <Media
           queries={{
             small: '(max-width: 549px)',
-            medium: '(min-width: 550px)',
+            medium: '(min-width: 549px)',
           }}
         >
           {matches => (

@@ -25,6 +25,9 @@ function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(categoriesOperation.getCategories());
   }, [dispatch]);
 

@@ -8,7 +8,7 @@ import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
 import './TransactionDesktop.scss';
 
 function TransactionDesktop() {
-  const operations = useSelector(operationsSelectors.getOperations);
+  const operations = useSelector(operationsSelectors.getSortedOperations);
 
   return (
     <>
