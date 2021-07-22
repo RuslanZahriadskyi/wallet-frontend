@@ -1,18 +1,10 @@
 @import '../../../scss/main.scss';
 
 .section {
-  // margin-right: auto;
-  // margin-left: auto;
-
   @media (min-width: 768px) {
-    //  height: 100vh;
-    padding-top: 40px;
+    padding: 40px 0px 0px 30px;
     width: 100%;
   }
-
-  // @media (min-width: 1280px) {
-  //   padding: 30px 85px 35px 30px;
-  // }
 
   &Title {
     margin: 0;

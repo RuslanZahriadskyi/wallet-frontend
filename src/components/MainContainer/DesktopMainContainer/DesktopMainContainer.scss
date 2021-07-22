@@ -51,7 +51,7 @@
   backdrop-filter: blur(50px);
   padding-right: 20px;
   padding-left: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 55px;
 
   @media (max-width: 767px) {
   }
@@ -59,7 +59,7 @@
   @media (min-width: 768px) {
     // height: 100%;
     padding-left: 40px;
-    padding-right: 23px;
+    padding-right: 40px;
   }
 
   @media (min-width: 1280px) {
@@ -75,6 +75,7 @@
 
   @media (min-width: 768px) {
     justify-content: space-between;
+    align-items: flex-start;
   }
 
   @media (min-width: 1280px) {
@@ -89,12 +90,22 @@
   width: calc((100% - 2 * 30px) / 2);
 
   @media (min-width: 768px) {
-    margin-right: 20px;
+    margin-top: 30px;
   }
 
   @media (min-width: 1280px) {
     width: 100%;
-    ul {
+  }
+
+  ul {
+    li {
+      padding-top: 7px;
+    }
+    @media (min-width: 768px) {
+      margin: 0;
+    }
+
+    @media (min-width: 1280px) {
       margin-top: 40px;
       margin-bottom: 0px;
     }
