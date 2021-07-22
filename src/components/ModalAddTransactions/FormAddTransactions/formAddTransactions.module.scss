@@ -5,6 +5,10 @@
   height: auto;
   padding: 40px 65px 60px;
 
+  @media (max-width: 549px) {
+    padding: 20px 10px 40px;
+  }
+
   .formTitle {
     font-size: 30px;
     font-weight: 400;
@@ -12,12 +16,21 @@
 
     font-style: normal;
     font-weight: normal;
+
+    @media (max-width: 549px) {
+      font-size: 24px;
+    }
   }
 
   .inputContainer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+
+    @media (max-width: 549px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .inputAmount,
@@ -36,6 +49,12 @@
 
     &::placeholder {
       color: getColor('secondary-text-color');
+    }
+  }
+
+  .inputAmount {
+    @media (max-width: 549px) {
+      width: 100%;
     }
   }
 

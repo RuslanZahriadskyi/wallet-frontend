@@ -38,7 +38,7 @@ function TransactionDesktop() {
               }) => (
                 <tr key={id}>
                   <td>{new Date(date).toLocaleString().slice(0, 10)}</td>
-                  <td>{type === 'outlay' ? '+' : '-'}</td>
+                  <td>{type === 'outlay' ? '-' : '+'}</td>
                   <td>{category}</td>
                   <td>{comments}</td>
                   <td>

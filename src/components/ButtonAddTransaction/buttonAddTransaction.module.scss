@@ -33,3 +33,11 @@
 .button:focus {
   transform: scale(1.2);
 }
+
+.modalMobile {
+  position: absolute;
+  top: 60px;
+  z-index: 1300;
+  width: 100%;
+  background-color: #fff;
+}

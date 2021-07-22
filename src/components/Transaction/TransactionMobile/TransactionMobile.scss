@@ -16,12 +16,12 @@
 }
 .outlay-border {
   &::before {
-    border-right: 4px solid getColor('income-text-color');
+    border-right: 4px solid getColor('consumption-text-color');
   }
 }
 .income-border {
   &::before {
-    border-right: 4px solid getColor('consumption-text-color');
+    border-right: 4px solid getColor('income-text-color');
   }
 }
 
@@ -38,48 +38,20 @@
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: getColor('third-text-color');
-
-  // &::before {
-  //   position: absolute;
-  //   content: '';
-  //   left: 0;
-  //   display: inline-block;
-
-  //   height: 40%;
-  //   border-radius: 20%;
-
-  //   .outlay-border {
-  //     border-right: 4px solid getColor('consumption-text-color');
-  //   }
-
-  //   .income-border {
-  //     border-right: 4px solid getColor('income-text-color');
-  //   }
-  // }
 }
 
 .transaction-data {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #dcdcdf;
-
-  // &::before {
-  //   position: absolute;
-  //   content: '';
-  //   left: 0;
-  //   display: inline-block;
-
-  //   height: 7%;
-  //   border-right: 4px solid getColor('consumption-text-color');
-  // }
 }
 .transaction-title {
   font-weight: 700;
   font-size: 18px;
 }
 .outlay-color {
-  color: getColor('income-text-color');
+  color: getColor('consumption-text-color');
 }
 .income-color {
-  color: getColor('consumption-text-color');
+  color: getColor('income-text-color');
 }
