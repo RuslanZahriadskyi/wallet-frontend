@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { operationsSelectors } from '../../../redux/operations';
 import AddButton from '../../ButtonAddTransaction';
 import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
@@ -27,16 +28,8 @@ function TransactionDesktop() {
           <tbody className="transaction-tbody-desctop">
             {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
-              ({
-                id,
-                date,
-                type,
-                category,
-                comments,
-                amount,
-                balanceAfter,
-              }) => (
-                <tr key={id}>
+              ({ date, type, category, comments, amount, balanceAfter }) => (
+                <tr key={uuidv4()}>
                   <td>{new Date(date).toLocaleString().slice(0, 10)}</td>
                   <td>{type === 'outlay' ? '-' : '+'}</td>
                   <td>{category}</td>

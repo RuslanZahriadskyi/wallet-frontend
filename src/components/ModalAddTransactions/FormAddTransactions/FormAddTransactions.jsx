@@ -48,11 +48,6 @@ const FormAddTransactions = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(categoriesOperation.getCategories());
-    dispatch(operationsOperation.getOperations());
-  }, [dispatch]);
-
   const formik = useFormik({
     initialValues: {
       type: '',
