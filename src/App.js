@@ -6,6 +6,8 @@ import PublicRouter from './components/PublicRouter';
 import { useDispatch } from 'react-redux';
 import { authOperations } from './redux/auth';
 
+import Notifications from './components/Notifications/Notifications.jsx';
+
 const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
 );
@@ -25,6 +27,7 @@ function App() {
 
   return (
     <>
+      <Notifications />
       <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRouter path="/login" restricted exact>

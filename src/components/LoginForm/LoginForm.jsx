@@ -26,8 +26,7 @@ export default function LoginForm() {
       password: '',
     },
 
-    validation: yup.object({
-      username: yup.string().required('Пожалуйста, введите имя пользователя'),
+    validationSchema: yup.object({
       email: yup
         .string()
         .email()
@@ -36,14 +35,9 @@ export default function LoginForm() {
       password: yup
         .string('Пожалуйста, введите пароль')
         .min(7, 'Пароль должен состоять не менее чем из 7 символов')
-        .max(26, 'Пароль должен содержать до 12 символов')
+        .max(12, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
     }),
-
-    //   onSubmit: ({ email, password, name }) => {
-    //     dispatch(authOperations.register({ name, email, password }));
-    //   },
-    // });
 
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
@@ -93,6 +87,7 @@ export default function LoginForm() {
               ),
             }}
             className="placeholderLog "
+            inputProps={{ autoComplete: 'true' }}
             placeholder="Пароль"
             type="password"
             name="password"
@@ -103,8 +98,6 @@ export default function LoginForm() {
           />
         </div>
 
-        {/* <button type="submit">ВХОД</button>
-        <NavLink to="/register">РЕГИСТРАЦИЯ</NavLink> */}
         <FormButtons
           firtsButtonText="ВХОД"
           secondLinkButton="/register"
