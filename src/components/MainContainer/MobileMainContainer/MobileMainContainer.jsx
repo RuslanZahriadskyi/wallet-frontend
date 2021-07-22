@@ -10,7 +10,6 @@ import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutline
 import Loading from '../../Spinner';
 
 // Styles
-import './MobileMainContainer.scss';
 import '../../Home/HomeDesktop/HomeDesktop.scss';
 import '../../Home/HomeMobile/HomeMobile.scss';
 

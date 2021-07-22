@@ -8,7 +8,7 @@ import {
   operationsSelectors,
   operationsOperation,
 } from '../redux/operations';
-import { statisticsOperations, statisticsSelectors } from '../redux/statistics';
+import { statisticsOperations } from '../redux/statistics';
 
 import Header from '../components/Header/Header';
 import AddButton from '../components/ButtonAddTransaction';

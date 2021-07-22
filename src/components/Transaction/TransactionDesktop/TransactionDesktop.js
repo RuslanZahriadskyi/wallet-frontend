@@ -35,12 +35,33 @@ function TransactionDesktop() {
                 balanceAfter,
               }) => (
                 <tr key={id}>
-                  <td>{date}</td>
-                  <td>{type}</td>
+                  <td>{new Date(date).toLocaleString().slice(0, 10)}</td>
+                  <td>{type === 'outlay' ? '+' : '-'}</td>
                   <td>{category}</td>
                   <td>{comments}</td>
-                  <td>{amount}</td>
-                  <td>{balanceAfter}</td>
+                  <td>
+                    {type === 'outlay' ? (
+                      <span className="outlay-color">
+                        {String(amount.toFixed(2)).replace(
+                          /(\d)(?=(\d{3})+([^\d]|$))/g,
+                          '$1 ',
+                        )}
+                      </span>
+                    ) : (
+                      <span className="income-color">
+                        {String(amount.toFixed(2)).replace(
+                          /(\d)(?=(\d{3})+([^\d]|$))/g,
+                          '$1 ',
+                        )}
+                      </span>
+                    )}
+                  </td>
+                  <td>
+                    {String(balanceAfter.toFixed(2)).replace(
+                      /(\d)(?=(\d{3})+([^\d]|$))/g,
+                      '$1 ',
+                    )}
+                  </td>
                 </tr>
               ),
             )}

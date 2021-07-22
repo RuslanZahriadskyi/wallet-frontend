@@ -78,7 +78,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
   try {
     const response = await axios.get('/api/users/current');
-    console.log(response);
+    // console.log(response);
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
@@ -97,7 +97,7 @@ const getCurrenAvatartUser = avatar => async dispatch => {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(response);
+    // console.log(response);
     dispatch(getCurrentUserAvatarSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentAvatarUserError(error.message));
