@@ -16,6 +16,21 @@ import {
   operationsOperation,
   operationsAction,
 } from '../../../redux/operations';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  [theme.breakpoints.down('md')]: {
+    textFieldStyle: {
+      textAlign: 'center',
+    },
+  },
+  [theme.breakpoints.down('550')]: {
+    textFieldStyle: {
+      paddingLeft: 20,
+      textAlign: 'left',
+    },
+  },
+}));
 
 const operationSchema = Yup.object({
   amount: Yup.number('Enter your amount').required('Amount is required'),
@@ -29,6 +44,7 @@ const operationSchema = Yup.object({
   }),
 });
 const FormAddTransactions = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -131,8 +147,9 @@ const FormAddTransactions = () => {
             className={s.inputAmount}
             onChange={formik.handleChange}
             value={formik.values.amount}
-            inputProps={{ style: { textAlign: 'center' } }}
+            inputProps={{ input: classes.textFieldStyle }}
             InputProps={{
+              classes: { input: classes.textFieldStyle },
               disableUnderline: true,
             }}
             error={formik.touched.amount && Boolean(formik.errors.amount)}
@@ -141,6 +158,7 @@ const FormAddTransactions = () => {
 
           <DataPicker
             name="date"
+            wrapperClassName={s.dataPicker}
             value={formik.values.date}
             changeDate={formik.setFieldValue}
           />
