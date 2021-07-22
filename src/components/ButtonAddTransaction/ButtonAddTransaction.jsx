@@ -39,51 +39,64 @@ export default function ButtonAddTransaction() {
       >
         <AddIcon className={s.buttonIcon} fontSize="large" />
       </button>
-      <Media
-        queries={{
-          small: '(max-width: 549px)',
-          medium: '(min-width: 550px)',
-        }}
-      >
-        {matches => (
-          <Fragment>
-            {matches.small &&
-              createPortal(
+
+      <>
+        <Media
+          queries={{
+            small: '(max-width: 549px)',
+            medium: '(min-width: 550px)',
+          }}
+        >
+          {matches => (
+            <Fragment>
+              {matches.small &&
+                createPortal(
+                  <>
+                    {modal && (
+                      <div className={s.modalMobile}>
+                        <FormAddTransactions />
+                      </div>
+                    )}
+                  </>,
+                  rootModal,
+                )}
+
+              {matches.medium && (
                 <>
                   {modal && (
-                    <div className={s.modalMobile}>
+                    <Modal modalValue={modal} modalAction={() => closeModal()}>
                       <FormAddTransactions />
-                    </div>
+                    </Modal>
                   )}
-                </>,
-                rootModal,
+                </>
               )}
-
-            {matches.medium && (
-              <>
-                {modal && (
-                  <Modal modalValue={modal} modalAction={() => closeModal()}>
-                    <FormAddTransactions />
-                  </Modal>
-                )}
-              </>
-            )}
-          </Fragment>
-        )}
-      </Media>
+            </Fragment>
+          )}
+        </Media>
+      </>
     </>
   );
 }
 
-// <Media
+// {/* <Media
 //   queries={{
-//     small: '(max-width: 767px)',
-//     medium: '(min-width: 768px)',
+//     small: '(max-width: 549px)',
+//     medium: '(min-width: 550px)',
 //   }}
 // >
 //   {matches => (
 //     <Fragment>
-//       {matches.small && <>{modal && <FormAddTransactions />}</>}
+//       {matches.small &&
+//         createPortal(
+//           <>
+//             {modal && (
+//               <div className={s.modalMobile}>
+//                 <FormAddTransactions />
+//               </div>
+//             )}
+//           </>,
+//           rootModal,
+//         )}
 
 //       {matches.medium && (
 //         <>
@@ -96,7 +109,7 @@ export default function ButtonAddTransaction() {
 //       )}
 //     </Fragment>
 //   )}
-// </Media>;
+// </Media>; */}
 
 // {
 //   modal && (

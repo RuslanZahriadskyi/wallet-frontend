@@ -33,7 +33,7 @@ const DashboardPage = () => {
         <Media
           queries={{
             small: '(max-width: 767px)',
-            medium: '(min-width: 768px)',
+            medium: '(min-width: 767px)',
           }}
         >
           {matches => (

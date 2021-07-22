@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
     listStyle: 'none',
     margin: 0,
     padding: '8px 0',
-    maxHeight: '50vh',
+    maxHeight: '44vh',
     overflow: 'auto',
     fontSize: 18,
   },
@@ -104,12 +104,6 @@ export default function Category({ value, onChange, error, errorText }) {
       classes={classes}
       value={value}
       onChange={(event, newValue) => {
-        if (event.currentTarget !== event.target) {
-          console.log(value);
-          // onChange('category', '');
-          return;
-        }
-
         if (newValue === null) {
           return onChange('category', '');
         }
@@ -135,20 +129,17 @@ export default function Category({ value, onChange, error, errorText }) {
             value: `Add "${params.inputValue}"`,
           });
         }
-        console.log(2);
         return filtered;
       }}
       id="category"
       options={categories}
       getOptionSelected={(option, { multiple, value }) => {
         if (!multiple) {
-          console.log(multiple);
           return option.value;
         }
 
         return false;
       }}
-      disableCloseOnSelect={true}
       getOptionLabel={option => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
@@ -164,22 +155,7 @@ export default function Category({ value, onChange, error, errorText }) {
         // Regular option
         return option.value;
       }}
-      renderOption={option => {
-        return (
-          <>
-            {option.value}
-
-            <IconButton
-              color="primary"
-              onClick={() => {
-                console.log('click');
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </>
-        );
-      }}
+      renderOption={option => option.value}
       renderInput={params => (
         <TextField
           {...params}

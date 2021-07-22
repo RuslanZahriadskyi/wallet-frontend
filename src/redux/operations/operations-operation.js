@@ -7,6 +7,7 @@ import {
   getOperationsSuccess,
   getOperationsError,
 } from './operations-action';
+import actions from '../statistics/statistics-actions';
 
 const getOperations = () => async dispatch => {
   dispatch(getOperationsRequest());
@@ -29,11 +30,12 @@ const createOperation = category => async dispatch => {
   try {
     const {
       data: {
-        data: { newOperation },
+        data: { newOperation, totalBalance },
       },
     } = await axios.post('/api/operations', category);
 
     dispatch(addNewOperationSuccess(newOperation));
+    dispatch(actions.fetchBalanceSuccess(totalBalance));
   } catch (error) {
     dispatch(addNewOperationError(error.message));
   }
