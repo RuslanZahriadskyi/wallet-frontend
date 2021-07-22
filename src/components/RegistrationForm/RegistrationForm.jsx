@@ -15,7 +15,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 
-// import PasswordStrengthBar from 'react-password-strength-bar';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const operationSchema = Yup.object({
   email: Yup.string()
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-          {/* <PasswordStrengthBar password={pass} /> */}
+          <PasswordStrengthBar password={pass} />
         </div>
         <div className="input">
           <TextField
