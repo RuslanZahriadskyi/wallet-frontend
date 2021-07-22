@@ -12,7 +12,12 @@ const Ballance = () => {
       <h2 className="ballance-title">Ваш баланс</h2>
       <p className="ballance">
         <span className="hryvnia-sign">&#8372;</span>
-        {total ? total.toFixed(2) : 0}
+        {total
+          ? String(total.toFixed(2)).replace(
+              /(\d)(?=(\d{3})+([^\d]|$))/g,
+              '$1 ',
+            )
+          : 0}
       </p>
     </div>
   );

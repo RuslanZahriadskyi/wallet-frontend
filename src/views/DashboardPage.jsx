@@ -4,7 +4,11 @@ import { Redirect } from 'react-router-dom';
 import Media from 'react-media';
 
 // Redux
-import { operationsOperation } from '../redux/operations';
+import {
+  operationsAction,
+  operationsSelectors,
+  operationsOperation,
+} from '../redux/operations';
 import { statisticsOperations } from '../redux/statistics';
 
 import Header from '../components/Header/Header';

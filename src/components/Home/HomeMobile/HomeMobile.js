@@ -6,7 +6,7 @@ const HomeMobile = () => {
   return (
     <>
       <Ballance />
-      <TransactionMobile />
+      <TransactionMobile color />
     </>
   );
 };
