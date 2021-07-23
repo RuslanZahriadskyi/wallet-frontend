@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
@@ -11,7 +11,7 @@ import FormButtons from '../../FormButtons/FormButtons';
 import Category from '../SelectCategory';
 import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { categoriesOperation } from '../../../redux/category';
+
 import {
   operationsOperation,
   operationsAction,

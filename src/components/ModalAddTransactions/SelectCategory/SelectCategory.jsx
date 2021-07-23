@@ -10,8 +10,6 @@ import {
   categoriesOperation,
   categoriesSelectors,
 } from '../../../redux/category';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { IconButton } from '@material-ui/core';
 
 const filter = createFilterOptions();
 const useStyles = makeStyles(theme => ({

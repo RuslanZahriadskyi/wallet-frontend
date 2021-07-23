@@ -6,9 +6,6 @@ import {
   getCategoryRequest,
   getCategorySuccess,
   getCategoryError,
-  deleteCategoryRequest,
-  deleteCategorySuccess,
-  deleteCategoryError,
 } from './category-action';
 
 const getCategories = () => async dispatch => {

@@ -10,4 +10,5 @@ const range = (start, stop) =>
 
 const years = range(currentYear - 2, currentYear + 2);
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { currentYear, currentMonth, months, years };
