@@ -1,10 +1,15 @@
 @import '../../../scss/main.scss';
 
 .transaction-div {
-  position: relative;
-  max-height: 68vh;
-  overflow: auto;
+  // position: relative;
+  max-height: 70vh;
+  overflow: scroll;
   margin-top: 40px;
+
+  @media (min-width: 768px) {
+    max-height: 60vh;
+    overflow: auto;
+  }
 
   @media (min-width: 1280px) {
     width: 100%;

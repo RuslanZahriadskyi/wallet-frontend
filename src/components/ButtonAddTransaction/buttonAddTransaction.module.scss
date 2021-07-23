@@ -2,7 +2,7 @@
 
 .button {
   border: none;
-  position: fixed;
+  position: absolute;
   border-radius: 50%;
   box-shadow: 0px 6px 15px getColor('button-color-income');
   width: 44px;
@@ -18,7 +18,7 @@
     bottom: 40px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     right: 85px;
   }
 }
