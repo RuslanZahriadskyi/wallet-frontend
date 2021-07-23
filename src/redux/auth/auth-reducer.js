@@ -10,7 +10,6 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
   getCurrentUserAvatarSuccess,
-  getCurrentUserAvatarError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
