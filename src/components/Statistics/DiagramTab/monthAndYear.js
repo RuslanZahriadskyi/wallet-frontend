@@ -1,8 +1,6 @@
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().toLocaleString('en', { month: 'long' });
 
-console.log(2);
-
 const months = new Array(12).fill(0).map((_, i) => {
   return new Date(`${i + 1}`).toLocaleString('en', { month: 'long' });
 });
