@@ -9,7 +9,6 @@ const options = {
 };
 
 const Chart = ({ data }) => {
-  console.log(Boolean(data.datasets[0].backgroundColor.length));
   return (
     Boolean(data.datasets[0].backgroundColor.length) && (
       <Media
