@@ -8,10 +8,6 @@ const getCategoryRequest = createAction('category/getCategoryRequest');
 const getCategorySuccess = createAction('category/getCategorySuccess');
 const getCategoryError = createAction('category/getCategoryError');
 
-const deleteCategoryRequest = createAction('category/deleteCategoryRequest');
-const deleteCategorySuccess = createAction('category/deleteCategorySuccess');
-const deleteCategoryError = createAction('category/deleteCategoryError');
-
 export {
   addNewCategoryRequest,
   addNewCategorySuccess,
@@ -19,7 +15,4 @@ export {
   getCategoryRequest,
   getCategorySuccess,
   getCategoryError,
-  deleteCategoryRequest,
-  deleteCategorySuccess,
-  deleteCategoryError,
 };

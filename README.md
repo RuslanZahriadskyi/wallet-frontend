@@ -12,17 +12,17 @@ future.
 ## Implemented functionality:
 
 - User registration / login.
-- When the user register, he must receive confirmation of the authenticity e-mail - by verifying the digital signature of the letter using the sender's public key.
-- Pop-up notifications about successful or unsuccessful operations using the package "react-toastify" for general statistics of the user's income and expenses.
+- When the user register, he must receive confirmation of the authenticity e-mail - by verifying the digital signature of the letter using the sender's public key
+- Pop-up notifications about successful or unsuccessful operations using the package "react-toastify" for general statistics of the user's income and expenses
 - The validation implemented by the library "Formik" and "Yap"
-- Adding an avatar.
+- Adding an avatar
 - The total balance of all amounts in the user's account is updated when adding transactions
 - Exchange rate via [api privat bank](https://api.privatbank.ua/#p24/exchange
-).
-- A mobile version has been implemented on which there are three pages, with the permission of the tablet, 2 pages have been implemented on which general information about operations and statistics are displayed where all operations, as well as expenses and incomes are shown in colors.
+)
+- A mobile version has been implemented on which there are three pages, with the permission of the tablet, 2 pages have been implemented on which general information about operations and statistics are displayed where all operations, as well as expenses and incomes are shown in colors
 - With the help of routs, a render on the main page is implemented, which renders components
 - Created its own [backend](https://own-wallet.herokuapp.com/api-docs/#/) on which the site and all operations are running
-- Adaptive layout with three breaks (mobile, tablet, desktop).
+- Adaptive layout with three breaks (mobile, tablet, desktop)
 - Implemented a modal window by clicking on the button, in which the addition of income or expenses of the user is highlighted. The user can add operations on his income and expenses, select a number, category, and also write the amount of the operation, which will be displayed on the statistics panel and the operations panel
 - Front End version deployed on Netlify, Back End - on Heroku.
 
@@ -45,9 +45,9 @@ future.
 
 ## "Boomerang" team
 
-:hammer:[Ruslan](https://github.com/RuslanZahriadskyi) - teamlead    
-:wrench:[Nika](https://github.com/nikule4ka) - scrum master    
-:nut_and_bolt:[Dima](https://github.com/DimRom76)    
-:nut_and_bolt:[Olya](https://github.com/Olga-Smolianinova)    
-:nut_and_bolt:[Tanya](https://github.com/TatyanaLozova?tab=repositories)    
-:nut_and_bolt:[Nastya](https://github.com/dAnastasiia)
+:hammer: [Ruslan](https://github.com/RuslanZahriadskyi) - TeamLead    
+:wrench: [Nika](https://github.com/nikule4ka) - Scrum Master    
+:nut_and_bolt: [Dima](https://github.com/DimRom76) - Leading developer
+:nut_and_bolt: [Olya](https://github.com/Olga-Smolianinova) - Leading developer  
+:nut_and_bolt: [Tanya](https://github.com/TatyanaLozova?tab=repositories) - Leading developer
+:nut_and_bolt: [Nastya](https://github.com/dAnastasiia) - Leading developer
