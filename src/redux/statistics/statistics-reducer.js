@@ -3,10 +3,12 @@ import { combineReducers } from 'redux';
 
 import actions from './statistics-actions';
 
-const { fetchStatisticsSuccess, fetchBalanceSuccess } = actions;
+const { fetchStatisticsSuccess, fetchBalanceSuccess, resetStatistics } =
+  actions;
 
 const items = createReducer([], {
   [fetchStatisticsSuccess]: (_, { payload }) => [...payload.monthOutlay],
+  [resetStatistics]: (_, __) => [],
 });
 
 const income = createReducer(null, {
