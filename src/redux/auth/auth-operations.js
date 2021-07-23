@@ -39,7 +39,7 @@ const register = credentials => async dispatch => {
     token.set(response.data.token);
 
     dispatch(registerSuccess(response.data));
-    console.log(response.data);
+
     toast.success(`Пожалуйста, подвердите регистрацию на своей почте :)`);
   } catch (error) {
     dispatch(registerError(error.message));

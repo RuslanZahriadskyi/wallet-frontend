@@ -6,6 +6,7 @@ import Media from 'react-media';
 // Redux
 import { operationsOperation } from '../redux/operations';
 import { statisticsOperations } from '../redux/statistics';
+import { categoriesOperation } from '../redux/category';
 
 import Header from '../components/Header/Header';
 
@@ -17,6 +18,7 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(categoriesOperation.getCategories());
     dispatch(statisticsOperations.fetchBalance());
     dispatch(operationsOperation.getOperations());
   }, [dispatch]);

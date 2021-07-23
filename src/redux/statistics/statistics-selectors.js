@@ -1,5 +1,7 @@
 // import { createSelector } from '@reduxjs/toolkit';
 
+import { createSelector } from 'reselect';
+
 const getItems = state => state.statistics.items;
 
 const getIncome = state => state.statistics.income;

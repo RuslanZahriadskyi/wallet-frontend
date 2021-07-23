@@ -12,6 +12,8 @@ const fetchBalanceRequest = createAction('balance/fetchBalanceRequest');
 const fetchBalanceSuccess = createAction('balance/fetchBalanceSuccess');
 const fetchBalanceError = createAction('balance/fetchBalanceError');
 
+const resetStatistics = createAction('statistics/resetStatistics');
+
 const actions = {
   fetchStatisticsRequest,
   fetchStatisticsSuccess,
@@ -20,6 +22,7 @@ const actions = {
   fetchBalanceRequest,
   fetchBalanceSuccess,
   fetchBalanceError,
+  resetStatistics,
 };
 
 export default actions;

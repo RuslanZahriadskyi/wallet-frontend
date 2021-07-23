@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from './redux/auth';
 
 import Notifications from './components/Notifications/Notifications.jsx';
-import { categoriesOperation } from './redux/category';
 
 const DashboardPage = lazy(() =>
   import('./views/DashboardPage' /* webpackChunkName: "dashboard-page" */),
@@ -24,10 +23,6 @@ function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(categoriesOperation.getCategories());
   }, [dispatch]);
 
   return (
