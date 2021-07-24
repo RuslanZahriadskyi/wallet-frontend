@@ -2,11 +2,12 @@
 
 .transaction-div {
   // position: relative;
-  max-height: 70vh;
+  max-height: 55vh;
   overflow: scroll;
-  margin-top: 40px;
+  margin-top: 30px;
 
   @media (min-width: 768px) {
+    margin-top: 40px;
     max-height: 60vh;
     overflow: auto;
   }
@@ -35,12 +36,7 @@
   }
 
   td {
-    @media (max-width: 767px) {
-      padding-right: 20px;
-      padding-left: 20px;
-    }
-
-    padding: 19px 0 16px 15px;
+    padding: 11px 0 11px 15px;
     font-family: Circe, sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -48,6 +44,15 @@
     border-bottom: 1px solid #dcdcdf;
     text-align: start;
     box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
+
+    @media (max-width: 767px) {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    @media (min-width: 768px) {
+      padding: 15px 0 15px 15px;
+    }
   }
 
   td:first-child {

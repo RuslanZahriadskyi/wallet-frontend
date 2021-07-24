@@ -17,6 +17,8 @@ import LockIcon from '@material-ui/icons/Lock';
 
 import PasswordStrengthBar from 'react-password-strength-bar';
 
+import RegisterFormDialog from '../RegisterFormDialog';
+
 const operationSchema = Yup.object({
   email: Yup.string()
     .email('Введите корректную почту')
@@ -157,6 +159,7 @@ const RegistrationForm = () => {
           secondButtonText="ВХОД"
           secondLinkButton="/login"
         />
+        <RegisterFormDialog />
       </form>
     </div>
   );

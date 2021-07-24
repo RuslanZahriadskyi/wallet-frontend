@@ -21,7 +21,7 @@ const Chart = ({ data }) => {
           {matches.small && (
             <Doughnut
               data={data}
-              options={options}
+              // options={options}
               height={280}
               width={280}
               className={s.chart}
@@ -30,7 +30,7 @@ const Chart = ({ data }) => {
           {matches.medium && (
             <Doughnut
               data={data}
-              options={options}
+              // options={options}
               height={320}
               width={320}
               className={s.chart}

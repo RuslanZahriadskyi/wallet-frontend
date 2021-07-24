@@ -22,6 +22,8 @@ const getSatatisticsPerMonthError = createAction(
 
 const logoutModalAction = createAction('operations/modalLogout');
 
+const getRegisterFormDialog = createAction('auth/getRegisterFormDialog');
+
 export {
   openModal,
   closeModal,
@@ -35,4 +37,5 @@ export {
   getSatatisticsPerMonthRequest,
   getSatatisticsPerMonthSuccess,
   getSatatisticsPerMonthError,
+  getRegisterFormDialog,
 };

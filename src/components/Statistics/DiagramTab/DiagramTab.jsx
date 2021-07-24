@@ -31,11 +31,6 @@ function DiagramTab() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(categoriesOperation.getCategories());
-    dispatch(statisticsOperations.fetchBalance());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(statisticsOperations.fetchStatistics(month, year));
   }, [dispatch, month, year]);
 

@@ -18,11 +18,15 @@
 }
 
 .ballance-title {
-  margin-bottom: 10px;
   font-size: 12px;
   line-height: 1.5;
   text-transform: uppercase;
   color: #a6a6a6;
+  font-weight: 400;
+
+  @media (min-width: 768px) {
+    margin-bottom: 10px;
+  }
 }
 .ballance {
   font-size: 30px;
