@@ -10,35 +10,37 @@ const options = {
 
 const Chart = ({ data }) => {
   return (
-    <Media
-      queries={{
-        small: '(max-width: 767px)',
-        medium: '(min-width: 768px)',
-      }}
-    >
-      {matches => (
-        <>
-          {matches.small && (
-            <Doughnut
-              data={data}
-              // options={options}
-              height={280}
-              width={280}
-              className={s.chart}
-            />
-          )}
-          {matches.medium && (
-            <Doughnut
-              data={data}
-              // options={options}
-              height={320}
-              width={320}
-              className={s.chart}
-            />
-          )}
-        </>
-      )}
-    </Media>
+    Boolean(data.datasets[0].backgroundColor.length) && (
+      <Media
+        queries={{
+          small: '(max-width: 767px)',
+          medium: '(min-width: 768px)',
+        }}
+      >
+        {matches => (
+          <>
+            {matches.small && (
+              <Doughnut
+                data={data}
+                options={options}
+                height={280}
+                width={280}
+                className={s.chart}
+              />
+            )}
+            {matches.medium && (
+              <Doughnut
+                data={data}
+                options={options}
+                height={320}
+                width={320}
+                className={s.chart}
+              />
+            )}
+          </>
+        )}
+      </Media>
+    )
   );
 };
 

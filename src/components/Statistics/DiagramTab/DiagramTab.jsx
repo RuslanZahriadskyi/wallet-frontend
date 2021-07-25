@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { v4 as id } from 'uuid';
-
 import Chart from '../Chart';
 import Table from '../Table';
 import s from './DiagramTab.module.scss';
 
 import date from './monthAndYear';
 import {
+  statisticsActions,
   statisticsOperations,
   statisticsSelectors,
 } from '../../../redux/statistics';
-
-import { categoriesOperation } from '../../../redux/category';
 
 function DiagramTab() {
   const [month, setMonth] = useState(date.currentMonth);
@@ -32,6 +30,10 @@ function DiagramTab() {
 
   useEffect(() => {
     dispatch(statisticsOperations.fetchStatistics(month, year));
+
+    return () => {
+      dispatch(statisticsActions.resetStatistics());
+    };
   }, [dispatch, month, year]);
 
   const statisticsData = useSelector(statisticsSelectors.getItems);
@@ -58,8 +60,9 @@ function DiagramTab() {
 
       <div className={s.wrapper}>
         <div className={s.visualPart}>
-          <h2 className={s.chartTotal}>₴ {total ? total.toFixed(2) : 0}</h2>
-
+          {statisticsData.length && (
+            <h2 className={s.chartTotal}>₴ {total ? total.toFixed(2) : 0}</h2>
+          )}
           <Chart data={chartData} />
         </div>
 
