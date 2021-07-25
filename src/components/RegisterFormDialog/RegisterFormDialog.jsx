@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import DialogActions from '@material-ui/core/DialogActions';
 
 import './RegisterFormDialog.scss';
 
-import { operationsAction } from '../../redux/operations';
-import { operationsSelectors } from '../../redux/operations';
+import { operationsAction, operationsSelectors } from '../../redux/operations';
+import { authOperations } from '../../redux/auth';
 
 import Modal from '../ModalAddTransactions';
 
 const RegisterFormDialog = () => {
+  const [email, setEmail] = useState('');
+
   const dispatch = useDispatch();
 
   const open = useSelector(operationsSelectors.getRegisterFormDialog);
@@ -20,6 +20,18 @@ const RegisterFormDialog = () => {
   const formDialogAction = useCallback(() => {
     dispatch(operationsAction.getRegisterFormDialog());
   }, [dispatch]);
+
+  const handleChange = e => {
+    const { email } = e.currentTarget.value;
+    setEmail(email);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const resendUser = { email };
+    dispatch(authOperations.register(resendUser));
+    setEmail('');
+  };
 
   return (
     <>
@@ -37,29 +49,39 @@ const RegisterFormDialog = () => {
             <h2 className="title_modal_register_form">
               Пожалуйста, введите еще раз свою почту
             </h2>
-
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
-            <div className="container_btns">
-              <button
-                onClick={formDialogAction}
-                className="btn_register btn_cansel"
-              >
-                Отмена
-              </button>
-              <button
-                onClick={formDialogAction}
-                className="btn_register btn_add"
-              >
-                Отправить
-              </button>
-            </div>
+            <form
+              onSubmit={() => {
+                handleSubmit(email);
+              }}
+            >
+              <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Email Address"
+                onChange={handleChange}
+                fullWidth
+                type="email"
+                name="email"
+                value={email}
+              />
+              <div className="container_btns">
+                <button
+                  onClick={formDialogAction}
+                  type="button"
+                  className="btn_register btn_cansel"
+                >
+                  Отмена
+                </button>
+                <button
+                  onClick={formDialogAction}
+                  type="submit"
+                  className="btn_register btn_add"
+                >
+                  Отправить
+                </button>
+              </div>
+            </form>
           </div>
         </Modal>
       )}

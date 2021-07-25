@@ -22,7 +22,7 @@ const getSatatisticsPerMonthError = createAction(
 
 const logoutModalAction = createAction('operations/modalLogout');
 
-const getRegisterFormDialog = createAction('auth/getRegisterFormDialog');
+const getRegisterFormDialog = createAction('operations/getRegisterFormDialog');
 
 export {
   openModal,
