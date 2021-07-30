@@ -9,8 +9,10 @@ const options = {
 };
 
 const Chart = ({ data }) => {
+  console.log(data);
   return (
-    Boolean(data.datasets[0].backgroundColor.length) && (
+    Boolean(data.datasets[0].backgroundColor.length) &&
+    Boolean(data.datasets[0].data.length) && (
       <Media
         queries={{
           small: '(max-width: 767px)',

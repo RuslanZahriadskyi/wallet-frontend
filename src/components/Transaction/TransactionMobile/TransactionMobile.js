@@ -14,7 +14,6 @@ function TransactionMobile() {
       <div className="transaction-div">
         <table className="transaction-table">
           <tbody className="transaction-tbody transaction-tbody-mobile">
-            {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
               ({
                 id,
@@ -34,27 +33,27 @@ function TransactionMobile() {
                   key={id}
                 >
                   <td className="transaction-data">
-                    <span className="transaction-title">Дата</span>
+                    <span className="transaction-title">Date</span>
                     <span>{new Date(date).toLocaleString().slice(0, 10)}</span>
                   </td>
 
                   <td className="transaction-data">
-                    <span className="transaction-title">Тип</span>
+                    <span className="transaction-title">Type</span>
                     <span>{type === 'outlay' ? '-' : '+'}</span>
                   </td>
 
                   <td className="transaction-data">
-                    <span className="transaction-title">Категория</span>
+                    <span className="transaction-title">Category</span>
                     <span>{category}</span>
                   </td>
 
                   <td className="transaction-data">
-                    <span className="transaction-title">Комментарий</span>
+                    <span className="transaction-title">Comment</span>
                     <span>{comments}</span>
                   </td>
 
                   <td className="transaction-data">
-                    <span className="transaction-title">Сумма</span>
+                    <span className="transaction-title">Summary</span>
                     <span>
                       {type === 'outlay' ? (
                         <span className="outlay-color">
@@ -75,7 +74,7 @@ function TransactionMobile() {
                   </td>
 
                   <td className="transaction-data">
-                    <span className="transaction-title">Баланс</span>
+                    <span className="transaction-title">Balance</span>
                     <span>
                       {String(balanceAfter.toFixed(2)).replace(
                         /(\d)(?=(\d{3})+([^\d]|$))/g,

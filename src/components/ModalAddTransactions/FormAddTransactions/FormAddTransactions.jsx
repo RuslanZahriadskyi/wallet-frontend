@@ -120,7 +120,7 @@ const FormAddTransactions = () => {
   return (
     <div>
       <form className={s.form} onSubmit={formik.handleSubmit}>
-        <h2 className={s.formTitle}>Добавить транзакцию</h2>
+        <h2 className={s.formTitle}>Add transaction</h2>
         <SwitchButton
           name="checked"
           value={formik.values.checked}
@@ -163,7 +163,7 @@ const FormAddTransactions = () => {
         <TextField
           name="comments"
           type="text"
-          placeholder="Коментарий"
+          placeholder="Transaction comment"
           className={s.comentary}
           onChange={formik.handleChange}
           value={formik.values.comments}
@@ -173,8 +173,8 @@ const FormAddTransactions = () => {
         />
 
         <FormButtons
-          firtsButtonText="ДОБАВИТЬ"
-          secondButtonText="ОТМЕНА"
+          firtsButtonText="ADD TRANSACTION"
+          secondButtonText="CANCEL"
           canselAction={closeModal}
         />
       </form>

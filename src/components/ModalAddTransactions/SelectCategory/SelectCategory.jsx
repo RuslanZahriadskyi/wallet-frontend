@@ -157,7 +157,7 @@ export default function Category({ value, onChange, error, errorText }) {
       renderInput={params => (
         <TextField
           {...params}
-          placeholder="Выберите категорию"
+          placeholder="Choose category"
           variant="outlined"
           error={Boolean(error)}
           helperText={errorText}

@@ -43,6 +43,7 @@ function DiagramTab() {
 
   const data = statisticsData.map(({ count }) => count);
   const backgroundColor = statisticsData.map(({ color }) => color);
+  const label = statisticsData.map(({ name }) => name);
 
   const chartData = {
     datasets: [
@@ -52,15 +53,17 @@ function DiagramTab() {
         borderWidth: 0,
       },
     ],
+    labels: label,
   };
 
+  console.log(total);
   return (
     <section className={s.section}>
-      <h2 className={s.sectionTitle}>Статистика</h2>
+      <h2 className={s.sectionTitle}>Statistic</h2>
 
       <div className={s.wrapper}>
         <div className={s.visualPart}>
-          {statisticsData.length && (
+          {statisticsData.length > 0 && (
             <h2 className={s.chartTotal}>₴ {total ? total.toFixed(2) : 0}</h2>
           )}
           <Chart data={chartData} />
@@ -98,7 +101,9 @@ function DiagramTab() {
           {statisticsData.length ? (
             <Table data={statisticsData} income={income} outlay={outlay} />
           ) : (
-            <p className={s.warning}>Пожалуйста, добавьте операции</p>
+            <p className={s.warning}>
+              Please, add at least one transaction for this month
+            </p>
           )}
         </div>
       </div>
