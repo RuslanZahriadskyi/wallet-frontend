@@ -7,7 +7,7 @@ import s from './Switch.module.scss';
 export default function Switcher({ value, changeSwitch }) {
   return (
     <div className={s.container}>
-      <h3 className={!value ? s.incomeActive : s.incomeNoActive}>Доход</h3>
+      <h3 className={!value ? s.incomeActive : s.incomeNoActive}>Income</h3>
       <label className={s.switchContainer}>
         <Switch
           type="checkbox"
@@ -36,7 +36,7 @@ export default function Switcher({ value, changeSwitch }) {
           onColor="#fff"
         />
       </label>
-      <h3 className={value ? s.outlayActive : s.outlayNoActive}>Расход</h3>
+      <h3 className={value ? s.outlayActive : s.outlayNoActive}>Outlay</h3>
     </div>
   );
 }

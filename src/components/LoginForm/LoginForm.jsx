@@ -88,7 +88,7 @@ export default function LoginForm() {
             }}
             className="placeholderLog "
             inputProps={{ autoComplete: 'true' }}
-            placeholder="Пароль"
+            placeholder="Password"
             type="password"
             name="password"
             value={formik.password}
@@ -99,9 +99,9 @@ export default function LoginForm() {
         </div>
 
         <FormButtons
-          firtsButtonText="ВХОД"
+          firtsButtonText="LOGIN"
           secondLinkButton="/register"
-          secondButtonText="РЕГИСТРАЦИЯ"
+          secondButtonText="REGISTRATION"
         />
       </form>
     </div>

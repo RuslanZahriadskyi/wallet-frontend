@@ -38,9 +38,9 @@ function Currency() {
           <table className="currency-table">
             <thead>
               <tr className="currency-row">
-                <th className="currency-column">Валюта</th>
-                <th className="currency-column">Покупка</th>
-                <th className="currency-column">Продажа</th>
+                <th className="currency-column">Currency</th>
+                <th className="currency-column">Purchase</th>
+                <th className="currency-column">Sale</th>
               </tr>
             </thead>
 

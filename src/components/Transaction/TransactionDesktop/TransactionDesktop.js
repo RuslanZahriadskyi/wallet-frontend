@@ -16,12 +16,12 @@ function TransactionDesktop() {
         <table className="transaction-table">
           <thead className="transaction-head">
             <tr>
-              <th>Дата</th>
-              <th>Тип</th>
-              <th>Категория</th>
-              <th>Комментарий</th>
-              <th>Сумма</th>
-              <th>Баланс</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Comment</th>
+              <th>Sum</th>
+              <th>Balance</th>
             </tr>
           </thead>
 
