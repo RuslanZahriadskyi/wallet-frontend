@@ -22,15 +22,15 @@ const RegisterFormDialog = () => {
   }, [dispatch]);
 
   const handleChange = e => {
-    const { email } = e.currentTarget.value;
+    const email = e.currentTarget.value;
     setEmail(email);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const resendUser = { email };
-    dispatch(authOperations.register(resendUser));
+    dispatch(authOperations.verifyTokenRepeat(email));
     setEmail('');
+    formDialogAction();
   };
 
   return (
@@ -49,11 +49,7 @@ const RegisterFormDialog = () => {
             <h2 className="title_modal_register_form">
               Пожалуйста, введите еще раз свою почту
             </h2>
-            <form
-              onSubmit={() => {
-                handleSubmit(email);
-              }}
-            >
+            <form onSubmit={handleSubmit}>
               <TextField
                 autoFocus
                 margin="dense"
@@ -63,21 +59,16 @@ const RegisterFormDialog = () => {
                 fullWidth
                 type="email"
                 name="email"
-                value={email}
               />
               <div className="container_btns">
                 <button
                   onClick={formDialogAction}
-                  type="button"
+                  type="submit"
                   className="btn_register btn_cansel"
                 >
                   Отмена
                 </button>
-                <button
-                  onClick={formDialogAction}
-                  type="submit"
-                  className="btn_register btn_add"
-                >
+                <button type="submit" className="btn_register btn_add">
                   Отправить
                 </button>
               </div>

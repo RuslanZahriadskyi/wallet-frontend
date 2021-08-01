@@ -10,6 +10,8 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
   getCurrentUserAvatarSuccess,
+  getVerifyTokenRepeatSuccess,
+  getVerifyTokenRepeatError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -44,6 +46,8 @@ const token = createReducer(null, {
   [logoutSuccess]: () => null,
   // [logoutError]: () => null,
   [getCurrentUserError]: () => null,
+  [getVerifyTokenRepeatSuccess]: (_, { payload }) => payload.message,
+  [getVerifyTokenRepeatError]: () => null,
 });
 
 const isAuthenticated = createReducer(false, {

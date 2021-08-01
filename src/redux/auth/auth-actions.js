@@ -25,3 +25,15 @@ export const getCurrentUserAvatarSuccess = createAction(
 export const getCurrentUserAvatarError = createAction(
   'auth/getCurrentUserAvatarError',
 );
+
+export const getVerifyTokenRepeatRequest = createAction(
+  'auth/getVerifyTokenRepeatRequest',
+);
+
+export const getVerifyTokenRepeatSuccess = createAction(
+  'auth/getVerifyTokenRepeatSuccess',
+);
+
+export const getVerifyTokenRepeatError = createAction(
+  'auth/getVerifyTokenRepeatError',
+);

@@ -15,6 +15,9 @@ import {
   getCurrentUserAvatarRequest,
   getCurrentUserAvatarSuccess,
   getCurrentUserAvatarError,
+  getVerifyTokenRepeatRequest,
+  getVerifyTokenRepeatSuccess,
+  getVerifyTokenRepeatError,
 } from './auth-actions.js';
 
 import { toast } from 'react-toastify';
@@ -44,6 +47,18 @@ const register = credentials => async dispatch => {
   } catch (error) {
     dispatch(registerError(error.message));
     toast.error('Такой пользователь уже существует');
+  }
+};
+
+const verifyTokenRepeat = credentials => async dispatch => {
+  dispatch(getVerifyTokenRepeatRequest());
+  try {
+    const response = await axios.post('/api/users/verify', credentials);
+
+    dispatch(getVerifyTokenRepeatSuccess(response.message));
+    console.log(response.message);
+  } catch (error) {
+    dispatch(getVerifyTokenRepeatError(error.message));
   }
 };
 
@@ -117,6 +132,7 @@ const getCurrenAvatartUser = avatar => async dispatch => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   register,
+  verifyTokenRepeat,
   login,
   logout,
   getCurrentUser,
