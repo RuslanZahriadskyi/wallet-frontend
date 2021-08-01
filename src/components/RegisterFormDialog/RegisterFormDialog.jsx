@@ -40,7 +40,7 @@ const RegisterFormDialog = () => {
         type="button"
         onClick={formDialogAction}
       >
-        No e-mail?
+        Email didn’t arrive?
       </button>
 
       {open && (
