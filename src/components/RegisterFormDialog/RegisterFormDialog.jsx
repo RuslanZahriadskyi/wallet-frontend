@@ -40,14 +40,14 @@ const RegisterFormDialog = () => {
         type="button"
         onClick={formDialogAction}
       >
-        Не пришел e-mail?
+        No e-mail?
       </button>
 
       {open && (
         <Modal modalValue={open} modalAction={formDialogAction}>
           <div className="container_modal_register_form">
             <h2 className="title_modal_register_form">
-              Пожалуйста, введите еще раз свою почту
+              Please, enter your e-mail again
             </h2>
             <form onSubmit={handleSubmit}>
               <TextField
@@ -66,10 +66,10 @@ const RegisterFormDialog = () => {
                   type="submit"
                   className="btn_register btn_cansel"
                 >
-                  Отмена
+                  Сancel
                 </button>
                 <button type="submit" className="btn_register btn_add">
-                  Отправить
+                  Send
                 </button>
               </div>
             </form>
