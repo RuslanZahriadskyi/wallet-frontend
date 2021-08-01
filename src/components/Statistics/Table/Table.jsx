@@ -11,8 +11,8 @@ const Table = ({ data, income, outlay }) => {
         <table className={s.table}>
           <thead className={s.tableHead}>
             <tr>
-              <th className={s.tableFirstCol}>Категория</th>
-              <th className={s.tableSecondCol}>Сумма</th>
+              <th className={s.tableFirstCol}>Category</th>
+              <th className={s.tableSecondCol}>Sum</th>
             </tr>
           </thead>
           <tbody className={s.tableBody}>
@@ -31,21 +31,20 @@ const Table = ({ data, income, outlay }) => {
             ))}
           </tbody>
 
-           <tfoot className={s.tableFoot}>
-          <tr className={s.footRaw}>
-            <th className={s.footTitle}>Расходы:</th>
-            <td className={s.expenses}>{outlay ? outlay.toFixed(1) : 0}</td>
-          </tr>
-          <tr className={s.footRow}>
-            <th className={s.footTitle}>Доходы:</th>
-            <td className={s.incomes}>{income ? income.toFixed(1) : 0}</td>
-          </tr>
-        </tfoot>
+          <tfoot className={s.tableFoot}>
+            <tr className={s.footRaw}>
+              <th className={s.footTitle}>Outlay:</th>
+              <td className={s.expenses}>{outlay ? outlay.toFixed(1) : 0}</td>
+            </tr>
+            <tr className={s.footRow}>
+              <th className={s.footTitle}>Income:</th>
+              <td className={s.incomes}>{income ? income.toFixed(1) : 0}</td>
+            </tr>
+          </tfoot>
         </table>
       </div>
 
       {/* <p className={s.warning}>Пожалуйста, добавьте операции</p> */}
-
     </>
   );
 };

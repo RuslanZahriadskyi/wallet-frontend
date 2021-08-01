@@ -15,11 +15,11 @@ const ModalLogout = () => {
 
   return (
     <div className="container_modal_logout">
-      <h2 className="title_modal_logout">Вы уверены, что хотите выйти?</h2>
+      <h2 className="title_modal_logout">Are you sure that you want logout?</h2>
       <FormButtons
         canselAction={logoutModalAction}
-        firtsButtonText="ВЫЙТИ"
-        secondButtonText="ОТМЕНА"
+        firtsButtonText="LOGOUT"
+        secondButtonText="CANCEL"
         firstLinkButton="/login"
       />
     </div>

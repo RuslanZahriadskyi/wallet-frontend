@@ -98,7 +98,7 @@ const RegistrationForm = () => {
               ),
             }}
             className="placeholder"
-            placeholder="Пароль"
+            placeholder="Password"
             type="password"
             name="password"
             inputProps={{ autoComplete: 'true' }}
@@ -119,7 +119,7 @@ const RegistrationForm = () => {
               ),
             }}
             className="placeholder"
-            placeholder="Подтвердите пароль"
+            placeholder="Repeat password"
             type="password"
             name="confirmPassword"
             autoComplete="true"
@@ -143,7 +143,7 @@ const RegistrationForm = () => {
                 </InputAdornment>
               ),
             }}
-            placeholder="Ваше имя"
+            placeholder="Your name"
             className="placeholder"
             type="name"
             name="name"
@@ -155,8 +155,8 @@ const RegistrationForm = () => {
         </div>
 
         <FormButtons
-          firtsButtonText="РЕГИСТРАЦИЯ"
-          secondButtonText="ВХОД"
+          firtsButtonText="REGISTRATION"
+          secondButtonText="LOGIN"
           secondLinkButton="/login"
         />
         <RegisterFormDialog />
