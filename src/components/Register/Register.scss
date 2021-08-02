@@ -101,6 +101,7 @@
 
 .blok2 {
   @media screen and (min-width: 768px) {
+    position: relative;
     align-items: center;
     display: flex;
     padding-top: 50px;

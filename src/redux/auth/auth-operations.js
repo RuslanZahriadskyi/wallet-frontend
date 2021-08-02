@@ -50,13 +50,13 @@ const register = credentials => async dispatch => {
   }
 };
 
-const verifyTokenRepeat = credentials => async dispatch => {
+const verifyTokenRepeat = email => async dispatch => {
   dispatch(getVerifyTokenRepeatRequest());
   try {
-    const response = await axios.post('/api/users/verify', credentials);
+    const response = await axios.post('/api/users/verify', { email });
 
-    dispatch(getVerifyTokenRepeatSuccess(response.message));
-    console.log(response.message);
+    dispatch(getVerifyTokenRepeatSuccess(response.data.message));
+    toast.success(`The email has successfully resend`);
   } catch (error) {
     dispatch(getVerifyTokenRepeatError(error.message));
   }

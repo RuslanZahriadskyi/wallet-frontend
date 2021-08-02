@@ -159,8 +159,8 @@ const RegistrationForm = () => {
           secondButtonText="LOGIN"
           secondLinkButton="/login"
         />
-        <RegisterFormDialog />
       </form>
+      <RegisterFormDialog />
     </div>
   );
 };

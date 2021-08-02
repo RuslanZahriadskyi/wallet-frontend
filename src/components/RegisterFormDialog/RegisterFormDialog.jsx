@@ -11,8 +11,6 @@ import { authOperations } from '../../redux/auth';
 import Modal from '../ModalAddTransactions';
 
 const RegisterFormDialog = () => {
-  const [email, setEmail] = useState('');
-
   const dispatch = useDispatch();
 
   const open = useSelector(operationsSelectors.getRegisterFormDialog);
@@ -21,13 +19,17 @@ const RegisterFormDialog = () => {
     dispatch(operationsAction.getRegisterFormDialog());
   }, [dispatch]);
 
+  const [email, setEmail] = useState('');
+
   const handleChange = e => {
-    const email = e.currentTarget.value;
+    const email = e.target.value;
+    console.log(email);
     setEmail(email);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+
     dispatch(authOperations.verifyTokenRepeat(email));
     setEmail('');
     formDialogAction();
@@ -59,6 +61,7 @@ const RegisterFormDialog = () => {
                 fullWidth
                 type="email"
                 name="email"
+                value={email}
               />
               <div className="container_btns">
                 <button
