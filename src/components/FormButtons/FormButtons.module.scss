@@ -16,6 +16,12 @@
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 0.1em;
+    transition: transform 1s;
+  }
+
+  .buttons:hover,
+  .buttons:focus {
+    transform: scale(1.1);
   }
 
   .buttonAddTransaction {

@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { operationsSelectors } from '../../../redux/operations';
 import AddButton from '../../ButtonAddTransaction';
-import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
 
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
 import './TransactionDesktop.scss';
 
 function TransactionDesktop() {
@@ -22,11 +25,16 @@ function TransactionDesktop() {
               <th>Comment</th>
               <th>Sum</th>
               <th>Balance</th>
+              <th>
+                <EditIcon fontSize="small" />
+              </th>
+              <th>
+                <DeleteIcon fontSize="small" />
+              </th>
             </tr>
           </thead>
 
           <tbody className="transaction-tbody-desctop">
-            {/* здесь отрендерить данные транзакций с бекенда */}
             {operations.map(
               ({ date, type, category, comments, amount, balanceAfter }) => (
                 <tr key={uuidv4()}>

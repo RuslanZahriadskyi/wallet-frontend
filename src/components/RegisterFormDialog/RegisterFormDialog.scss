@@ -1,0 +1,76 @@
+@import '../../scss/index.scss';
+
+.btn_register_form {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: none;
+  background: none;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-decoration: underline;
+  color: #4a56e2;
+  cursor: pointer;
+}
+
+// .btn_register_form:hover {
+//   transform: scale(1.1);
+// }
+
+.container_modal_register_form {
+  width: auto;
+  height: auto;
+  padding: 40px 65px 60px;
+
+  .title_modal_register_form {
+    font-size: 25px;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: left;
+  }
+}
+
+.container_btns {
+  flex: 0 0 auto;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  justify-content: flex-end;
+
+  .btn_register {
+    font-family: 'Poppins';
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    transition: transform 1s;
+  }
+}
+
+.btn_register:hover,
+.btn_register:focus {
+  transform: scale(1.1);
+}
+
+.btn_cansel {
+  border-color: getColor('fourth-text-color');
+  color: getColor('fourth-text-color');
+  background-color: getColor('main-background-color');
+}
+
+.btn_add {
+  border: none;
+  margin-left: 8px;
+  background-color: getColor('button-color-income');
+  color: getColor('third-text-color');
+}

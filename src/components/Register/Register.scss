@@ -101,6 +101,7 @@
 
 .blok2 {
   @media screen and (min-width: 768px) {
+    position: relative;
     align-items: center;
     display: flex;
     padding-top: 50px;
@@ -109,10 +110,10 @@
 
   @media screen and (min-width: 1280px) {
     background: rgba(255, 255, 255, 0.4);
-    // padding: 52px 85px 52px 95px;
     padding: 0;
+
     width: 55%;
-    height: 100%;
+    height: 100vh;
     backdrop-filter: blur(8px);
     z-index: 1;
   }

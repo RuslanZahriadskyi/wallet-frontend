@@ -56,8 +56,8 @@
   position: sticky;
 
   @media (min-width: 768px) {
-    padding-bottom: 55px;
-
+    // padding-bottom: 55px;
+    min-height: calc(100vh - 80px);
     padding-left: 40px;
     padding-right: 40px;
   }
