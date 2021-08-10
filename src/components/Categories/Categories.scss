@@ -1,0 +1,120 @@
+@import '../../scss/main.scss';
+
+.categories-div {
+  margin-top: 30px;
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  @media (min-width: 1280px) {
+    width: 60%;
+    margin-top: 46px;
+    margin-left: 30px;
+  }
+}
+
+.categories-btn {
+  font-family: 'Circe';
+  width: 200px;
+  height: 38px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  transition: transform 1s;
+  border: none;
+  margin-bottom: 20px;
+  background-color: #24cca7;
+  color: #ffffff;
+  float: right;
+}
+
+.categories-table {
+  border-spacing: 0px;
+  border-radius: 30px;
+  counter-reset: rowNumber 1;
+
+  max-height: 55vh;
+  overflow: scroll;
+
+  @media (min-width: 768px) {
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  tr {
+    text-align: left;
+
+    &:not(:first-of-type) {
+      counter-increment: rowNumber;
+    }
+
+    th:first-child {
+      padding-left: 20px;
+    }
+
+    th:nth-child(n + 2) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  td {
+    padding: 11px 0 11px 15px;
+    font-family: Circe, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.13;
+    border-bottom: 1px solid #dcdcdf;
+    text-align: start;
+    box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
+
+    @media (max-width: 767px) {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    @media (min-width: 768px) {
+      padding: 15px 0 15px 15px;
+    }
+  }
+  td:first-child {
+    padding-left: 20px;
+  }
+
+  @media (min-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
+
+  td:first-child::before {
+    content: counter(rowNumber);
+  }
+}
+
+.categories-head {
+  position: sticky;
+  top: 0;
+  font-family: Circe, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: getColor('third-text-color');
+
+  th {
+    padding: 15px 0px 16px 0px;
+  }
+
+  th:first-child {
+    border-radius: 30px 0px 0px 30px;
+    align-items: start;
+  }
+
+  th:last-child {
+    border-radius: 0px 30px 30px 0px;
+  }
+}

@@ -37,6 +37,13 @@
   background-color: getColor('third-text-color');
 }
 
+.transaction-th {
+  border-left: 1px solid #dcdcdf;
+  padding: 11px 0 11px 15px;
+  text-align: center;
+  width: 79%;
+}
+
 .transaction-data {
   display: flex;
   justify-content: space-between;
