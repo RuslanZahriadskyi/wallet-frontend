@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import { operationsSelectors } from '../../../redux/operations';
 import AddButton from '../../ButtonAddTransaction';
 
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import './TransactionMobile.scss';
 import '../TransactionDesktop/TransactionDesktop.scss';
 
@@ -82,6 +85,12 @@ function TransactionMobile() {
                       )}
                     </span>
                   </td>
+                  <th scope="col" className="transaction-th">
+                    <EditIcon fontSize="small" />
+                  </th>
+                  <th scope="col" className="transaction-th">
+                    <DeleteIcon fontSize="small" />
+                  </th>
                 </tr>
               ),
             )}

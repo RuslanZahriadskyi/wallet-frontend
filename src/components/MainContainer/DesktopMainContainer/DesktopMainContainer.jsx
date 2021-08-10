@@ -4,10 +4,12 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 // // Icon Material-ui
 import HomeIcon from '@material-ui/icons/Home';
 import TimelineIcon from '@material-ui/icons/Timeline';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 
 // Components
 import Ballance from '../../Ballance';
 import Currency from '../../Currency/Currency';
+import Categories from '../../Categories';
 import Loading from '../../Spinner';
 
 // Styles
@@ -52,6 +54,17 @@ const DesktopMainContainer = () => {
                     <span className="icons-title">Statistics</span>
                   </NavLink>
                 </li>
+
+                <li className="icons-list">
+                  <NavLink
+                    to="/dashboard/categories"
+                    className="link"
+                    activeClassName="active-link"
+                  >
+                    <BubbleChartIcon fontSize="small" />
+                    <span className="icons-title">Categories</span>
+                  </NavLink>
+                </li>
               </ul>
 
               <Ballance />
@@ -64,6 +77,8 @@ const DesktopMainContainer = () => {
               <Route path="/dashboard/home" component={HomeDesktop} />
 
               <Route path="/dashboard/statistics" component={Statistics} />
+
+              <Route path="/dashboard/categories" component={Categories} />
             </Switch>
           </Suspense>
         </div>

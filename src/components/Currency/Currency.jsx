@@ -39,7 +39,7 @@ function Currency() {
             <thead>
               <tr className="currency-row">
                 <th className="currency-column">Currency</th>
-                <th className="currency-column">Purchase</th>
+                <th className="currency-column">Buy</th>
                 <th className="currency-column">Sale</th>
               </tr>
             </thead>
@@ -57,7 +57,7 @@ function Currency() {
         </div>
       )}
 
-      {error && <p>Что-то пошло не так. Попробуйте позже.</p>}
+      {error && <p>Something wrong. Please, try later.</p>}
     </>
   );
 }
