@@ -30,11 +30,11 @@ const createOperation = category => async dispatch => {
   try {
     const {
       data: {
-        data: { newOperation, totalBalance },
+        data: { userOperations, totalBalance },
       },
     } = await axios.post('/api/operations', category);
 
-    dispatch(addNewOperationSuccess(newOperation));
+    dispatch(addNewOperationSuccess(userOperations));
     dispatch(actions.fetchBalanceSuccess(totalBalance));
   } catch (error) {
     dispatch(addNewOperationError(error.message));

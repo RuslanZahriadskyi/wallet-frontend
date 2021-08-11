@@ -8,7 +8,10 @@ export default function DataPicker({ value, changeDate }) {
     <DatePicker
       className={s.dataPicker}
       selected={value}
-      onChange={date => changeDate('date', date)}
+      onChange={date => {
+        console.log(date);
+        return changeDate('date', date);
+      }}
       dateFormat="dd.MM.yyyy"
     />
   );

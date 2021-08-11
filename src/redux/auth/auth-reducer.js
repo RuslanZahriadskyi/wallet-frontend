@@ -41,9 +41,8 @@ const user = createReducer(initialUserState, {
 const token = createReducer(null, {
   [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
-  [logoutSuccess]: () => null,
-  // [logoutError]: () => null,
-  [getCurrentUserError]: () => null,
+  [logoutSuccess]: (_, __) => null,
+  [getCurrentUserError]: (_, __) => null,
 });
 
 const isAuthenticated = createReducer(false, {
@@ -64,8 +63,6 @@ const error = createReducer(null, {
   [logoutError]: setError,
   [getCurrentUserError]: setError,
 });
-
-// const saveAvatar = createReducer(avatar);
 
 export default combineReducers({
   user,

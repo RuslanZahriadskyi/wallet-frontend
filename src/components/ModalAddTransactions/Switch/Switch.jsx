@@ -12,7 +12,10 @@ export default function Switcher({ value, changeSwitch }) {
         <Switch
           type="checkbox"
           className={s.switch}
-          onChange={status => changeSwitch('checked', status)}
+          onChange={status => {
+            changeSwitch('checked', status);
+            changeSwitch('category', '');
+          }}
           checked={value}
           uncheckedHandleIcon={
             <AddCircleIcon
