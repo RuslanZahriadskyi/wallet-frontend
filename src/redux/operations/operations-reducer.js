@@ -3,6 +3,7 @@ import {
   getOperationsSuccess,
   addNewOperationSuccess,
   getRegisterFormDialog,
+  operationModal,
 } from './operations-action';
 import { openModal, closeModal, logoutModalAction } from './operations-action';
 
@@ -23,8 +24,18 @@ const modalLogout = createReducer(false, {
   [logoutModalAction]: (state, _) => !state,
 });
 
+const modalOperation = createReducer(false, {
+  [operationModal]: (state, _) => !state,
+});
+
 const registerFormDialog = createReducer(false, {
   [getRegisterFormDialog]: (state, _) => !state,
 });
 
-export { operationReducer, modalTransaction, modalLogout, registerFormDialog };
+export {
+  operationReducer,
+  modalTransaction,
+  modalLogout,
+  registerFormDialog,
+  modalOperation,
+};

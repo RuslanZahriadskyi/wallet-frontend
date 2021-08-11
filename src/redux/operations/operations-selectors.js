@@ -12,6 +12,7 @@ const getSortedOperations = createSelector([getOperations], operations => {
 
 const getRegisterFormDialog = state => state.getRegisterFormDialog;
 
+const getOperationModalValue = state => state.modalOperation;
 
 export {
   getModalValue,
@@ -19,4 +20,5 @@ export {
   getOperations,
   getSortedOperations,
   getRegisterFormDialog,
+  getOperationModalValue,
 };

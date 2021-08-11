@@ -65,7 +65,14 @@ export default function ButtonAddTransaction() {
                 <>
                   {modal && (
                     <Modal modalValue={modal} modalAction={() => closeModal()}>
-                      <FormAddTransactions />
+                      <FormAddTransactions
+                        operationDate={new Date()}
+                        operationAmount={''}
+                        operationType={'outlay'}
+                        operationId={null}
+                        operationComments={''}
+                        operationCategory={''}
+                      />
                     </Modal>
                   )}
                 </>

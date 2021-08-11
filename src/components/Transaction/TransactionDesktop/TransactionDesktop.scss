@@ -43,7 +43,7 @@
     font-size: 16px;
     line-height: 1.13;
     border-bottom: 1px solid #dcdcdf;
-    text-align: start;
+    text-align: center;
     box-shadow: 0 5px 4px -5px rgba(255, 255, 255, 0.6);
 
     @media (max-width: 767px) {
@@ -74,8 +74,10 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: getColor('third-text-color');
+  z-index: 1;
 
   th {
+    text-align: center;
     padding: 15px 0px 16px 0px;
   }
 
@@ -94,4 +96,10 @@
 }
 .income-color {
   color: getColor('income-text-color');
+}
+
+.transaction-edit-desktop {
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
 }

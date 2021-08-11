@@ -20,6 +20,7 @@ import {
   modalTransaction,
   modalLogout,
   registerFormDialog,
+  modalOperation,
 } from './operations/operations-reducer';
 import isLoading from './isLoading/isLoading-reducer';
 
@@ -43,6 +44,7 @@ let store = configureStore({
     auth: allOperations,
     modal: modalTransaction,
     logoutModalAction: modalLogout,
+    modalOperation: modalOperation,
     operations: operationReducer,
     categories: categoryReducer,
     isLoading,

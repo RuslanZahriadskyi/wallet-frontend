@@ -44,18 +44,30 @@ const operationSchema = Yup.object({
   }),
 });
 
-const FormAddTransactions = () => {
+const FormAddTransactions = ({
+  operationDate,
+  operationAmount,
+  operationType,
+  operationId,
+  operationComments,
+  operationCategory,
+}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  console.log(operationType);
+
   const formik = useFormik({
     initialValues: {
-      type: '',
-      category: '',
-      amount: '',
-      date: new Date(),
-      comments: '',
-      checked: true,
+      type: operationType,
+      category: operationCategory,
+      amount:
+        operationType === 'outlay'
+          ? Number(operationAmount?.toString().slice(1))
+          : operationAmount,
+      date: new Date(operationDate),
+      comments: operationComments,
+      checked: operationType === 'outlay' ? true : false,
       selectError: '',
     },
     validationSchema: operationSchema,
@@ -82,6 +94,8 @@ const FormAddTransactions = () => {
       date: Date.parse(values.date),
       comments: values.comments,
     };
+
+    console.log(formik.setFieldValue('awda'));
 
     if (values.category) {
       if (values.category.includes('Add')) {
