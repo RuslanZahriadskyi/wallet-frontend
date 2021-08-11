@@ -16,7 +16,11 @@ import { statisticsReducer } from './statistics';
 import { operationReducer } from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
 import { authReducer } from './auth';
-import { modalTransaction, modalLogout } from './operations/operations-reducer';
+import {
+  modalTransaction,
+  modalLogout,
+  registerFormDialog,
+} from './operations/operations-reducer';
 import isLoading from './isLoading/isLoading-reducer';
 
 const middleware = getDefaultMiddleware({
@@ -42,6 +46,7 @@ let store = configureStore({
     operations: operationReducer,
     categories: categoryReducer,
     isLoading,
+    getRegisterFormDialog: registerFormDialog,
   },
   middleware,
 });

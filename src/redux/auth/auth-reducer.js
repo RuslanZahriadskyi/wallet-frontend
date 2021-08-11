@@ -68,5 +68,6 @@ export default combineReducers({
   user,
   token,
   isAuthenticated,
+
   error,
 });

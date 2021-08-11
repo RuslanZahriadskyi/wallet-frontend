@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   getOperationsSuccess,
   addNewOperationSuccess,
+  getRegisterFormDialog,
 } from './operations-action';
 import { openModal, closeModal, logoutModalAction } from './operations-action';
 
@@ -22,4 +23,8 @@ const modalLogout = createReducer(false, {
   [logoutModalAction]: (state, _) => !state,
 });
 
-export { operationReducer, modalTransaction, modalLogout };
+const registerFormDialog = createReducer(false, {
+  [getRegisterFormDialog]: (state, _) => !state,
+});
+
+export { operationReducer, modalTransaction, modalLogout, registerFormDialog };

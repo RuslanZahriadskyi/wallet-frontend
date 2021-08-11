@@ -1,9 +1,6 @@
-@import '../../../scss/main.scss';
+@import '../../scss/main.scss';
 
-.transaction-div {
-  // position: relative;
-  max-height: 55vh;
-  overflow: scroll;
+.categories-div {
   margin-top: 30px;
 
   @media (min-width: 768px) {
@@ -13,18 +10,48 @@
   }
 
   @media (min-width: 1280px) {
-    width: 100%;
+    width: 60%;
     margin-top: 46px;
     margin-left: 30px;
   }
 }
 
-.transaction-table {
+.categories-btn {
+  font-family: 'Circe';
+  width: 200px;
+  height: 38px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  transition: transform 1s;
+  border: none;
+  margin-bottom: 20px;
+  background-color: #24cca7;
+  color: #ffffff;
+  float: right;
+}
+
+.categories-table {
   border-spacing: 0px;
   border-radius: 30px;
+  counter-reset: rowNumber 1;
+
+  max-height: 55vh;
+  overflow: scroll;
+
+  @media (min-width: 768px) {
+    max-height: 60vh;
+    overflow: auto;
+  }
 
   tr {
     text-align: left;
+
+    &:not(:first-of-type) {
+      counter-increment: rowNumber;
+    }
 
     th:first-child {
       padding-left: 20px;
@@ -55,7 +82,6 @@
       padding: 15px 0 15px 15px;
     }
   }
-
   td:first-child {
     padding-left: 20px;
   }
@@ -64,9 +90,13 @@
     width: 100%;
     text-align: center;
   }
+
+  td:first-child::before {
+    content: counter(rowNumber);
+  }
 }
 
-.transaction-head {
+.categories-head {
   position: sticky;
   top: 0;
   font-family: Circe, sans-serif;
@@ -87,11 +117,4 @@
   th:last-child {
     border-radius: 0px 30px 30px 0px;
   }
-}
-
-.outlay-color {
-  color: getColor('consumption-text-color');
-}
-.income-color {
-  color: getColor('income-text-color');
 }

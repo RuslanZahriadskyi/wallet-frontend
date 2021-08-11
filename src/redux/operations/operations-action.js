@@ -13,6 +13,8 @@ const getOperationsError = createAction('operation/getOperationsError');
 
 const logoutModalAction = createAction('operations/modalLogout');
 
+const getRegisterFormDialog = createAction('operations/getRegisterFormDialog');
+
 export {
   openModal,
   closeModal,
@@ -23,4 +25,5 @@ export {
   getOperationsRequest,
   getOperationsSuccess,
   getOperationsError,
+  getRegisterFormDialog,
 };

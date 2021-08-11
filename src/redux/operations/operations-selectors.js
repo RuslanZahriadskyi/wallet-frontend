@@ -10,9 +10,13 @@ const getSortedOperations = createSelector([getOperations], operations => {
   return operations.slice().sort((a, b) => b.date - a.date);
 });
 
+const getRegisterFormDialog = state => state.getRegisterFormDialog;
+
+
 export {
   getModalValue,
   getLogoutModalValue,
   getOperations,
   getSortedOperations,
+  getRegisterFormDialog,
 };

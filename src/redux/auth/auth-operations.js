@@ -15,6 +15,9 @@ import {
   getCurrentUserAvatarRequest,
   getCurrentUserAvatarSuccess,
   getCurrentUserAvatarError,
+  getVerifyTokenRepeatRequest,
+  getVerifyTokenRepeatSuccess,
+  getVerifyTokenRepeatError,
 } from './auth-actions.js';
 
 import { toast } from 'react-toastify';
@@ -47,6 +50,18 @@ const register = credentials => async dispatch => {
   }
 };
 
+const verifyTokenRepeat = email => async dispatch => {
+  dispatch(getVerifyTokenRepeatRequest());
+  try {
+    const response = await axios.post('/api/users/verify', { email });
+
+    dispatch(getVerifyTokenRepeatSuccess(response.data.message));
+    toast.success(`The email has successfully resend`);
+  } catch (error) {
+    dispatch(getVerifyTokenRepeatError(error.message));
+  }
+};
+
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
@@ -54,12 +69,10 @@ const login = credentials => async dispatch => {
 
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
-    toast.success(`Добро пожаловать в Wallet`);
+    toast.success(`Welcome to Wallet`);
   } catch (error) {
     dispatch(loginError(error.message));
-    toast.error(
-      'Ваш аккаунт не верифицирован, пожалуйста, подвердите свою почту',
-    );
+    toast.error('Your account is not verified, please confirm your email');
   }
 };
 
@@ -72,7 +85,7 @@ const logout = () => async dispatch => {
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
-    toast.error('Упс, что-то пошло не так :(');
+    toast.error('Oops, something wrong :(');
   }
 };
 
@@ -117,6 +130,7 @@ const getCurrenAvatartUser = avatar => async dispatch => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   register,
+  verifyTokenRepeat,
   login,
   logout,
   getCurrentUser,
