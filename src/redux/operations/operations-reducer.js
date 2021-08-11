@@ -10,7 +10,7 @@ const setFalse = () => false;
 
 const operationReducer = createReducer([], {
   [getOperationsSuccess]: (_, { payload }) => payload,
-  [addNewOperationSuccess]: (state, { payload }) => [...state, payload],
+  [addNewOperationSuccess]: (_, { payload }) => [...payload],
 });
 
 const modalTransaction = createReducer(false, {

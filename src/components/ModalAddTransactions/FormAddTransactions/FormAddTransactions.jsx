@@ -73,39 +73,34 @@ const FormAddTransactions = () => {
       type = 'income';
     }
 
+    const dateSeconds = values.date.getMilliseconds();
+    values.date.setMilliseconds(dateSeconds);
+
+    let newOperation = {
+      type,
+      amount: values.amount,
+      date: Date.parse(values.date),
+      comments: values.comments,
+    };
+
     if (values.category) {
       if (values.category.includes('Add')) {
-        const newOperation = {
-          type,
+        newOperation = {
+          ...newOperation,
           category: values.category.slice(5, -1),
-          amount: values.amount,
-          date: Date.parse(values.date),
-          comments: values.comments,
         };
         dispatch(operationsOperation.createOperation(newOperation));
         resetForm();
         return;
       }
 
-      const newOperation = {
-        type,
-        category: values.category,
-        amount: values.amount,
-        date: Date.parse(values.date),
-        comments: values.comments,
-      };
+      newOperation = { ...newOperation, category: values.category };
       dispatch(operationsOperation.createOperation(newOperation));
 
       resetForm();
+      closeModal();
       return;
     }
-
-    const newOperation = {
-      type,
-      amount: values.amount,
-      date: Date.parse(values.date),
-      comments: values.comments,
-    };
 
     dispatch(operationsOperation.createOperation(newOperation));
 

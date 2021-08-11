@@ -6,16 +6,15 @@ import './Header.scss';
 import Logo from './Logo';
 import Modal from '../ModalAddTransactions/ModalAddTransactions';
 import ModalLogout from './ModalLogout';
-import { operationsSelectors } from '../../redux/operations';
-import { authOperations } from '../../redux/auth';
+import { operationsAction, operationsSelectors } from '../../redux/operations';
 
 const Header = () => {
   const dispatch = useDispatch();
 
-  const modalLogout = useSelector(operationsSelectors.logoutModalAction);
+  const modalLogout = useSelector(operationsSelectors.getLogoutModalValue);
 
   const onLogOut = useCallback(() => {
-    dispatch(authOperations.logout());
+    dispatch(operationsAction.logoutModalAction());
   }, [dispatch]);
 
   return (
@@ -25,7 +24,7 @@ const Header = () => {
       </NavLink>
       <UserMenu />
       {modalLogout && (
-        <Modal modalValue={modalLogout} modalAction={onLogOut}>
+        <Modal modalValue={modalLogout} modalAction={() => onLogOut()}>
           <ModalLogout />
         </Modal>
       )}
