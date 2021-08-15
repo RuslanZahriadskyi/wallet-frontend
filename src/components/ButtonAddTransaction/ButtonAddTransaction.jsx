@@ -64,15 +64,8 @@ export default function ButtonAddTransaction() {
               {matches.medium && (
                 <>
                   {modal && (
-                    <Modal modalValue={modal} modalAction={() => closeModal()}>
-                      <FormAddTransactions
-                        operationDate={new Date()}
-                        operationAmount={''}
-                        operationType={'outlay'}
-                        operationId={null}
-                        operationComments={''}
-                        operationCategory={''}
-                      />
+                    <Modal modalValue={modal} modalAction={closeModal}>
+                      <FormAddTransactions />
                     </Modal>
                   )}
                 </>

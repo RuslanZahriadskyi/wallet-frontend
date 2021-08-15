@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { isEmpty } from 'lodash';
 
 import s from './formAddTransactions.module.scss';
 import SwitchButton from '../Switch';
@@ -44,31 +45,23 @@ const operationSchema = Yup.object({
   }),
 });
 
-const FormAddTransactions = ({
-  operationDate,
-  operationAmount,
-  operationType,
-  operationId,
-  operationComments,
-  operationCategory,
-}) => {
+const FormAddTransactions = props => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  console.log(operationType);
-
   const formik = useFormik({
     initialValues: {
-      type: operationType,
-      category: operationCategory,
+      type: props.operationType || '',
+      category: props.operationCategory || '',
       amount:
-        operationType === 'outlay'
-          ? Number(operationAmount?.toString().slice(1))
-          : operationAmount,
-      date: new Date(operationDate),
-      comments: operationComments,
-      checked: operationType === 'outlay' ? true : false,
+        props.operationType === 'outlay'
+          ? Number(props.operationAmount?.toString().slice(1))
+          : props.operationAmount || '',
+      date: props.operationDate ? new Date(props.operationDate) : new Date(),
+      comments: props.operationComments || '',
+      checked: isChecked(props),
       selectError: '',
+      operationId: props.operationId || '',
     },
     validationSchema: operationSchema,
 
@@ -76,6 +69,28 @@ const FormAddTransactions = ({
       onFormSubmit(values, resetForm);
     },
   });
+
+  function isChecked(props) {
+    if (isEmpty(props)) {
+      return true;
+    }
+
+    if (props?.operationType === 'outlay') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const closeModal = useCallback(
+    () => dispatch(operationsAction.closeModal()),
+    [dispatch],
+  );
+
+  const closeChangeOperationModal = useCallback(
+    () => dispatch(operationsAction.modalEditOperation()),
+    [dispatch],
+  );
 
   function onFormSubmit(values, resetForm) {
     let type = '';
@@ -86,7 +101,10 @@ const FormAddTransactions = ({
     }
 
     const dateSeconds = values.date.getMilliseconds();
+    const dateMinutes = values.date.getMinutes();
+
     values.date.setMilliseconds(dateSeconds);
+    values.date.setMinutes(dateMinutes);
 
     let newOperation = {
       type,
@@ -95,7 +113,27 @@ const FormAddTransactions = ({
       comments: values.comments,
     };
 
-    console.log(formik.setFieldValue('awda'));
+    if (!isEmpty(props)) {
+      if (values.category) {
+        newOperation = { ...newOperation, category: values.category };
+
+        dispatch(
+          operationsOperation.changeOperation(newOperation, values.operationId),
+        );
+
+        resetForm();
+        closeChangeOperationModal();
+        return;
+      }
+
+      dispatch(
+        operationsOperation.changeOperation(newOperation, values.operationId),
+      );
+
+      resetForm();
+      closeChangeOperationModal();
+      return;
+    }
 
     if (values.category) {
       if (values.category.includes('Add')) {
@@ -103,28 +141,18 @@ const FormAddTransactions = ({
           ...newOperation,
           category: values.category.slice(5, -1),
         };
-        dispatch(operationsOperation.createOperation(newOperation));
-        resetForm();
+
         return;
       }
 
       newOperation = { ...newOperation, category: values.category };
-      dispatch(operationsOperation.createOperation(newOperation));
-
-      resetForm();
-      closeModal();
-      return;
     }
 
     dispatch(operationsOperation.createOperation(newOperation));
 
     resetForm();
+    closeModal();
   }
-
-  const closeModal = useCallback(
-    () => dispatch(operationsAction.closeModal()),
-    [dispatch],
-  );
 
   return (
     <div>
@@ -181,11 +209,17 @@ const FormAddTransactions = ({
           helperText={formik.touched.comments && formik.errors.comments}
         />
 
-        <FormButtons
-          firtsButtonText="ADD TRANSACTION"
-          secondButtonText="CANCEL"
-          canselAction={closeModal}
-        />
+        {isEmpty(props) ? (
+          <FormButtons
+            firtsButtonText="ADD TRANSACTION"
+            secondButtonText="CANCEL"
+          />
+        ) : (
+          <FormButtons
+            firtsButtonText="CHANGE TRANSACTION"
+            secondButtonText="CANCEL"
+          />
+        )}
       </form>
     </div>
   );

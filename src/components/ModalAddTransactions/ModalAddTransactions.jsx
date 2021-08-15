@@ -1,4 +1,3 @@
-import React from 'react';
 import { createPortal } from 'react-dom';
 import './modalAddTransactions.scss';
 import { Modal } from '@material-ui/core';

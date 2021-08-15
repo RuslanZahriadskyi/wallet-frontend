@@ -13,7 +13,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { statisticsReducer } from './statistics';
-import { operationReducer } from './operations/operations-reducer';
+import {
+  modalOperationDelete,
+  operationReducer,
+} from './operations/operations-reducer';
 import { categoryReducer } from './category/category-reducer';
 import { authReducer } from './auth';
 import {
@@ -45,6 +48,7 @@ let store = configureStore({
     modal: modalTransaction,
     logoutModalAction: modalLogout,
     modalOperation: modalOperation,
+    modalOperationDelete: modalOperationDelete,
     operations: operationReducer,
     categories: categoryReducer,
     isLoading,

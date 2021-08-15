@@ -3,7 +3,10 @@ import {
   getOperationsSuccess,
   addNewOperationSuccess,
   getRegisterFormDialog,
-  operationModal,
+  modalEditOperation,
+  modalDeleteOperation,
+  deleteOperationSuccess,
+  changeOperationSuccess,
 } from './operations-action';
 import { openModal, closeModal, logoutModalAction } from './operations-action';
 
@@ -11,8 +14,10 @@ const setTrue = () => true;
 const setFalse = () => false;
 
 const operationReducer = createReducer([], {
-  [getOperationsSuccess]: (_, { payload }) => payload,
+  [getOperationsSuccess]: (_, { payload }) => [...payload],
   [addNewOperationSuccess]: (_, { payload }) => [...payload],
+  [deleteOperationSuccess]: (_, { payload }) => [...payload],
+  [changeOperationSuccess]: (_, { payload }) => [...payload],
 });
 
 const modalTransaction = createReducer(false, {
@@ -25,7 +30,11 @@ const modalLogout = createReducer(false, {
 });
 
 const modalOperation = createReducer(false, {
-  [operationModal]: (state, _) => !state,
+  [modalEditOperation]: (state, _) => !state,
+});
+
+const modalOperationDelete = createReducer(false, {
+  [modalDeleteOperation]: (state, _) => !state,
 });
 
 const registerFormDialog = createReducer(false, {
@@ -38,4 +47,5 @@ export {
   modalLogout,
   registerFormDialog,
   modalOperation,
+  modalOperationDelete,
 };

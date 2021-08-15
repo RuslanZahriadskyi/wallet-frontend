@@ -122,7 +122,6 @@ const getCurrenAvatartUser = avatar => async dispatch => {
     });
     dispatch(getCurrentUserAvatarSuccess(response.data));
   } catch (error) {
-    console.log(error);
     dispatch(getCurrentUserAvatarError(error.message));
   }
 };

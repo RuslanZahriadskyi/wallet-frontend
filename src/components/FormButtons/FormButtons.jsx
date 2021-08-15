@@ -11,31 +11,81 @@ const FormButtons = ({
   secondButtonText,
   firstLinkButton,
   secondLinkButton,
-  canselAction,
 }) => {
   const dispatch = useDispatch();
 
-  function closeModal() {
+  function closeModalLogout() {
     dispatch(operationsAction.logoutModalAction());
+  }
+
+  function closeModalChangeTransaction() {
+    dispatch(operationsAction.modalEditOperation());
+  }
+
+  function closeModalAddTransaction() {
+    dispatch(operationsAction.closeModal());
+  }
+
+  function closeModalDeleteTransaction() {
+    dispatch(operationsAction.modalDeleteOperation());
   }
 
   return (
     <>
       {!firstLinkButton && !secondLinkButton && (
         <div className={s.buttonsContainer}>
-          <button
-            type="submit"
-            className={[s.buttons, s.buttonAddTransaction].join(' ')}
-          >
-            {firtsButtonText}
-          </button>
-          <button
-            type="button"
-            className={[s.buttons, s.buttonCancel].join(' ')}
-            onClick={canselAction}
-          >
-            {secondButtonText}
-          </button>
+          {firtsButtonText === 'ADD TRANSACTION' && (
+            <>
+              {' '}
+              <button
+                type="submit"
+                className={[s.buttons, s.buttonAddTransaction].join(' ')}
+              >
+                {firtsButtonText}
+              </button>
+              <button
+                type="button"
+                className={[s.buttons, s.buttonCancel].join(' ')}
+                onClick={closeModalAddTransaction}
+              >
+                {secondButtonText}
+              </button>
+            </>
+          )}
+          {firtsButtonText === 'CHANGE TRANSACTION' && (
+            <>
+              <button
+                type="submit"
+                className={[s.buttons, s.buttonAddTransaction].join(' ')}
+              >
+                {firtsButtonText}
+              </button>
+              <button
+                type="button"
+                className={[s.buttons, s.buttonCancel].join(' ')}
+                onClick={closeModalChangeTransaction}
+              >
+                {secondButtonText}
+              </button>
+            </>
+          )}
+          {firtsButtonText === 'DELETE TRANSACTION' && (
+            <>
+              <button
+                type="submit"
+                className={[s.buttons, s.buttonsDelete].join(' ')}
+              >
+                {firtsButtonText}
+              </button>
+              <button
+                type="button"
+                className={[s.buttons, s.buttonCancel].join(' ')}
+                onClick={closeModalDeleteTransaction}
+              >
+                {secondButtonText}
+              </button>
+            </>
+          )}
         </div>
       )}
       {firstLinkButton && (
@@ -46,7 +96,7 @@ const FormButtons = ({
               className={[s.buttons, s.buttonAddTransaction].join(' ')}
               onClick={() => {
                 dispatch(authOperations.logout());
-                closeModal();
+                closeModalLogout();
               }}
             >
               {firtsButtonText}
@@ -55,7 +105,7 @@ const FormButtons = ({
           <button
             type="button"
             className={[s.buttons, s.buttonCancel].join(' ')}
-            onClick={canselAction}
+            onClick={closeModalLogout}
           >
             {secondButtonText}
           </button>

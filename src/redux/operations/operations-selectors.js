@@ -14,6 +14,8 @@ const getRegisterFormDialog = state => state.getRegisterFormDialog;
 
 const getOperationModalValue = state => state.modalOperation;
 
+const getModalDeleteOperationValue = state => state.modalOperationDelete;
+
 export {
   getModalValue,
   getLogoutModalValue,
@@ -21,4 +23,5 @@ export {
   getSortedOperations,
   getRegisterFormDialog,
   getOperationModalValue,
+  getModalDeleteOperationValue,
 };

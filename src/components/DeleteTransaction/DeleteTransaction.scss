@@ -1,0 +1,16 @@
+.modal_delete_operation {
+  width: 600px;
+  height: auto;
+  padding: 40px 65px 60px;
+
+  @media screen and (max-width: 599px) {
+    width: 100%;
+  }
+}
+
+.title_modal_delete_operation {
+  font-size: 30px;
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+}

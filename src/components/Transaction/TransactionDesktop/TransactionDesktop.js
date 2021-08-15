@@ -5,14 +5,15 @@ import {
   operationsAction,
   operationsSelectors,
 } from '../../../redux/operations';
-import AddButton from '../../ButtonAddTransaction';
 import { makeStyles } from '@material-ui/core/styles';
 
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
-import Modal from '../../ModalAddTransactions';
 
+import AddButton from '../../ButtonAddTransaction';
+import Modal from '../../ModalAddTransactions';
+import DeleteTransaction from '../../DeleteTransaction';
 import FormAddTransactions from '../../ModalAddTransactions/FormAddTransactions';
 
 import '../../ButtonAddTransaction/buttonAddTransaction.module.scss';
@@ -31,11 +32,6 @@ function TransactionDesktop() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const operationModal = useCallback(
-    () => dispatch(operationsAction.operationModal()),
-    [dispatch],
-  );
-
   const [operationDate, setOperationDate] = useState(null);
   const [operationType, setOperationType] = useState(null);
   const [operationId, setOperationId] = useState(null);
@@ -43,24 +39,57 @@ function TransactionDesktop() {
   const [operationComments, setOperationComments] = useState(null);
   const [operationCategory, setOperationCategory] = useState(null);
 
-  const getDataForEditOperation = (
+  function setOperationInfo(
     id,
     date,
     amount,
     category,
     comments,
     type,
-  ) => {
-    setOperationDate(date);
-    setOperationType(type);
-    setOperationId(id);
-    setOperationAmount(amount);
-    setOperationComments(comments);
-    setOperationCategory(category);
-  };
+    clickedType,
+  ) {
+    if (clickedType === 'edit') {
+      setOperationDate(date);
+      setOperationType(type);
+      setOperationId(id);
+      setOperationAmount(amount);
+      setOperationComments(comments);
+      setOperationCategory(category);
+
+      return;
+    } else {
+      setOperationDate(date);
+      setOperationType(type);
+      setOperationId(id);
+      setOperationAmount(amount);
+    }
+  }
+
+  const modalEditOperation = useCallback(
+    () => dispatch(operationsAction.modalEditOperation()),
+    [dispatch],
+  );
+
+  const modalDeleteOperation = useCallback(
+    () => dispatch(operationsAction.modalDeleteOperation()),
+    [dispatch],
+  );
 
   const modal = useSelector(operationsSelectors.getOperationModalValue);
   const operations = useSelector(operationsSelectors.getSortedOperations);
+  const deleteOperationModal = useSelector(
+    operationsSelectors.getModalDeleteOperationValue,
+  );
+
+  const setCorectDate = date => {
+    let correctDate = new Date(date).toLocaleDateString();
+
+    if (correctDate.length < 10) {
+      correctDate = '0' + correctDate;
+    }
+
+    return correctDate;
+  };
 
   return (
     <>
@@ -90,7 +119,7 @@ function TransactionDesktop() {
                 id,
               }) => (
                 <tr key={uuidv4()}>
-                  <td>{new Date(date).toLocaleString().slice(0, 10)}</td>
+                  <td>{setCorectDate(date)}</td>
                   <td>{type === 'outlay' ? '-' : '+'}</td>
                   <td>{category}</td>
                   <td>{comments}</td>
@@ -121,14 +150,15 @@ function TransactionDesktop() {
                     <IconButton
                       className={classes.customHoverFocusChange}
                       onClick={() => {
-                        operationModal();
-                        getDataForEditOperation(
+                        modalEditOperation();
+                        setOperationInfo(
                           id,
                           date,
                           amount,
                           category,
                           comments,
                           type,
+                          'edit',
                         );
                       }}
                     >
@@ -137,7 +167,16 @@ function TransactionDesktop() {
                     <IconButton
                       className={classes.customHoverFocusDelete}
                       onClick={() => {
-                        // console.log('click');
+                        modalDeleteOperation();
+                        setOperationInfo(
+                          id,
+                          date,
+                          amount,
+                          category,
+                          comments,
+                          type,
+                          'delete',
+                        );
                       }}
                     >
                       <DeleteIcon fontSize="small" />
@@ -152,7 +191,7 @@ function TransactionDesktop() {
       <AddButton />
 
       {modal && (
-        <Modal modalValue={modal} modalAction={() => operationModal()}>
+        <Modal modalValue={modal} modalAction={modalEditOperation}>
           <FormAddTransactions
             operationDate={operationDate}
             operationAmount={operationAmount}
@@ -162,6 +201,15 @@ function TransactionDesktop() {
             operationCategory={operationCategory}
           />
         </Modal>
+      )}
+
+      {deleteOperationModal && (
+        <DeleteTransaction
+          deleteOperationDate={operationDate}
+          deleteOperationAmount={operationAmount}
+          deleteOperationType={operationType}
+          deleteOperationId={operationId}
+        />
       )}
     </>
   );

@@ -19,6 +19,13 @@
     transition: transform 1s;
   }
 
+  .buttonsDelete {
+    border: none;
+    margin: 51px 0 20px 0;
+    background-color: red;
+    color: getColor('third-text-color');
+  }
+
   .buttons:hover,
   .buttons:focus {
     transform: scale(1.1);

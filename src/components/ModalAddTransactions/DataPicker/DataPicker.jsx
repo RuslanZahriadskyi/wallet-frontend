@@ -9,7 +9,6 @@ export default function DataPicker({ value, changeDate }) {
       className={s.dataPicker}
       selected={value}
       onChange={date => {
-        console.log(date);
         return changeDate('date', date);
       }}
       dateFormat="dd.MM.yyyy"
