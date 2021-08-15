@@ -22,7 +22,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+    async function getUser() {
+      await dispatch(authOperations.getCurrentUser());
+    }
+    getUser();
   }, [dispatch]);
 
   return (
