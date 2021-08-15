@@ -127,10 +127,12 @@ function TransactionMobile() {
                     <span>{type === 'outlay' ? '-' : '+'}</span>
                   </td>
 
-                  <td className="transaction-data">
-                    <span className="transaction-title">Category</span>
-                    <span>{category}</span>
-                  </td>
+                  {category && (
+                    <td className="transaction-data">
+                      <span className="transaction-title">Category</span>
+                      <span>{category}</span>
+                    </td>
+                  )}
 
                   <td className="transaction-data">
                     <span className="transaction-title">Comment</span>
