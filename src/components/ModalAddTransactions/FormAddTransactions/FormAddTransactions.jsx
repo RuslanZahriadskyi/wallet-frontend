@@ -71,15 +71,11 @@ const FormAddTransactions = props => {
   });
 
   function isChecked(props) {
-    if (isEmpty(props)) {
+    if (isEmpty(props) || props?.operationType === 'outlay') {
       return true;
     }
 
-    if (props?.operationType === 'outlay') {
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 
   const closeModal = useCallback(
@@ -141,6 +137,10 @@ const FormAddTransactions = props => {
           ...newOperation,
           category: values.category.slice(5, -1),
         };
+
+        dispatch(operationsOperation.createOperation(newOperation));
+        resetForm();
+        closeModal();
 
         return;
       }

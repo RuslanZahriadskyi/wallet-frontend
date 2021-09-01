@@ -11,7 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
 
-import AddButton from '../../ButtonAddTransaction';
+import AddButton from '../../ButtonAddTransaction/ButtonAddTransaction';
 import Modal from '../../ModalAddTransactions';
 import DeleteTransaction from '../../DeleteTransaction';
 import FormAddTransactions from '../../ModalAddTransactions/FormAddTransactions';

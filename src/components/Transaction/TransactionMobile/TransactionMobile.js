@@ -7,7 +7,7 @@ import {
   operationsSelectors,
 } from '../../../redux/operations';
 
-import AddButton from '../../ButtonAddTransaction';
+import AddButton from '../../ButtonAddTransaction/ButtonAddTransaction';
 import DeleteTransaction from '../../DeleteTransaction';
 import FormAddTransactions from '../../ModalAddTransactions/FormAddTransactions';
 import Modal from '../../ModalAddTransactions';

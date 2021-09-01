@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // API
 import currencyApi from '../../api/privatbank-api';
+import Spinner from '../Spinner';
 
 import './Currency.scss';
 
@@ -18,22 +19,22 @@ function Currency() {
 
   const fetchRates = async () => {
     try {
-      //   сотояние загрузки, меняем значение
       setIsLoading(true);
 
       const data = await currencyApi.fetchRates();
-      data.length = 3; //переделать
+      data.length = 3;
       setRates([...rates, ...data]);
+      setIsLoading(false);
     } catch (error) {
-      // throw new Error('Something get wrong. Please, waiting!'); //notification????
       setError(error);
     }
-    // setIsLoading(false);
   };
 
   return (
     <>
-      {isLoading && (
+      {isLoading ? (
+        <Spinner />
+      ) : (
         <div className="currency-div">
           <table className="currency-table">
             <thead>
